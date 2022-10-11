@@ -11,6 +11,7 @@ public class Skills {
 // TODO: Need to verify skills are in correct order.
     private String[] allSkillsText = {"Acrobatics", "Animal Handling", "Arcana", "Athletics", "Deception", "History", "Insight", "Intimidation", "Investigation", "Medicine", "Nature", "Perception", "Performance", "Persuasion", "Religion", "Sleight of Hand", "Stealth", "Survival"};
 
+// TODO: Prof bonus comes from the class, changes upon certain level thresholds.
     private final int profBonus = 5;
 
     private Stats[] stats;
