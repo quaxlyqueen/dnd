@@ -1,20 +1,77 @@
 package com.builder;
 
-public class Skills extends Character {
+public class Skills {
 
-    private String[] allSkillsText = {"Animal Handling", "Acrobatics", "Arcana", "Athletics", "Deception", "History", "Insight", "Intimidation", "Investigation", "Medicine", "Nature", "Perception", "Performance", "Persuasion", "Religion", "Sleight of Hand", "Stealth", "Survival"};
+// TODO: Need to verify skills are in correct order.
+    private String[] allSkillsText = {"Acrobatics", "Animal Handling", "Arcana", "Athletics", "Deception", "History", "Insight", "Intimidation", "Investigation", "Medicine", "Nature", "Perception", "Performance", "Persuasion", "Religion", "Sleight of Hand", "Stealth", "Survival"};
+
+// TODO: Need to verify these are the correct ability scores for each skill.
+    private int[] skillsAbilities = {1, 4, 3, 0, 5, 3, 4, 5, 3, 4, 3, 4, 5, 5, 3, 1, 4};
+
+    private final int profBonus = 5;
+
+    private Stats[] stats;
 
     private int[] skills;
 
-    public Skills(int[] skills) {
+
+    /**
+     *
+     * Default constructor for the Skills class. Should be constructed AFTER the user has generated their stats and chosen the skills they are
+     *       proficient in.
+     *
+     * @param   int[] skills
+     * @param   Stats[] stats
+     *
+     */
+    public Skills(int[] skills, Stats[] stats) {
 
         this.skills = skills;
 
+        this.stats = stats;
+
+        setSkills();
+
     }
 
-    public int[] getAllSkills() {
+    /**
+     *
+     * Adds proficiency bonus to each element of the skills array, and then adds the corresponding AS modifier to each skill.
+     *
+     */
+    private void setSkills() {
+
+        for(int i = 0; i < allSkillsText.length; i++) {
+
+            if(skills[i] == 1) {
+
+                skills[i] = profBonus;
+
+            }
+
+            skills[i] += stats[skillsAbilities[i]].getModifier();
+
+        }
+
+    }
+
+    /**
+     *
+     * Returns the value of each skill's score.
+     *
+     * @return  int[] skills
+     *
+     */
+    public int[] getSkills() {
 
         return skills;
+
+    }
+
+// TODO: Need to implement overloaded method to return one specific skill.
+    public int getSkill(String skill) {
+
+        return 0;
 
     }
 
