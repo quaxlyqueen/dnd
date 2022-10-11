@@ -8,14 +8,18 @@ public class Barbarian implements ClassTemplate {
 
     private int rageBonusDmg;
 
+    private int level;
+
 // TODO: This should be the type of die.
     private int hitDie;
 
-    public Barbarian(Stats[] stats) {
+    public Barbarian(Stats[] stats, int level) {
 
-        
+
 
     }
+
+// TODO: Need to figure out how to contain class progression information. Potentially a double String array, each row equals a level, each column a different thing. Should class features be a separate class, ie. BarbFeatures, BardFeatures, etc?
 
     public String getDescription() {
         // TODO Auto-generated method stub
