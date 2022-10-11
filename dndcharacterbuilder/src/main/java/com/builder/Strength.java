@@ -5,11 +5,17 @@ public class Strength extends Stats {
     private int abilityScore;
     private int abilityScoreModifier;
 
-// FIXME: Need to implement standard constructor.
     public Strength(int abilityScore) {
 
         this.abilityScore = abilityScore;
         this.abilityScoreModifier = calcSavingThrow(abilityScore);
+
+    }
+
+    public Strength(Strength str) {
+
+        this.abilityScore = str.getScore();
+        this.abilityScoreModifier = str.getModifier();
 
     }
 

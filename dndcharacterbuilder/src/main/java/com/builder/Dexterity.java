@@ -30,7 +30,7 @@ public class Dexterity extends Stats {
 
     }
 
-// FIXME: Need to implement.
+// TODO: Need description.
     public String getDescription() {
 
         return "";
