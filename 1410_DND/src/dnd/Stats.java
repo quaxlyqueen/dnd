@@ -38,10 +38,12 @@ public abstract class Stats {
                 return 5;
             default:
                 return 0;
-                
+
         }
 
     }
+
+    abstract void increaseScore();
 
     abstract int getScore();
 

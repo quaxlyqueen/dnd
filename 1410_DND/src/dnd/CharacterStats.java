@@ -59,4 +59,10 @@ public class CharacterStats {
 
     }
 
+    public void increaseStat(int targetStat) {
+
+        stats[targetStat].increaseScore();
+
+    }
+
 }
