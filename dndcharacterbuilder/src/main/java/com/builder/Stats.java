@@ -35,24 +35,7 @@ public abstract class Stats {
             case 19:
                 return 4;
             case 20:
-            case 21:
                 return 5;
-            case 22:
-            case 23:
-                return 6;
-            case 24:
-            case 25:
-                return 7;
-            case 26:
-            case 27:
-                return 8;
-            case 28:
-            case 29:
-                return 9;
-            case 30:
-                return 10;
-            default:
-                return -10;
         }
 
     }
@@ -64,6 +47,6 @@ public abstract class Stats {
     abstract int getSavingThrow();
 
     abstract String getDescription();
-    
+
 
 }
