@@ -20,6 +20,8 @@ public interface ClassTemplate {
 
     String[] getToolProf();
 
+    String[] getSavingThrows();
+
 // TODO: Need to refresh on how saving throws work and how the character's class may impact a saving throw.
 
     String[] availableSkills();

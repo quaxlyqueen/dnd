@@ -1,19 +1,15 @@
 package com.builder;
 
-public class Barbarian implements ClassTemplate {
+public class Wizard implements ClassTemplate {
 
     private int HP;
-
-    private int numRages;
-
-    private int rageBonusDmg;
 
     private int level;
 
 // TODO: This should be the type of die.
     private int hitDie;
 
-    public Barbarian(Stats[] stats, int level) {
+    public Wizard(Stats[] stats, int level) {
 
 
 
@@ -84,6 +80,12 @@ public class Barbarian implements ClassTemplate {
     public boolean disadvantageCheck(Stats abilityScore) {
         // TODO Auto-generated method stub
         return false;
+    }
+
+    @Override
+    public String[] getSavingThrows() {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }
