@@ -33,7 +33,7 @@ public class Charisma extends Stats {
 // TODO: Need description.
 	public String getDescription() {
 
-		return "";
+		return "Confidence, eloquence, and leadership.";
 
 	}
 

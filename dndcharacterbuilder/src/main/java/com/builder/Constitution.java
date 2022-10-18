@@ -33,7 +33,7 @@ public class Constitution extends Stats {
 // TODO: Need description.
     public String getDescription() {
 
-        return "";
+        return "Health, stamina, vital force.";
 
     }
 
