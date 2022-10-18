@@ -36,6 +36,9 @@ public abstract class Stats {
                 return 4;
             case 20:
                 return 5;
+            default:
+                return 0;
+                
         }
 
     }
