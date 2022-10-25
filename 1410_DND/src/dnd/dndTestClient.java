@@ -1,7 +1,5 @@
 package dnd;
 
-import com.builder.CharacterStats;
-
 public class dndTestClient {
 
 	public static void main(String[] args) {

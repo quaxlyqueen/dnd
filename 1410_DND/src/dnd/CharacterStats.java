@@ -12,7 +12,6 @@ public class CharacterStats {
 // TODO: Need to implement constructor, validates all proposed ability scores and creates new objects containing corresponding values.
     public CharacterStats(int str, int dex, int con, int intel, int wis, int cha) {
 
-        System.out.println("Constructor started in CharacterStats.");
         this.stats = new Stats[]{
 
             new Strength(str),
@@ -23,7 +22,6 @@ public class CharacterStats {
             new Charisma(cha)
 
         };
-        System.out.println("stats[] created with new stats.");
 
     }
 

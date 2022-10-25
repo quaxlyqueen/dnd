@@ -5,7 +5,7 @@ public class Character {
 	private int age;
 	private int heightFeet;
 	private int heightInch;
-	private int weigth;
+	private int weight;
 	private String eye;
 	private String hair;
 	private Race race;
@@ -21,13 +21,13 @@ public class Character {
 	 */
 	public Character(String name, int age, 
 			int heightFeet, int heightInch,
-			int weigth, String eye, String hair,
+			int weight, String eye, String hair,
 			Race race) {
 		this.name = name;
 		this.age = age;
 		this.heightFeet = heightFeet;
 		this.heightInch = heightInch;
-		this.weigth = weigth;
+		this.weight = weight;
 		this.eye = eye;
 		this.hair = hair;
 		this.race = race;
@@ -40,7 +40,7 @@ public class Character {
 		this.age = 0;
 		this.heightFeet = 0;
 		this.heightInch = 0;
-		this.weigth = 0;
+		this.weight = 0;
 		this.eye = "null";
 		this.hair = "null";
 		
@@ -72,8 +72,8 @@ public class Character {
 	/**
 	 * @return the weigth
 	 */
-	public int getWeigth() {
-		return weigth;
+	public int getWeight() {
+		return weight;
 	}
 	/**
 	 * @return the eye
@@ -90,7 +90,7 @@ public class Character {
 	
 	@Override
 	public String toString() {
-		return name;
+		return "name: " + name + " | age: " + age + " | height: " + heightFeet + "\'" + heightInch + "\" | weight: " + weight + " | eye: " + eye + " | hair: " + hair;
 	}
 
 }
