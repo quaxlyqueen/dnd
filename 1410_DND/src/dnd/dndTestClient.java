@@ -15,7 +15,7 @@ public class dndTestClient {
 
 			}
 
-		Character characterInfo = new Character("Generic", 50, 4, 6, 150, "brown", "black", chosenRace);
+		Character characterInfo = new Character("Generic", 50, 4, 6, 150, "brown", "black", chosenRace, stats);
 
 			System.out.println(characterInfo.toString());
 
