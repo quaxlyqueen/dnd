@@ -1,16 +1,16 @@
 package dnd;
 
-public class Elf implements Race{
+public class Gnome implements Race{
     private String[] traits;
-    private final int speed = 30;
-    private final int maxAge = 750;
+    private final int speed = 25;
+    private final int maxAge = 500;
     private String[] skills;
     private String[] languages;
     private String[] proficiencies;
 
-    public Elf() {
+    public Gnome() {
 
-        this.languages = new String[] {"Common", "Elvish"};
+        this.languages = new String[] {"Common", "Gnomish"};
         this.skills = new String[] {};
     }
 
@@ -60,7 +60,7 @@ public class Elf implements Race{
     @Override
     public int[] getASI() {
         // TODO Auto-generated method stub
-        return new int[]{1,1};
+        return new int[]{3,3};
     }
 
 	@Override

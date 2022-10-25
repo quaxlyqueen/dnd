@@ -1,16 +1,17 @@
 package dnd;
 
-public class Elf implements Race{
+public class HalfElf implements Race{
     private String[] traits;
     private final int speed = 30;
-    private final int maxAge = 750;
+    private final int maxAge = 180;
     private String[] skills;
     private String[] languages;
     private String[] proficiencies;
 
-    public Elf() {
+    //TODO HalfElf get's to increase 1 ASI of their choice to increase. 
+    public HalfElf(String chosenLanguage, int choseASI) {
 
-        this.languages = new String[] {"Common", "Elvish"};
+        this.languages = new String[] {"Common", "Elvish", chosenLanguage };
         this.skills = new String[] {};
     }
 
@@ -60,7 +61,7 @@ public class Elf implements Race{
     @Override
     public int[] getASI() {
         // TODO Auto-generated method stub
-        return new int[]{1,1};
+        return new int[]{5,5, chosenASI};
     }
 
 	@Override
@@ -70,3 +71,4 @@ public class Elf implements Race{
 	}
     
 }
+
