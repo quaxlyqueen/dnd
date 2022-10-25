@@ -9,6 +9,7 @@ public class Character {
 	private String eye;
 	private String hair;
 	private Race race;
+	private CharacterStats stats;
 	
 	/**
 	 * @param name
@@ -22,7 +23,7 @@ public class Character {
 	public Character(String name, int age, 
 			int heightFeet, int heightInch,
 			int weight, String eye, String hair,
-			Race race) {
+			Race race, CharacterStats stats) {
 		this.name = name;
 		this.age = age;
 		this.heightFeet = heightFeet;
@@ -31,6 +32,7 @@ public class Character {
 		this.eye = eye;
 		this.hair = hair;
 		this.race = race;
+		this.stats = stats;
 	}
 	/**
 	 * Default constructor
@@ -87,10 +89,19 @@ public class Character {
 	public String getHair() {
 		return hair;
 	}
+
+	public CharacterStats getStats() {
+
+		return stats;
+
+	}
 	
 	@Override
 	public String toString() {
-		return "name: " + name + " | age: " + age + " | height: " + heightFeet + "\'" + heightInch + "\" | weight: " + weight + " | eye: " + eye + " | hair: " + hair + " | race: " + race.toString();
+		return "name: " + name + " | age: " + age + " | height: " 
+				+ heightFeet + "\'" + heightInch + "\" | weight: " 
+				+ weight + " | eye: " + eye + " | hair: " + hair 
+				+ " | race: " + race.toString() + " | stats: " + stats.toString();
 	}
 
 }

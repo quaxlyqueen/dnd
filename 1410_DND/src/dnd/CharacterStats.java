@@ -64,4 +64,19 @@ public class CharacterStats {
 
     }
 
+    @Override
+    public String toString() {
+
+        String statsString = "";
+
+        for(int i = 0; i < stats.length; i++) {
+
+            statsString = statsString.concat(stats[i].getClass().getSimpleName() + ": " + stats[i].getScore() + " | ");
+
+        }
+
+        return statsString;
+
+    }
+
 }
