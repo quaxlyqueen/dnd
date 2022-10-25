@@ -8,7 +8,7 @@ public class Dragonborn implements Race{
     private String[] languages;
     private String[] proficiencies;
 
-    public Dragonborn(String chosenLanguage) {
+    public Dragonborn() {
 
         this.languages = new String[] {"Common", "Draconic"};
         this.skills = new String[] {};

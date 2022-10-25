@@ -7,7 +7,7 @@ public class dndTestClient {
 
 		CharacterStats stats = new CharacterStats(10, 10, 10, 10, 10, 10);
 
-		Human chosenRace = new Human("Goblin");
+		Dragonborn chosenRace = new Dragonborn();
 
 			for(int i = 0; i < chosenRace.getASI().length; i++) {
 
