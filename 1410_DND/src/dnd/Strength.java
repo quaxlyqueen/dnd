@@ -1,4 +1,4 @@
-package com.builder;
+package dnd;
 
 public class Strength extends Stats {
 
@@ -55,6 +55,13 @@ public class Strength extends Stats {
         return "Ability Score: " + abilityScore + " | Modifier: " + abilityScoreModifier + " | Description: "
                 + getDescription();
 
+    }
+
+    @Override
+    void increaseScore() {
+
+        abilityScore++;
+        
     }
 
 }

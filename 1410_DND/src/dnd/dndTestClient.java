@@ -9,7 +9,7 @@ public class dndTestClient {
 
 		CharacterStats stats = new CharacterStats(10, 10, 10, 10, 10, 10);
 
-		Race chosenRace = new Human("Goblin");
+		Human chosenRace = new Human("Goblin");
 
 			for(int i = 0; i < chosenRace.getASI().length; i++) {
 
@@ -19,7 +19,7 @@ public class dndTestClient {
 
 		Character characterInfo = new Character("Generic", 50, 4, 6, 150, "brown", "black", chosenRace);
 
-			System.out.println();
+			System.out.println(characterInfo.toString());
 
 	}
 

@@ -1,4 +1,4 @@
-package com.builder;
+package dnd;
 
 public abstract class Stats {
 
@@ -52,6 +52,5 @@ public abstract class Stats {
     abstract int getSavingThrow();
 
     abstract String getDescription();
-
 
 }

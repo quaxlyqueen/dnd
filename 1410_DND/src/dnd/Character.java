@@ -88,5 +88,9 @@ public class Character {
 		return hair;
 	}
 	
+	@Override
+	public String toString() {
+		return name;
+	}
 
 }

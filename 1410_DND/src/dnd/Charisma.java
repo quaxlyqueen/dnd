@@ -1,4 +1,4 @@
-package com.builder;
+package dnd;
 
 public class Charisma extends Stats {
 
@@ -44,5 +44,12 @@ public class Charisma extends Stats {
 				+ getDescription();
 
 	}
+
+	@Override
+    void increaseScore() {
+
+        abilityScore++;
+        
+    }
 
 }

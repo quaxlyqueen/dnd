@@ -1,4 +1,4 @@
-package com.builder;
+package dnd;
 
 public interface ClassTemplate {
 

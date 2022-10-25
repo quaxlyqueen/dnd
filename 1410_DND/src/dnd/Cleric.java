@@ -1,4 +1,4 @@
-package com.builder;
+package dnd;
 
 public class Cleric implements ClassTemplate {
 
