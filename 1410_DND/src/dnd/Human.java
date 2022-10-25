@@ -14,15 +14,6 @@ public class Human implements Race {
         this.languages = new String[] {"Common", chosenLanguage};
         this.skills = new String[] {};
 
-
-/*
- *
- *  ASI all by 1
- * size: medium
- *
- *
- */
-
     }
 
 	@Override
