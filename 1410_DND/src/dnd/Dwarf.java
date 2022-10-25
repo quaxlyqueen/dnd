@@ -1,16 +1,16 @@
 package dnd;
 
-public class Dragonborn implements Race{
+public class Dwarf implements Race{
     private String[] traits;
-    private final int speed = 30;
-    private final int maxAge = 80;
+    private final int speed = 25;
+    private final int maxAge = 350;
     private String[] skills;
     private String[] languages;
     private String[] proficiencies;
 
     public Dragonborn() {
 
-        this.languages = new String[] {"Common", "Draconic"};
+        this.languages = new String[] {"Common", "Dwarvish"};
         this.skills = new String[] {};
     }
 
@@ -60,7 +60,7 @@ public class Dragonborn implements Race{
     @Override
     public int[] getASI() {
         // TODO Auto-generated method stub
-        return new int[]{0,0,5};
+        return new int[]{2,2};
     }
 
 	@Override
