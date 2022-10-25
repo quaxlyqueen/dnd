@@ -90,7 +90,7 @@ public class Character {
 	
 	@Override
 	public String toString() {
-		return "name: " + name + " | age: " + age + " | height: " + heightFeet + "\'" + heightInch + "\" | weight: " + weight + " | eye: " + eye + " | hair: " + hair;
+		return "name: " + name + " | age: " + age + " | height: " + heightFeet + "\'" + heightInch + "\" | weight: " + weight + " | eye: " + eye + " | hair: " + hair + " | race: " + race.toString();
 	}
 
 }

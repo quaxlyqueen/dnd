@@ -74,6 +74,10 @@ public class Human implements Race {
         return new int[]{0, 1, 2, 3, 4, 5};
     }
 
-
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return this.getClass().getSimpleName();
+	}
 
 }
