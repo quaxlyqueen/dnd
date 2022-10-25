@@ -66,6 +66,42 @@ public class Background {
 			feature = "By Popular Demand" + "\nYou can always find a place to perform, usually in an inn or tavern but possibly with a circus, at a theater, or even in a noble�s court. At such a place, you receive free lodging and food of a modest or comfortable standard (depending on the quality of the establishment), as long as you perform each night. In addition, your performance makes you something of a local figure. When strangers recognize you in a town where you have performed, they typically take a liking to you.";
 		}
 		
+		public void setFolkHero(){
+			name = "Folk Hero";
+			proficientStatus[1] = true;
+			proficientStatus[17] = true;
+			skillProficiencies = skills[1] + ", " + skills[17];
+			feature = "Rustic Hospitality" + "\nSince you come from the ranks of the common folk, you fit in among them with ease. You can find a place to hide, rest, or recuperate among other commoners, unless you have shown yourself to be a danger to them. They will shield you from the law or anyone else searching for you, though they will not risk their lives for you.";
+		}
+		
+		public void setGladiator(){
+			name = "Gladiator";
+			proficientStatus[0] = true;
+			proficientStatus[12] = true;
+			skillProficiencies = skills[0] + ", " + skills[12];
+			feature = "By Popular Demand" + "\nYou can always find a place to perform in any place that features combat for entertainment — perhaps a gladiatorial arena or secret pit fighting club. At such a place, you receive free lodging and food of a modest or comfortable standard (depending on the quality of the establishment), as long as you perform each night. In addition, your performance makes you something of a local figure. When strangers recognize you in a town where you have performed, they typically take a liking to you.";
+		}
+		
+		public void setGuildArtisan(){
+			name = "Guild Artisan";
+			proficientStatus[6] = true;
+			proficientStatus[13] = true;
+			skillProficiencies = skills[6] + ", " + skills[13];
+			feature = "Guild Membership" + "\nAs an established and respected member of a guild, you can rely on certain benefits that membership provides. Your fellow guild members will provide you with lodging and food if necessary, and pay for your funeral if needed. In some cities and towns, a guildhall offers a central place to meet other members of your profession, which can be a good place to meet potential patrons, allies, or hirelings."
+						+"\nGuilds often wield tremendous political power. If you are accused of a crime, your guild will support you if a good case can be made for your innocence or the crime is justifiable. You can also gain access to powerful political figures through the guild, if you are a member in good standing. Such connections might require the donation of money or magic items to the guild’s coffers."
+						+"\nYou must pay dues of 5 gp per month to the guild. If you miss payments, you must make up back dues to remain in the guild’s good graces.";
+		}
+		
+		public void setGuildMerchant(){
+			name = "Guild Merchant";
+			proficientStatus[6] = true;
+			proficientStatus[13] = true;
+			skillProficiencies = skills[6] + ", " + skills[13];
+			feature = "Guild Membership" + "\nAs an established and respected member of a guild, you can rely on certain benefits that membership provides. Your fellow guild members will provide you with lodging and food if necessary, and pay for your funeral if needed. In some cities and towns, a guildhall offers a central place to meet other members of your profession, which can be a good place to meet potential patrons, allies, or hirelings."
+						+"\nGuilds often wield tremendous political power. If you are accused of a crime, your guild will support you if a good case can be made for your innocence or the crime is justifiable. You can also gain access to powerful political figures through the guild, if you are a member in good standing. Such connections might require the donation of money or magic items to the guild’s coffers."
+						+"\nYou must pay dues of 5 gp per month to the guild. If you miss payments, you must make up back dues to remain in the guild’s good graces.";
+		}
+		
 		/**
 		 * @return the name
 		 */
