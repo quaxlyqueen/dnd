@@ -63,7 +63,7 @@ public class Background {
 			proficientStatus[0] = true;
 			proficientStatus[12] = true;
 			skillProficiencies = skills[0] + ", " + skills[12];
-			feature = "By Popular Demand" + "\nYou can always find a place to perform, usually in an inn or tavern but possibly with a circus, at a theater, or even in a noble�s court. At such a place, you receive free lodging and food of a modest or comfortable standard (depending on the quality of the establishment), as long as you perform each night. In addition, your performance makes you something of a local figure. When strangers recognize you in a town where you have performed, they typically take a liking to you.";
+			feature = "By Popular Demand" + "\nYou can always find a place to perform, usually in an inn or tavern but possibly with a circus, at a theater, or even in a noble's court. At such a place, you receive free lodging and food of a modest or comfortable standard (depending on the quality of the establishment), as long as you perform each night. In addition, your performance makes you something of a local figure. When strangers recognize you in a town where you have performed, they typically take a liking to you.";
 		}
 		
 		public void setFolkHero(){
@@ -88,8 +88,8 @@ public class Background {
 			proficientStatus[13] = true;
 			skillProficiencies = skills[6] + ", " + skills[13];
 			feature = "Guild Membership" + "\nAs an established and respected member of a guild, you can rely on certain benefits that membership provides. Your fellow guild members will provide you with lodging and food if necessary, and pay for your funeral if needed. In some cities and towns, a guildhall offers a central place to meet other members of your profession, which can be a good place to meet potential patrons, allies, or hirelings."
-						+"\nGuilds often wield tremendous political power. If you are accused of a crime, your guild will support you if a good case can be made for your innocence or the crime is justifiable. You can also gain access to powerful political figures through the guild, if you are a member in good standing. Such connections might require the donation of money or magic items to the guild’s coffers."
-						+"\nYou must pay dues of 5 gp per month to the guild. If you miss payments, you must make up back dues to remain in the guild’s good graces.";
+			+"\nGuilds often wield tremendous political power. If you are accused of a crime, your guild will support you if a good case can be made for your innocence or the crime is justifiable. You can also gain access to powerful political figures through the guild, if you are a member in good standing. Such connections might require the donation of money or magic items to the guild’s coffers."
+			+"\nYou must pay dues of 5 gp per month to the guild. If you miss payments, you must make up back dues to remain in the guild’s good graces.";
 		}
 		
 		public void setGuildMerchant(){
@@ -98,8 +98,25 @@ public class Background {
 			proficientStatus[13] = true;
 			skillProficiencies = skills[6] + ", " + skills[13];
 			feature = "Guild Membership" + "\nAs an established and respected member of a guild, you can rely on certain benefits that membership provides. Your fellow guild members will provide you with lodging and food if necessary, and pay for your funeral if needed. In some cities and towns, a guildhall offers a central place to meet other members of your profession, which can be a good place to meet potential patrons, allies, or hirelings."
-						+"\nGuilds often wield tremendous political power. If you are accused of a crime, your guild will support you if a good case can be made for your innocence or the crime is justifiable. You can also gain access to powerful political figures through the guild, if you are a member in good standing. Such connections might require the donation of money or magic items to the guild’s coffers."
-						+"\nYou must pay dues of 5 gp per month to the guild. If you miss payments, you must make up back dues to remain in the guild’s good graces.";
+			+"\nGuilds often wield tremendous political power. If you are accused of a crime, your guild will support you if a good case can be made for your innocence or the crime is justifiable. You can also gain access to powerful political figures through the guild, if you are a member in good standing. Such connections might require the donation of money or magic items to the guild’s coffers."
+			+"\nYou must pay dues of 5 gp per month to the guild. If you miss payments, you must make up back dues to remain in the guild’s good graces.";
+		}
+
+		public void setGuildHermit(){
+			name = "Hermit";
+			proficientStatus[9] = true;
+			proficientStatus[14] = true;
+			skillProficiencies = skills[9] + ", " + skills[14];
+			feature = "Discovery" + "\nThe quiet seclusion of your extended hermitage gave you access to a unique and powerful discovery. The exact nature of this revelation depends on the nature of your seclusion. It might be a great truth about the cosmos, the deities, the powerful beings of the outer planes, or the forces of nature. It could be a site that no one else has ever seen. You might have uncovered a fact that has long been forgotten, or unearthed some relic of the past that could rewrite history. It might be information that would be damaging to the people who consigned you to exile, and hence the reason for your return to society."
+			+ "\nWork with your DM to determine the details of your discovery and its impact on the campaign.";
+		}
+
+		public void setKnight(){
+			name = "Knight";
+			proficientStatus[5] = true;
+			proficientStatus[11] = true;
+			skillProficiencies = skills[5] + ", " + skills[11];
+			feature = "Retainers" + "\nYou have the service of three retainers loyal to your family. These retainers can be attendants or messengers, and one might be a majordomo. Your retainers are commoners who can perform mundane tasks for you, but they do not fight for you, will not follow you into obviously dangerous areas (such as dungeons), and will leave if they are frequently endangered or abused.";
 		}
 		
 		/**
