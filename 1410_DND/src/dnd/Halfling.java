@@ -12,6 +12,7 @@ public class Halfling implements Race{
 
         this.languages = new String[] {"Common", "Elvish"};
         this.skills = new String[] {};
+		
     }
 
 	@Override
