@@ -1,6 +1,6 @@
 package dnd;
 
-public class Elf implements Race{
+public class Halfling implements Race{
     private String[] traits;
     private final int speed = 30;
     private final int maxAge = 750;
@@ -8,7 +8,7 @@ public class Elf implements Race{
     private String[] languages;
     private String[] proficiencies;
 
-    public Dragonborn() {
+    public Halfling() {
 
         this.languages = new String[] {"Common", "Elvish"};
         this.skills = new String[] {};

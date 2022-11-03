@@ -8,7 +8,7 @@ public class Dwarf implements Race{
     private String[] languages;
     private String[] proficiencies;
 
-    public Dragonborn() {
+    public Dwarf() {
 
         this.languages = new String[] {"Common", "Dwarvish"};
         this.skills = new String[] {};

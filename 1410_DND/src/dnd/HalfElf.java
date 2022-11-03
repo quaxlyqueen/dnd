@@ -7,12 +7,15 @@ public class HalfElf implements Race{
     private String[] skills;
     private String[] languages;
     private String[] proficiencies;
+	private int chosenASI;
 
     //TODO HalfElf get's to increase 1 ASI of their choice to increase. 
-    public HalfElf(String chosenLanguage, int choseASI) {
+    public HalfElf(String chosenLanguage, int chosenASI) {
 
         this.languages = new String[] {"Common", "Elvish", chosenLanguage };
         this.skills = new String[] {};
+		this.chosenASI = chosenASI;
+		
     }
 
 	@Override
