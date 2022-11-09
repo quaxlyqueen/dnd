@@ -35,7 +35,7 @@ public class FileManager {
 
         try {
 
-            FileInputStream fileIn = new FileInputStream("/tmp/" + savedCharacters[index].getPath() + ".dnd");
+            FileInputStream fileIn = new FileInputStream("/dndBuilder/" + savedCharacters[index].getPath() + ".dnd");
             ObjectInputStream in = new ObjectInputStream(fileIn);
             sheet = (CharacterSheet) in.readObject();
             in.close();
@@ -61,7 +61,7 @@ public class FileManager {
         try {
 
             FileOutputStream fileOut =
-                    new FileOutputStream("/bin/" + completedCharacter.getName().hashCode() + ".dnd");
+                    new FileOutputStream("/dndBuilder/" + completedCharacter.getName().hashCode() + ".dnd");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(completedCharacter);
             out.close();

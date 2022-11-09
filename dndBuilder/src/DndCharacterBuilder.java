@@ -5,11 +5,10 @@ public class DndCharacterBuilder {
 
     public static void main(String[] args) {
 
-       //FileManager data = new FileManager();
+       FileManager data = new FileManager();
 
        PanelHolder guiPanels = new PanelHolder();
-           // UImanager gui = new UImanager(guiPanels, data.isReturninguser());
-            UImanager gui = new UImanager(guiPanels);
+            UImanager gui = new UImanager(guiPanels, data.isReturninguser());
                 gui.setVisible(true);
 
     }
