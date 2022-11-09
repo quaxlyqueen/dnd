@@ -1,16 +1,22 @@
 import GUI.*;
-import Races.*;
-import Classes.*;
-import AbilityScores.*;
+import FileManagement.*;
 
 public class DndCharacterBuilder {
 
     public static void main(String[] args) {
 
-        PanelHolder guiPanels = new PanelHolder();
-
-        UImanager gui = new UImanager(guiPanels);
+       PanelHolder guiPanels = new PanelHolder();
+            UImanager gui = new UImanager(guiPanels, isReturningUser());
 
     }
+
+    private static boolean isReturningUser() {
+
+
+
+        return false;
+
+    }
+
 
 }

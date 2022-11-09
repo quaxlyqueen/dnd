@@ -8,12 +8,12 @@ public class UImanager {
     private final PanelHolder guiPanels;
     private int currentPanel;
 
-    public UImanager (PanelHolder guiPanels) {
+    public UImanager (PanelHolder guiPanels, boolean returningUser) {
 
         this.gui = new JFrame("D&D Character Builder");
             this.guiPanels = guiPanels;
 
-            if (returningUser()) {
+            if (returningUser) {
 
                 this.currentPanel = 0;
 
@@ -31,13 +31,6 @@ public class UImanager {
     private void frameSetup() {
 
 
-
-    }
-
-    // TODO: Need to implement.
-    private boolean returningUser() {
-
-        return false;
 
     }
 

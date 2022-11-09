@@ -1,6 +1,18 @@
 package GUI;
 
 import javax.swing.*;
+
+/*
+
+NOTES:
+
+    - Implement getters for lastPanel, currentPanel, and nextPanel.
+    - Implement panel creators.
+    - Implement button logic, which should set the lastPanel, currentPanel, and nextPanel indices.
+    - Extract individual classes for each JPanel field to inherit JPanel and contain additional values, such as race or class.
+
+ */
+
 public class PanelHolder {
 
     private JPanel mainMenuPanel;
@@ -12,6 +24,10 @@ public class PanelHolder {
     private JPanel finalizePanel;
     private JPanel loadMenuPanel;
 
+    private int lastPanel;
+    private int currentPanel;
+    private int nextPanel;
+
     public PanelHolder() {
 
         this.mainMenuPanel = createMainMenuPanel();
@@ -22,6 +38,9 @@ public class PanelHolder {
         this.equipmentPanel = createEquipmentSelectPanel();
         this.finalizePanel = createFinalizePanel();
         this.loadMenuPanel = createLoadMenu();
+            lastPanel = 0;
+            currentPanel = 0;
+            nextPanel = 0;
 
     }
 
@@ -98,12 +117,16 @@ public class PanelHolder {
      */
     private JPanel createRaceSelectPanel() {
 
+        currentPanel++;
+
         return new JPanel();
 
     }
 
     // TODO: Need to implement.
     private JPanel createClassSelectPanel() {
+
+        currentPanel++;
 
         return new JPanel();
 
@@ -112,12 +135,16 @@ public class PanelHolder {
     // TODO: Need to implement.
     private JPanel createAbilityScoreSelectPanel() {
 
+        currentPanel++;
+
         return new JPanel();
 
     }
 
     // TODO: Need to implement.
     private JPanel createDescriptionPanel() {
+
+        currentPanel++;
 
         return new JPanel();
 
@@ -126,6 +153,8 @@ public class PanelHolder {
     // TODO: Need to implement.
     private JPanel createEquipmentSelectPanel() {
 
+        currentPanel++;
+
         return new JPanel();
 
     }
@@ -133,12 +162,16 @@ public class PanelHolder {
     // TODO: Need to implement.
     private JPanel createFinalizePanel() {
 
+        currentPanel++;
+
         return new JPanel();
 
     }
 
     // TODO: Need to implement.
     private JPanel createLoadMenu() {
+
+        currentPanel = 7;
 
         return new JPanel();
 
