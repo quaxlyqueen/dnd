@@ -10,16 +10,40 @@ public class FileManager {
 
     public FileManager() {
 
-
+        findSavedCharacters();
 
     }
 
-    // TODO: Need to implement. Reads file and returns a re-created CharacterSheet object.
+    public boolean isReturninguser() {
+
+        return savedCharacters.length > 0;
+
+    }
+
     public CharacterSheet readCharacter(int index) {
 
-        File character = savedCharacters[index];
+        CharacterSheet sheet = null;
 
-        return new CharacterSheet();
+        try {
+
+            FileInputStream fileIn = new FileInputStream("/tmp/" + savedCharacters[index].getPath() + ".dnd");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            sheet = (CharacterSheet) in.readObject();
+            in.close();
+            fileIn.close();
+
+        } catch (IOException i) {
+
+            i.printStackTrace();
+
+        } catch (ClassNotFoundException c) {
+
+            System.out.println("Employee class not found");
+            c.printStackTrace();
+
+        }
+
+        return sheet;
 
     }
 
@@ -42,17 +66,28 @@ public class FileManager {
 
     }
 
-    // TODO: Need to implement.
     public void deleteCharacter(int index) {
 
+        File[] tmp = new File[savedCharacters.length - 1];
 
+        for (int i = 0; i < savedCharacters.length; i++) {
+
+            if(i != index) {
+
+                tmp[i] = savedCharacters[i];
+
+            }
+
+        }
+
+        savedCharacters = tmp;
 
     }
 
     // TODO: Need to implement. Should create an array of Files corresponding to user-created characters.
     private void findSavedCharacters() {
 
-
+        savedCharacters = new File("/bin/").listFiles();
 
     }
 

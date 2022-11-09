@@ -5,18 +5,11 @@ public class DndCharacterBuilder {
 
     public static void main(String[] args) {
 
+       FileManager data = new FileManager();
+
        PanelHolder guiPanels = new PanelHolder();
-            UImanager gui = new UImanager(guiPanels, isReturningUser());
+            UImanager gui = new UImanager(guiPanels, data.isReturninguser());
 
     }
-
-    private static boolean isReturningUser() {
-
-
-
-        return false;
-
-    }
-
 
 }
