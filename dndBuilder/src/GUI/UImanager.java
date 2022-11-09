@@ -1,19 +1,20 @@
 package GUI;
 
 import javax.swing.*;
+import java.awt.*;
 
-public class UImanager {
+public class UImanager extends JFrame {
 
-    private final JFrame gui;
     private final PanelHolder guiPanels;
     private int currentPanel;
 
-    public UImanager (PanelHolder guiPanels, boolean returningUser) {
-
-        this.gui = new JFrame("D&D Character Builder");
+    //public UImanager (PanelHolder guiPanels, boolean returningUser) {
+    public UImanager (PanelHolder guiPanels) {
+        super("D&D Character Builder");
+            frameSetup();
             this.guiPanels = guiPanels;
 
-            if (returningUser) {
+/*            if (returningUser) {
 
                 this.currentPanel = 0;
 
@@ -21,22 +22,33 @@ public class UImanager {
 
                 this.currentPanel = 1;
 
-            }
+            }*/
 
-        frameSetup();
+            clearAndReset(getNextPanel());
 
     }
 
     // TODO: Need to implement.
     private void frameSetup() {
 
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
+        setPreferredSize(new Dimension(600,600));
+        setSize(getPreferredSize());
 
+        try {
+            UIManager.setLookAndFeel( UIManager.getCrossPlatformLookAndFeelClassName() );
+        } catch (Exception e) {
+            System.out.println("Error with cross platform look/feel in frameSetup().");
+        }
 
     }
 
     private JPanel getNextPanel() {
 
-        return switch (currentPanel) {
+        return guiPanels.getRacePanel();
+
+/*        return switch (currentPanel) {
             case 1 -> guiPanels.getRacePanel();
             case 2 -> guiPanels.getClassPanel();
             case 3 -> guiPanels.getAbilityScorePanel();
@@ -45,17 +57,17 @@ public class UImanager {
             case 6 -> guiPanels.getLoadMenuPanel();
             case 7 -> guiPanels.getFinalizePanel();
             default -> guiPanels.getMainMenuPanel();
-        };
+        };*/
 
     }
 
     private void clearAndReset(JPanel nextPanel) {
 
-        gui.removeAll();
-        gui.add(nextPanel);
+        removeAll();
+        add(nextPanel);
 
-        gui.repaint();
-        gui.revalidate();
+        repaint();
+        revalidate();
 
     }
 

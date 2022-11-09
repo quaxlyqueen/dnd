@@ -37,13 +37,13 @@ public abstract class Stats {
             case 20:
                 return 5;
             default:
-                return 0;
+                return -42;
 
         }
 
     }
 
-    abstract void increaseScore();
+    public abstract void increaseScore();
 
     abstract int getScore();
 

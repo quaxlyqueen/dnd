@@ -1,6 +1,7 @@
 package FileManagement;
 
 import java.io.*;
+import java.util.Arrays;
 
 import Character.*;
 
@@ -10,11 +11,19 @@ public class FileManager {
 
     public FileManager() {
 
+        System.out.println("FileManager object created.\n");
+
         findSavedCharacters();
 
     }
 
     public boolean isReturninguser() {
+
+        if(savedCharacters == null) {
+
+            return false;
+
+        }
 
         return savedCharacters.length > 0;
 
@@ -64,6 +73,8 @@ public class FileManager {
 
         }
 
+        findSavedCharacters();
+
     }
 
     public void deleteCharacter(int index) {
@@ -82,12 +93,13 @@ public class FileManager {
 
         savedCharacters = tmp;
 
+        findSavedCharacters();
+
     }
 
-    // TODO: Need to implement. Should create an array of Files corresponding to user-created characters.
     private void findSavedCharacters() {
 
-        savedCharacters = new File("/bin/").listFiles();
+        savedCharacters = new File("/dndBuilder").listFiles();
 
     }
 

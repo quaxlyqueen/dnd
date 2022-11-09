@@ -1,4 +1,5 @@
-package Character;
+package Character.AbilityScores;
+
 public class CharacterStats {
 
     private Stats[] stats;
@@ -48,13 +49,13 @@ public class CharacterStats {
      *
      * Allows for access to a particular stat.
      *
-     * @param int stat
+     * @param  index
      * @return a specific stat
      *
      */
-    public Stats getStats(int stat) {
+    public Stats getStats(int index) {
 
-        return stats[stat];
+        return stats[index];
 
     }
 

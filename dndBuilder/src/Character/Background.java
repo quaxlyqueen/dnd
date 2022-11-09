@@ -13,7 +13,6 @@ public class Background {
 		
 		/**
 		 * @param name
-		 * @param skillProficiences
 		 * @param feature
 		 */
 		public Background(String name, boolean[] proficientStatus, String[] skills, String feature) {

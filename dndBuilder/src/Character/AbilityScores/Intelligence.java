@@ -46,7 +46,7 @@ public class Intelligence extends Stats{
     }
 
     @Override
-    void increaseScore() {
+    public void increaseScore() {
 
         abilityScore++;
         

@@ -1,5 +1,6 @@
 package Character;
 
+import Character.AbilityScores.CharacterStats;
 import Character.Races.*;
 
 import java.io.Serializable;

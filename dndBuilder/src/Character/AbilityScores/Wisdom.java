@@ -46,7 +46,7 @@ public class Wisdom extends Stats {
     }
 
     @Override
-    void increaseScore() {
+    public void increaseScore() {
 
         abilityScore++;
         

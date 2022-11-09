@@ -46,7 +46,7 @@ public class Dexterity extends Stats {
     }
 
     @Override
-    void increaseScore() {
+    public void increaseScore() {
 
         abilityScore++;
         

@@ -1,5 +1,7 @@
 package Character;
 
+import Character.AbilityScores.*;
+
 /**
  *
  * Object stores information about a character's skills arrays. Firstly, the name of each skill, and secondly the value of each skill. When constructed, a private method is called
@@ -23,8 +25,8 @@ public class Skills {
      *
      * Default constructor for the Skills class. Should be constructed AFTER the user has generated their stats and chosen the skills they are proficient in.
      *
-     * @param   int[] skills
-     * @param   Stats[] stats
+     * @param   skills
+     * @param   stats
      *
      */
     public Skills(int[] skills, Stats[] stats) {
