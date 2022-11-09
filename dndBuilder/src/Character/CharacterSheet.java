@@ -2,7 +2,9 @@ package Character;
 
 import Character.Races.*;
 
-public class CharacterSheet {
+import java.io.Serializable;
+
+public class CharacterSheet implements Serializable {
 	private String name;
 	private int age;
 	private int heightFeet;

@@ -1,7 +1,7 @@
 package FileManagement;
 
-import javax.swing.text.Document;
-import java.io.File;
+import java.io.*;
+
 import Character.*;
 
 public class FileManager {
@@ -14,24 +14,43 @@ public class FileManager {
 
     }
 
-    public CharacterSheet readCharacter() {
+    // TODO: Need to implement. Reads file and returns a re-created CharacterSheet object.
+    public CharacterSheet readCharacter(int index) {
 
-
+        File character = savedCharacters[index];
 
         return new CharacterSheet();
 
     }
 
-    // TODO: Need to implement. Should create an array of Files corresponding to user-created characters.
-    private void findSavedCharacters() {
+    public void saveCharacter (CharacterSheet completedCharacter) {
+
+        try {
+
+            FileOutputStream fileOut =
+                    new FileOutputStream("/bin/" + completedCharacter.getName().hashCode() + ".dnd");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(completedCharacter);
+            out.close();
+            fileOut.close();
+
+        } catch (IOException i) {
+
+            i.printStackTrace();
+
+        }
+
+    }
+
+    // TODO: Need to implement.
+    public void deleteCharacter(int index) {
 
 
 
     }
 
-
-
-    public void saveCharacter (Character completedCharacter) {
+    // TODO: Need to implement. Should create an array of Files corresponding to user-created characters.
+    private void findSavedCharacters() {
 
 
 
