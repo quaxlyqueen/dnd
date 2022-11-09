@@ -1,21 +1,14 @@
-package dnd;
+package AbilityScores;
 
-public class Strength extends Stats {
+public class Intelligence extends Stats{
 
     private int abilityScore;
     private int abilityScoreModifier;
 
-    public Strength(int abilityScore) {
+    public Intelligence(int abilityScore) {
 
         this.abilityScore = abilityScore;
         this.abilityScoreModifier = calcSavingThrow(abilityScore);
-
-    }
-
-    public Strength(Strength str) {
-
-        this.abilityScore = str.getScore();
-        this.abilityScoreModifier = str.getModifier();
 
     }
 
@@ -37,15 +30,10 @@ public class Strength extends Stats {
 
     }
 
+// TODO: Need description.
     public String getDescription() {
 
-        return "Natural athleticism and bodily power.";
-
-    }
-
-    public int getMaxCarryWeight() {
-
-        return abilityScore * 15;
+        return "";
 
     }
 

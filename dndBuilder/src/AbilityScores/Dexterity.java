@@ -1,11 +1,11 @@
-package dnd;
+package AbilityScores;
 
-public class Wisdom extends Stats {
+public class Dexterity extends Stats {
 
     private int abilityScore;
     private int abilityScoreModifier;
 
-    public Wisdom(int abilityScore) {
+    public Dexterity(int abilityScore) {
 
         this.abilityScore = abilityScore;
         this.abilityScoreModifier = calcSavingThrow(abilityScore);

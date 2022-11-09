@@ -1,4 +1,7 @@
-public static class PanelHolder {
+package GUI;
+
+import javax.swing.*;
+public class PanelHolder {
 
     private JPanel mainMenuPanel;
     private JPanel racePanel;
@@ -70,59 +73,74 @@ public static class PanelHolder {
 
     }
 
-    // TODO: Need to implement.
+    /* TODO: Need to implement.
+
+            LEFT-SIDE: Two large buttons, split with a horizontal line. One is to create a new DnD character, the other is to create a
+            random character.
+
+            RIGHT-SIDE: One extra-large button to load an existing character.
+
+     */
     private JPanel createMainMenuPanel() {
 
-
+        return new JPanel();
 
     }
 
-    // TODO: Need to implement.
+    /* TODO: Need to implement.
+
+            LEFT-SIDE: Should appear with a random portrait of the default race, human. Below this
+            portrait, a button for the user to upload their own portrait.
+
+            RIGHT-SIDE: Should appear with a scrollable list of the user's available races. A tooltip is on each race, and expands to
+            describe the race, their proficiencies, languages, and ability score improvements.
+
+     */
     private JPanel createRaceSelectPanel() {
 
-
+        return new JPanel();
 
     }
 
     // TODO: Need to implement.
     private JPanel createClassSelectPanel() {
 
-
+        return new JPanel();
 
     }
 
     // TODO: Need to implement.
     private JPanel createAbilityScoreSelectPanel() {
 
-
+        return new JPanel();
 
     }
 
     // TODO: Need to implement.
     private JPanel createDescriptionPanel() {
 
-
+        return new JPanel();
 
     }
 
     // TODO: Need to implement.
     private JPanel createEquipmentSelectPanel() {
 
-
+        return new JPanel();
 
     }
 
     // TODO: Need to implement.
     private JPanel createFinalizePanel() {
 
-
+        return new JPanel();
 
     }
 
     // TODO: Need to implement.
     private JPanel createLoadMenu() {
 
-
+        return new JPanel();
 
     }
 

@@ -1,11 +1,11 @@
-package dnd;
+package AbilityScores;
 
-public class Intelligence extends Stats{
+public class Constitution extends Stats {
 
     private int abilityScore;
     private int abilityScoreModifier;
 
-    public Intelligence(int abilityScore) {
+    public Constitution(int abilityScore) {
 
         this.abilityScore = abilityScore;
         this.abilityScoreModifier = calcSavingThrow(abilityScore);
@@ -33,7 +33,7 @@ public class Intelligence extends Stats{
 // TODO: Need description.
     public String getDescription() {
 
-        return "";
+        return "Health, stamina, vital force.";
 
     }
 

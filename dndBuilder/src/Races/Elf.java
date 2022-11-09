@@ -1,6 +1,6 @@
-package dnd;
+package Races;
 
-public class Halfling implements Race{
+public class Elf implements Race{
     private String[] traits;
     private final int speed = 30;
     private final int maxAge = 750;
@@ -8,11 +8,10 @@ public class Halfling implements Race{
     private String[] languages;
     private String[] proficiencies;
 
-    public Halfling() {
+    public Elf() {
 
         this.languages = new String[] {"Common", "Elvish"};
         this.skills = new String[] {};
-		
     }
 
 	@Override

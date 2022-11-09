@@ -1,17 +1,19 @@
-package dnd;
+package Races;
 
-public class Tiefling implements Race{
+public class Human implements Race {
+
     private String[] traits;
     private final int speed = 30;
-    private final int maxAge = 85;
+    private final int maxAge = 80;
     private String[] skills;
     private String[] languages;
     private String[] proficiencies;
 
-    public Tiefling() {
+    public Human(String chosenLanguage) {
 
-        this.languages = new String[] {"Common", "Infernal"};
+        this.languages = new String[] {"Common", chosenLanguage};
         this.skills = new String[] {};
+
     }
 
 	@Override
@@ -60,7 +62,7 @@ public class Tiefling implements Race{
     @Override
     public int[] getASI() {
         // TODO Auto-generated method stub
-        return new int[]{3,5,5};
+        return new int[]{0, 1, 2, 3, 4, 5};
     }
 
 	@Override
@@ -68,5 +70,5 @@ public class Tiefling implements Race{
 		// TODO Auto-generated method stub
 		return this.getClass().getSimpleName();
 	}
-    
+
 }

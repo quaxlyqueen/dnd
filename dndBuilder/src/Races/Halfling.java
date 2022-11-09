@@ -1,19 +1,18 @@
-package dnd;
+package Races;
 
-public class Human implements Race {
-
+public class Halfling implements Race{
     private String[] traits;
     private final int speed = 30;
-    private final int maxAge = 80;
+    private final int maxAge = 750;
     private String[] skills;
     private String[] languages;
     private String[] proficiencies;
 
-    public Human(String chosenLanguage) {
+    public Halfling() {
 
-        this.languages = new String[] {"Common", chosenLanguage};
+        this.languages = new String[] {"Common", "Elvish"};
         this.skills = new String[] {};
-
+		
     }
 
 	@Override
@@ -62,7 +61,7 @@ public class Human implements Race {
     @Override
     public int[] getASI() {
         // TODO Auto-generated method stub
-        return new int[]{0, 1, 2, 3, 4, 5};
+        return new int[]{1,1};
     }
 
 	@Override
@@ -70,5 +69,5 @@ public class Human implements Race {
 		// TODO Auto-generated method stub
 		return this.getClass().getSimpleName();
 	}
-
+    
 }

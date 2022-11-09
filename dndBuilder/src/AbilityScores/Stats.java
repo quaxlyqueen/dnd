@@ -1,4 +1,4 @@
-package dnd;
+package AbilityScores;
 
 public abstract class Stats {
 

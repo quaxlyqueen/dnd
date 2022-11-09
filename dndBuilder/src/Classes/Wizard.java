@@ -1,4 +1,4 @@
-package dnd;
+package Classes;
 
 public class Wizard implements ClassTemplate {
 

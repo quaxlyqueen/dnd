@@ -1,16 +1,16 @@
-package dnd;
+package Races;
 
-public class Dwarf implements Race{
+public class HalfOrc implements Race{
     private String[] traits;
-    private final int speed = 25;
-    private final int maxAge = 350;
+    private final int speed = 30;
+    private final int maxAge = 75;
     private String[] skills;
     private String[] languages;
     private String[] proficiencies;
 
-    public Dwarf() {
+    public HalfOrc() {
 
-        this.languages = new String[] {"Common", "Dwarvish"};
+        this.languages = new String[] {"Common", "Orc"};
         this.skills = new String[] {};
     }
 
@@ -60,7 +60,7 @@ public class Dwarf implements Race{
     @Override
     public int[] getASI() {
         // TODO Auto-generated method stub
-        return new int[]{2,2};
+        return new int[]{0,0,2};
     }
 
 	@Override

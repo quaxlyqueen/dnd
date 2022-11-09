@@ -1,16 +1,16 @@
-package dnd;
+package Races;
 
-public class Gnome implements Race{
+public class Tiefling implements Race{
     private String[] traits;
-    private final int speed = 25;
-    private final int maxAge = 500;
+    private final int speed = 30;
+    private final int maxAge = 85;
     private String[] skills;
     private String[] languages;
     private String[] proficiencies;
 
-    public Gnome() {
+    public Tiefling() {
 
-        this.languages = new String[] {"Common", "Gnomish"};
+        this.languages = new String[] {"Common", "Infernal"};
         this.skills = new String[] {};
     }
 
@@ -60,7 +60,7 @@ public class Gnome implements Race{
     @Override
     public int[] getASI() {
         // TODO Auto-generated method stub
-        return new int[]{3,3};
+        return new int[]{3,5,5};
     }
 
 	@Override

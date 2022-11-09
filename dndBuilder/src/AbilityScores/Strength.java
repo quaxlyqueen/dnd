@@ -1,14 +1,21 @@
-package dnd;
+package AbilityScores;
 
-public class Dexterity extends Stats {
+public class Strength extends Stats {
 
     private int abilityScore;
     private int abilityScoreModifier;
 
-    public Dexterity(int abilityScore) {
+    public Strength(int abilityScore) {
 
         this.abilityScore = abilityScore;
         this.abilityScoreModifier = calcSavingThrow(abilityScore);
+
+    }
+
+    public Strength(Strength str) {
+
+        this.abilityScore = str.getScore();
+        this.abilityScoreModifier = str.getModifier();
 
     }
 
@@ -30,10 +37,15 @@ public class Dexterity extends Stats {
 
     }
 
-// TODO: Need description.
     public String getDescription() {
 
-        return "";
+        return "Natural athleticism and bodily power.";
+
+    }
+
+    public int getMaxCarryWeight() {
+
+        return abilityScore * 15;
 
     }
 

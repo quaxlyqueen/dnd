@@ -1,4 +1,4 @@
-package dnd;
+package Races;
 
 public class HalfElf implements Race{
     private String[] traits;

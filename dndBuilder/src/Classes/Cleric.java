@@ -1,6 +1,6 @@
-package dnd;
+package Classes;
 
-public class Fighter implements ClassTemplate {
+public class Cleric implements ClassTemplate {
 
     private int HP;
 
@@ -9,7 +9,7 @@ public class Fighter implements ClassTemplate {
 // TODO: This should be the type of die.
     private int hitDie;
 
-    public Fighter(Stats[] stats, int level) {
+    public Cleric(Stats[] stats, int level) {
 
 
 
