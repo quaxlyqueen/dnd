@@ -1,5 +1,7 @@
 package GUI;
 
+import Character.AbilityScores.Stats;
+import Character.Races.Race;
 import GUI.Panels.ChooseRacePanel;
 
 import javax.swing.*;
@@ -19,7 +21,7 @@ NOTES:
 public class PanelHolder {
 
     private JPanel mainMenuPanel;
-    private JPanel racePanel;
+    private static JPanel racePanel;
     private JPanel classPanel;
     private JPanel abilityScorePanel;
     private JPanel descriptionPanel;
@@ -31,7 +33,13 @@ public class PanelHolder {
     private int currentPanel;
     private int nextPanel;
 
+    private Race chosenRace;
+    private Class chosenClass;
+    private Stats chosenAbilityScores;
+
     public PanelHolder() {
+
+
 
         this.mainMenuPanel = createMainMenuPanel();
         this.racePanel = createRaceSelectPanel();
@@ -120,17 +128,7 @@ public class PanelHolder {
      */
     private JPanel createRaceSelectPanel() {
 
-        System.out.println("Race Panel generated.");
-
-        JPanel display = new JPanel();
-            display.setLayout(new BorderLayout(0, 0));
-
-
-            JLabel title = new JLabel("Step 1: Choose Race");
-                title.setHorizontalAlignment(SwingConstants.CENTER);
-        display.add(title, BorderLayout.NORTH);
-
-        return display;
+        return new ChooseRacePanel();
 
     }
 

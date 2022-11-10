@@ -3,12 +3,12 @@ package GUI;
 import javax.swing.*;
 import java.awt.*;
 
-public class UImanager extends JFrame {
+public class GUImanager extends JFrame {
 
     private final PanelHolder guiPanels;
     private int currentPanel;
 
-    public UImanager (PanelHolder guiPanels, boolean returningUser) {
+    public GUImanager (PanelHolder guiPanels, boolean returningUser) {
         super("D&D Character Builder");
             frameSetup();
             this.guiPanels = guiPanels;
@@ -23,7 +23,7 @@ public class UImanager extends JFrame {
 
             }
 
-            clearAndReset(getNextPanel());
+            add(getNextPanel());
 
     }
 
@@ -45,7 +45,9 @@ public class UImanager extends JFrame {
 
     private JPanel getNextPanel() {
 
-        return switch (currentPanel) {
+        return guiPanels.getRacePanel();
+
+/*        return switch (currentPanel) {
             case 1 -> guiPanels.getRacePanel();
             case 2 -> guiPanels.getClassPanel();
             case 3 -> guiPanels.getAbilityScorePanel();
@@ -54,7 +56,7 @@ public class UImanager extends JFrame {
             case 6 -> guiPanels.getLoadMenuPanel();
             case 7 -> guiPanels.getFinalizePanel();
             default -> guiPanels.getMainMenuPanel();
-        };
+        };*/
 
     }
 
