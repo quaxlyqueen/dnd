@@ -7,8 +7,7 @@ public class DndCharacterBuilder {
 
        FileManager data = new FileManager();
 
-       PanelHolder guiPanels = new PanelHolder();
-            GUImanager gui = new GUImanager(guiPanels, data.isReturninguser());
+            GUImanager gui = new GUImanager(data.isReturninguser());
                 gui.setVisible(true);
 
     }

@@ -9,10 +9,9 @@ import java.awt.event.ActionListener;
 public class ChooseRacePanel extends JPanel {
 
 	private String raceChoice;
+	private boolean ableToContinue;
 
-	/**
-	 * Create the panel.
-	 */
+
 	public ChooseRacePanel() {
 
 		super();
@@ -38,7 +37,6 @@ public class ChooseRacePanel extends JPanel {
 
 				racesContainer.add(createButton(availableRaces[i]));
 
-
 			}
 
 			masterPanel.add(racesContainer);
@@ -47,23 +45,38 @@ public class ChooseRacePanel extends JPanel {
 
 	}
 
-	private JButton createButton(String raceName) {
+	private JButton createButton(String userChoice) {
 
-		JButton button = new JButton(raceName);
-			button.addActionListener(
+		JButton button = new JButton(userChoice);
 
-					new ActionListener() {
-						@Override
-						public void actionPerformed(ActionEvent e) {
+		button.addActionListener(
 
-							raceChoice = raceName;
+				new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
 
-						}
+						System.out.println(userChoice);
+						raceChoice = userChoice;
+						ableToContinue = true;
+
 					}
+				}
 
-			);
+		);
 
 		return button;
+
+	}
+
+	public String getRaceChoice() {
+
+		return raceChoice;
+
+	}
+
+	public boolean isAbleToContinue() {
+
+		return ableToContinue;
 
 	}
 

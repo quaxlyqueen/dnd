@@ -1,19 +1,44 @@
 package GUI;
 
+import GUI.Panels.ChooseClassPanel;
+import GUI.Panels.ChooseRacePanel;
+import GUI.Panels.MainMenuPanel;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+/*    private void getNextPanel() {
+
+
+        return switch (currentPanel) {
+            case 1 -> guiPanels.getRacePanel();
+            case 2 -> guiPanels.getClassPanel();
+            case 3 -> guiPanels.getAbilityScorePanel();
+            case 4 -> guiPanels.getDescriptionPanel();
+            case 5 -> guiPanels.getEquipmentPanel();
+            case 6 -> guiPanels.getFinalizePanel();
+            case 7 -> guiPanels.getLoadMenuPanel();
+            default -> guiPanels.getMainMenuPanel();
+        };
+
+    }*/
 
 public class GUImanager extends JFrame {
 
-    private final PanelHolder guiPanels;
-    private int currentPanel;
+    private static JPanel[] panels;
 
-    public GUImanager (PanelHolder guiPanels, boolean returningUser) {
+    private int lastPanel;
+    private int currentPanel;
+    private int nextPanel;
+
+    public GUImanager (boolean returningUser) {
         super("D&D Character Builder");
             frameSetup();
-            this.guiPanels = guiPanels;
+                this.panels = new JPanel[]{new ChooseRacePanel(), new ChooseClassPanel()};
 
-            if (returningUser) {
+/*            if (returningUser) {
 
                 this.currentPanel = 0;
 
@@ -21,9 +46,9 @@ public class GUImanager extends JFrame {
 
                 this.currentPanel = 1;
 
-            }
+            }*/
 
-            add(getNextPanel());
+        add(panels[currentPanel]);
 
     }
 
@@ -43,22 +68,14 @@ public class GUImanager extends JFrame {
 
     }
 
-    private JPanel getNextPanel() {
+    /*
 
-        return guiPanels.getRacePanel();
+    NOTES:
+        I'm thinking of using CPU multi-threading to constantly check if a given creation panel's ableToContinue has become true, to update the GUI with a clickable "Continue" button.
 
-/*        return switch (currentPanel) {
-            case 1 -> guiPanels.getRacePanel();
-            case 2 -> guiPanels.getClassPanel();
-            case 3 -> guiPanels.getAbilityScorePanel();
-            case 4 -> guiPanels.getDescriptionPanel();
-            case 5 -> guiPanels.getEquipmentPanel();
-            case 6 -> guiPanels.getLoadMenuPanel();
-            case 7 -> guiPanels.getFinalizePanel();
-            default -> guiPanels.getMainMenuPanel();
-        };*/
+        Also. Continue button should be in GUI manager, otherwise the button's returned int of the next screen to display is obfuscated.
 
-    }
+     */
 
     private void clearAndReset(JPanel nextPanel) {
 
