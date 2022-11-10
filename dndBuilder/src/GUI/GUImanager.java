@@ -1,5 +1,6 @@
 package GUI;
 
+import GUI.Panels.AbilityScorePanel;
 import GUI.Panels.ChooseClassPanel;
 import GUI.Panels.ChooseRacePanel;
 import GUI.Panels.MainMenuPanel;
@@ -36,8 +37,11 @@ public class GUImanager extends JFrame {
     public GUImanager (boolean returningUser) {
         super("D&D Character Builder");
             frameSetup();
-                this.panels = new JPanel[]{new ChooseRacePanel(), new ChooseClassPanel()};
+                this.panels = new JPanel[]{new MainMenuPanel(), new ChooseRacePanel(), new ChooseClassPanel(), new AbilityScorePanel()};
 
+                this.lastPanel = 0;
+                this.currentPanel = 1;
+                this.nextPanel = 2;
 /*            if (returningUser) {
 
                 this.currentPanel = 0;
@@ -48,11 +52,10 @@ public class GUImanager extends JFrame {
 
             }*/
 
-        add(panels[currentPanel]);
+        add(createMasterPanel());
 
     }
 
-    // TODO: Need to implement.
     private void frameSetup() {
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -68,19 +71,72 @@ public class GUImanager extends JFrame {
 
     }
 
-    /*
+    private JPanel createMasterPanel() {
 
-    NOTES:
-        I'm thinking of using CPU multi-threading to constantly check if a given creation panel's ableToContinue has become true, to update the GUI with a clickable "Continue" button.
+        JPanel masterPanel = new JPanel();
+            masterPanel.add(panels[currentPanel]);
 
-        Also. Continue button should be in GUI manager, otherwise the button's returned int of the next screen to display is obfuscated.
+            JPanel navigationContainer = new JPanel(new GridLayout(1, 2, 10, 10));
+                navigationContainer.add(createBackButton());
+                navigationContainer.add(createContinueButton());
 
-     */
+            masterPanel.add(navigationContainer);
 
-    private void clearAndReset(JPanel nextPanel) {
+        return masterPanel;
 
-        removeAll();
-        add(nextPanel);
+    }
+
+    private JButton createBackButton() {
+
+        JButton button = new JButton("Back");
+            button.addActionListener(
+
+                    new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+
+                            lastPanel--;
+                            currentPanel--;
+                            nextPanel--;
+                            clearAndReset();
+
+                        }
+                    }
+
+            );
+
+        return button;
+
+    }
+
+    private JButton createContinueButton() {
+
+        JButton button = new JButton("Continue");
+            button.addActionListener(
+
+                    new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+
+                            lastPanel++;
+                            currentPanel++;
+                            nextPanel++;
+                            clearAndReset();
+
+                        }
+                    }
+
+            );
+
+        return button;
+
+    }
+
+    private void clearAndReset() {
+
+        getContentPane().removeAll();
+
+        add(createMasterPanel());
 
         repaint();
         revalidate();
