@@ -1,6 +1,7 @@
 package GUI.Panels;
 
-import GUI.img.*;
+import GUI.Panels.SubPanels.DescriptionPanel;
+import GUI.Panels.SubPanels.ImagePanel;
 
 import java.awt.*;
 
@@ -9,9 +10,11 @@ import javax.swing.border.*;
 
 public class ChooseRacePanel extends JPanel {
 
-	private String[] raceOptions = {"Dragonborn", "Dwarf", "Elf", "Gnome", "HalfElf", "Halfling", "Halforc", "Human", "Tiefling"};
+	private String[] raceOptions;
 
+	private String[] raceDescriptions;
 	private ImagePanel imgPanel;
+	private DescriptionPanel descPanel;
 
 	// DEBUG: raceChoice to be deprecated after testing.
 	private String raceChoice;
@@ -26,11 +29,24 @@ public class ChooseRacePanel extends JPanel {
 		super();
 			this.backButton = backButton;
 			this.continueButton = continueButton;
+			raceOptions = new String[]{"Dragonborn", "Dwarf", "Elf", "Gnome", "HalfElf", "Halfling", "Halforc", "Human", "Tiefling"};
+			createRaceDescriptions();
 			imgPanel = new ImagePanel(raceOptions);
+			descPanel = new DescriptionPanel(raceDescriptions);
 
 			panelSetup();
 		
 		add(createMasterPanel());
+
+	}
+
+	private void createRaceDescriptions() {
+
+		raceDescriptions = new String[]{
+
+				"Born of dragons, as their name proclaims, the dragonborn walk proudly through a world that greets them with fearful incomprehension. Shaped by draconic gods or the dragons themselves, dragonborn originally hatched from dragon eggs as a unique race, combining the best attributes of dragons and humanoids. Some dragonborn are faithful servants to true dragons, others form the ranks of soldiers in great wars, and still others find themselves adrift, with no clear calling in life."
+
+		};
 
 	}
 
@@ -46,12 +62,15 @@ public class ChooseRacePanel extends JPanel {
 			racePanel.setLayout(null);
 
 
-				imgPanel.setBounds(47, 67, 223, 301);
-			racePanel.add(imgPanel);
+
+			infoPanel.add(imgPanel);
+			infoPanel.add(descPanel);
+
+		racePanel.add(infoPanel);
 
 			racePanel.add(createRaceButtonPanel());
 
-		add(createNavPanel(), BorderLayout.SOUTH);
+			add(createNavPanel(), BorderLayout.SOUTH);
 
 		return racePanel;
 
@@ -104,6 +123,7 @@ public class ChooseRacePanel extends JPanel {
 						raceChoice = raceName;
 						raceIndex = index;
 						imgPanel.updateImage(raceIndex);
+						descPanel.updateDescription(raceIndex);
 
 					}
 

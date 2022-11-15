@@ -1,7 +1,8 @@
-package GUI.img;
+package GUI.Panels.SubPanels;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -10,16 +11,24 @@ import java.util.*;
 public class ImagePanel extends JPanel {
 
     private JLabel[][] portraits;
-    private String[] holder;
+    private String[] categoryHolder;
     private int lastIndex;
 
-    public ImagePanel(String[] holder) {
+    public ImagePanel(String[] categoryHolder) {
 
         super();
-            this.holder = holder;
+            this.categoryHolder = categoryHolder;
             createPortraitsArray();
 
             updateImage(0); // Default selection of the 0th element.
+
+    }
+
+    private void panelSetup() {
+
+        setOpaque(false);
+        setBounds(6, 21, 281, 196);
+        setLayout(null);
 
     }
 
@@ -49,11 +58,11 @@ public class ImagePanel extends JPanel {
 
     private void createPortraitsArray() {
 
-        portraits = new JLabel[holder.length][];
+        portraits = new JLabel[categoryHolder.length][];
 
-        for (int i = 0; i < holder.length; i++) {
+        for (int i = 0; i < categoryHolder.length; i++) {
 
-            File imagesDir = new File("dndBuilder/src/GUI/img/" + holder[i] + "/");
+            File imagesDir = new File("dndBuilder/src/GUI/img/" + categoryHolder[i] + "/");
 
             File[] dir = imagesDir.listFiles();
                 portraits[i] = new JLabel[dir.length];
