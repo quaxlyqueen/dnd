@@ -1,14 +1,21 @@
 package GUI.Panels;
 
+import GUI.img.*;
+
 import java.awt.*;
-import java.awt.event.*;
 
 import javax.swing.*;
 import javax.swing.border.*;
 
 public class ChooseRacePanel extends JPanel {
 
+	private String[] raceOptions = {"Dragonborn", "Dwarf", "Elf", "Gnome", "HalfElf", "Halfling", "Halforc", "Human", "Tiefling"};
+
+	private ImagePanel imgPanel;
+
+	// DEBUG: raceChoice to be deprecated after testing.
 	private String raceChoice;
+	private int raceIndex;
 	private JButton backButton;
 	private JButton continueButton;
 
@@ -19,6 +26,7 @@ public class ChooseRacePanel extends JPanel {
 		super();
 			this.backButton = backButton;
 			this.continueButton = continueButton;
+			imgPanel = new ImagePanel(raceOptions);
 
 			panelSetup();
 		
@@ -37,9 +45,9 @@ public class ChooseRacePanel extends JPanel {
 			racePanel.setOpaque(false);
 			racePanel.setLayout(null);
 
-			JTextPane textPane = new JTextPane();
-				textPane.setBounds(47, 67, 223, 301);
-			racePanel.add(textPane);
+
+				imgPanel.setBounds(47, 67, 223, 301);
+			racePanel.add(imgPanel);
 
 			racePanel.add(createRaceButtonPanel());
 
@@ -56,11 +64,9 @@ public class ChooseRacePanel extends JPanel {
 			raceBtnPanel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 			raceBtnPanel.setBounds(311, 6, 409, 394);
 
-		String[] raceOptions = {"Dragonborn", "Dwarf", "Elf", "Gnome", "HalfElf", "Halfling", "Halforc", "Human", "Tiefling"};
+		for (int i = 0; i < raceOptions.length; i++) {
 
-		for (int i = 0; i <raceOptions.length; i++) {
-
-			raceBtnPanel.add(createButton(raceOptions[i]));
+			raceBtnPanel.add(createButton(raceOptions[i], i));
 
 		}
 
@@ -88,12 +94,18 @@ public class ChooseRacePanel extends JPanel {
 
 	}
 
-	private JButton createButton(String raceName) {
+	private JButton createButton(String raceName, int index) {
 
 		JButton button = new JButton(raceName);
 			button.addActionListener(
 
-					e -> raceChoice = raceName
+					e -> {
+
+						raceChoice = raceName;
+						raceIndex = index;
+						imgPanel.updateImage(raceIndex);
+
+					}
 
 			);
 
@@ -101,10 +113,12 @@ public class ChooseRacePanel extends JPanel {
 
 	}
 
-	public String getRaceChoice() {
+	public int getRaceChoice() {
 
-		return raceChoice;
+		return raceIndex;
 
 	}
+
+
 
 }
