@@ -4,35 +4,35 @@ import Character.AbilityScores.*;
 
 public interface ClassTemplate {
 
-    String getDescription();
+    abstract String getDescription();
 
-    String[] getProgression();
+    abstract String[] getProgression();
 
-    String[] getClassFeatures();
+    abstract String[] getClassFeatures();
 
-    String getHitDie();
+    abstract String getHitDie();
 
-    int getHPatLv1();
+    abstract int getHPatLv1();
 
-    int getHPpastLv1();
+    abstract int getHPpastLv1();
 
-    String[] getArmorProf();
+    abstract String[] getArmorProf();
 
-    String[] getWeaponProf();
+    abstract String[] getWeaponProf();
 
-    String[] getToolProf();
+    abstract String[] getToolProf();
 
-    String[] getSavingThrows();
+    abstract String[] getSavingThrows();
 
 // TODO: Need to refresh on how saving throws work and how the character's class may impact a saving throw.
 
-    String[] availableSkills();
+    abstract String[] availableSkills();
 
-    String[] startingEquipChoices();
+    abstract String[] startingEquipChoices();
 
-    boolean advantageCheck(Stats abilityScore);
+    abstract boolean advantageCheck(Stats abilityScore);
 
-    boolean disadvantageCheck(Stats abilityScore);
+    abstract boolean disadvantageCheck(Stats abilityScore);
 
 // TODO: Spells and shit.
 

@@ -1,48 +1,83 @@
 package GUI.Panels;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+import java.awt.Color;
+import javax.swing.border.BevelBorder;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MainMenuPanel extends JPanel {
 
-    private int nextPanelSelected;
+	/**
+	 * Create the panel.
+	 */
+	public MainMenuPanel() {
+		setBackground(new Color(222, 184, 135));
+		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(160, 82, 45), new Color(165, 42, 42), new Color(0, 0, 0), null));
+		setLayout(new BorderLayout(0, 0));
+		
+		JLabel mainMenuLbl = mainMenuLbl();
+		add(mainMenuLbl, BorderLayout.NORTH);
+		
+		JPanel controlPanel = createControlPanel();
+		add(controlPanel, BorderLayout.CENTER);
+	}
 
-    public MainMenuPanel() {
+	/**
+	 * @return
+	 */
+	private JPanel createControlPanel() {
+		JPanel controlPanel = new JPanel();
+		controlPanel.setOpaque(false);
+		controlPanel.setLayout(null);
+		
+		JButton newCharBtn = new JButton("New \nCharacter");
+		newCharBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		newCharBtn.setOpaque(true);
+		newCharBtn.setBackground(new Color(160, 82, 45));
+		newCharBtn.setFont(new Font("Bodoni 72 Oldstyle", Font.PLAIN, 23));
+		newCharBtn.setBounds(118, 90, 200, 50);
+		controlPanel.add(newCharBtn);
+		
+		JButton randCharacterBtn = new JButton("Random Character");
+		randCharacterBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		randCharacterBtn.setOpaque(true);
+		randCharacterBtn.setBackground(new Color(160, 82, 45));
+		randCharacterBtn.setFont(new Font("Bodoni 72 Oldstyle", Font.PLAIN, 23));
+		randCharacterBtn.setBounds(118, 156, 200, 50);
+		controlPanel.add(randCharacterBtn);
+		
+		JButton loadCharacter = new JButton("Load Character");
+		loadCharacter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		loadCharacter.setOpaque(true);
+		loadCharacter.setBackground(new Color(160, 82, 45));
+		loadCharacter.setFont(new Font("Bodoni 72 Oldstyle", Font.PLAIN, 23));
+		loadCharacter.setBounds(376, 98, 233, 97);
+		controlPanel.add(loadCharacter);
+		return controlPanel;
+	}
 
-        super();
-        createMasterPanel();
-
-    }
-
-    // TODO: Need to refactor/re-write, as current implementation utilizes ContinueButton.
-    private void createMasterPanel() {
-
-        /*setLayout(new BorderLayout(0, 0));
-
-        JPanel masterPanel = new JPanel();
-
-        JLabel title = new JLabel("D&D Character Builder");
-        title.setHorizontalAlignment(SwingConstants.CENTER);
-        masterPanel.add(title, BorderLayout.NORTH);
-
-        JPanel buttonsContainer = new JPanel(new GridLayout(1, 2, 10, 10));
-
-            JPanel newCharacterContainer = new JPanel(new GridLayout(2, 1, 10, 10));
-                newCharacterContainer.add(new Button("Create a New Character", 1));
-                newCharacterContainer.add(new Button("Generate a Random Character", -1));
-            buttonsContainer.add(newCharacterContainer);
-
-            JPanel loadCharacterContainer = new JPanel();
-                loadCharacterContainer.add(new Button("Load a Character", 7));
-            buttonsContainer.add(loadCharacterContainer);
-
-        masterPanel.add(buttonsContainer);
-
-        add(masterPanel);*/
-
-    }
-
-
-
+	/**
+	 * @return
+	 */
+	private JLabel mainMenuLbl() {
+		JLabel mainMenuLbl = new JLabel("Main Menu");
+		mainMenuLbl.setFont(new Font("Bodoni 72 Smallcaps", Font.PLAIN, 33));
+		mainMenuLbl.setHorizontalAlignment(SwingConstants.CENTER);
+		return mainMenuLbl;
+	}
 }

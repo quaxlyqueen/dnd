@@ -1,6 +1,7 @@
 package Character;
 
 import Character.AbilityScores.CharacterStats;
+import Character.Classes.ClassTemplate;
 import Character.Races.*;
 
 import java.io.Serializable;
@@ -14,6 +15,7 @@ public class CharacterSheet implements Serializable {
 	private String eye;
 	private String hair;
 	private Race race;
+
 	private CharacterStats stats;
 	
 	/**

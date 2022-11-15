@@ -1,9 +1,6 @@
 package GUI;
 
-import GUI.Panels.AbilityScorePanel;
-import GUI.Panels.ChooseClassPanel;
-import GUI.Panels.ChooseRacePanel;
-import GUI.Panels.MainMenuPanel;
+import GUI.Panels.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -37,7 +34,12 @@ public class GUImanager extends JFrame {
     public GUImanager (boolean returningUser) {
         super("D&D Character Builder");
             frameSetup();
-                this.panels = new JPanel[]{new MainMenuPanel(), new ChooseRacePanel(), new ChooseClassPanel(), new AbilityScorePanel()};
+                this.panels = new JPanel[]{
+                        new MainMenuPanel(),
+                        new ChooseRacePanel(createBackButton(), createContinueButton()),
+                        new ChooseClassPanel(createBackButton(),createContinueButton()),
+                        new ChooseAbilityScoresPanel(createBackButton(), createContinueButton())
+                };
 
                 this.lastPanel = 0;
                 this.currentPanel = 1;
@@ -60,7 +62,7 @@ public class GUImanager extends JFrame {
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
-        setPreferredSize(new Dimension(600,600));
+        setPreferredSize(new Dimension(735,550));
         setSize(getPreferredSize());
 
         try {
@@ -80,9 +82,11 @@ public class GUImanager extends JFrame {
                 navigationContainer.add(createBackButton());
                 navigationContainer.add(createContinueButton());
 
-            masterPanel.add(navigationContainer);
+            //masterPanel.add(navigationContainer);
 
-        return masterPanel;
+//        return masterPanel;
+
+        return panels[currentPanel];
 
     }
 
@@ -94,6 +98,7 @@ public class GUImanager extends JFrame {
                     new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
+                            System.out.println("Back button registered.");
 
                             lastPanel--;
                             currentPanel--;
@@ -117,7 +122,7 @@ public class GUImanager extends JFrame {
                     new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-
+                            System.out.println("Continue button registered.");
                             lastPanel++;
                             currentPanel++;
                             nextPanel++;

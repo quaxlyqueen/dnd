@@ -13,28 +13,22 @@ import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.JTextPane;
 import java.awt.GridLayout;
-import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EtchedBorder;
-import javax.swing.border.MatteBorder;
-import javax.swing.border.SoftBevelBorder;
-import javax.swing.border.TitledBorder;
 
-public class step3 extends JPanel {
+public class ChooseAbilityScoresPanel extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
-	public step3() {
-		createEntirePanel();
+	public ChooseAbilityScoresPanel(JButton backButton, JButton continueButton) {
+		createEntirePanel(backButton, continueButton);
 
 	}
 
 	/**
 	 * 
 	 */
-	private void createEntirePanel() {
+	private void createEntirePanel(JButton backButton, JButton continueButton) {
 		setBackground(new Color(222, 184, 135));
 		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(160, 82, 45), new Color(165, 42, 42), new Color(0, 0, 0), null));
 		setLayout(new BorderLayout(0, 0));
@@ -42,7 +36,7 @@ public class step3 extends JPanel {
 		JLabel lblNewLabel = createLbl();
 		add(lblNewLabel, BorderLayout.NORTH);
 		//Creates back and continue panel
-		JPanel backContPanel = createBackContinuePanel();
+		JPanel backContPanel = createBackContinuePanel(backButton, continueButton);
 		add(backContPanel, BorderLayout.SOUTH);
 		
 		JPanel innerPanel = createInnerPanel();
@@ -214,24 +208,26 @@ public class step3 extends JPanel {
 		diceRollerPanel.add(d6lbl4);
 	}
 	
-	private JPanel createBackContinuePanel() {
+	private JPanel createBackContinuePanel(JButton backButton, JButton continueButton) {
 		JPanel backContPanel = new JPanel();
 		backContPanel.setBackground(new Color(205, 133, 63));
 		
 		
-		JButton backBtn = new JButton("<--- Back      ");
+/*		JButton backBtn = new JButton("<--- Back      ");
 		backBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		backContPanel.add(backBtn);
+		backContPanel.add(backBtn);*/
+		backContPanel.add(backButton);
 		
-		JButton continueBtn = new JButton("Continue --->");
+/*		JButton continueBtn = new JButton("Continue --->");
 		continueBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		backContPanel.add(continueBtn);
+		backContPanel.add(continueBtn);*/
+		backContPanel.add(continueButton);
 		return backContPanel;
 	}
 	
