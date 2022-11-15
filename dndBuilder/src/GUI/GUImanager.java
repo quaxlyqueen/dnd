@@ -1,11 +1,13 @@
 package GUI;
 
+import Character.AbilityScores.Stats;
+import Character.Classes.*;
+import Character.Races.*;
 import GUI.Panels.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 /*    private void getNextPanel() {
 
@@ -62,7 +64,7 @@ public class GUImanager extends JFrame {
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
-        setPreferredSize(new Dimension(735,550));
+        setPreferredSize(new Dimension(730,550));
         setSize(getPreferredSize());
 
         try {
@@ -98,7 +100,6 @@ public class GUImanager extends JFrame {
                     new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            System.out.println("Back button registered.");
 
                             lastPanel--;
                             currentPanel--;
@@ -122,7 +123,7 @@ public class GUImanager extends JFrame {
                     new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            System.out.println("Continue button registered.");
+
                             lastPanel++;
                             currentPanel++;
                             nextPanel++;
@@ -134,6 +135,60 @@ public class GUImanager extends JFrame {
             );
 
         return button;
+
+    }
+
+    private JButton createRandomCharacterButton() {
+
+        JButton button = new JButton("Create Random Character");
+        button.addActionListener(
+
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+
+                        createRandomCharacter();
+
+                        lastPanel = currentPanel;
+                        currentPanel = 6;
+                        nextPanel = currentPanel + 1;
+                        clearAndReset();
+
+                    }
+                }
+
+        );
+
+        return button;
+
+    }
+
+    private JButton createSaveButton() {
+
+        JButton button = new JButton("Save");
+        button.addActionListener(
+
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+
+                        lastPanel = currentPanel;
+                        currentPanel = 6;
+                        nextPanel = currentPanel + 1;
+                        clearAndReset();
+
+                    }
+                }
+
+        );
+
+        return button;
+
+    }
+
+    private void createRandomCharacter() {
+
+
 
     }
 
