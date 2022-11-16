@@ -15,10 +15,8 @@ public class ChooseAbilityScoresPanel extends JPanel implements AppTheme {
 	private DefaultButton[] statInfoButtons;
 	private JLabel[] statLabels;
 	private String[] statOptions;
-
 	private InfoPanel infoPanel;
 	private NavPanel navPanel;
-
 	private int[] selectedStats;
 	private int selectedStatIndex;
 
@@ -125,11 +123,11 @@ public class ChooseAbilityScoresPanel extends JPanel implements AppTheme {
 
 
 			DefaultButton increaseButton = new DefaultButton("+");
-				increaseButton.setBounds(90, 50, 30, 30);
+				increaseButton.setBounds(90, 50, 50, 50);
 				increaseButton.addActionListener(e -> increase(statIndex));
 
 			DefaultButton decreaseButton = new DefaultButton("-");
-				decreaseButton.setBounds(21, 50, 30, 30);
+				decreaseButton.setBounds(21, 50, 50, 50);
 				decreaseButton.addActionListener(e -> decrease(statIndex));
 
 		subPanel.add(decreaseButton);

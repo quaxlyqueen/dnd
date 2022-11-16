@@ -40,7 +40,7 @@ public class GUImanager extends JFrame {
                         new ChooseAbilityScoresPanel(createNavPanel(27), statOptions, statDescriptions, selectedStats, "Step 3: Choose Your Ability Scores")
                 };
 
-                this.currentPanel = 1;
+                this.currentPanel = 3;
                 this.lastPanel = currentPanel - 1;
                 this.nextPanel = currentPanel + 1;
 
