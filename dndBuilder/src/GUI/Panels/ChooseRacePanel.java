@@ -1,5 +1,6 @@
 package GUI.Panels;
 
+import GUI.PanelTheme;
 import GUI.Panels.SubPanels.*;
 
 import java.awt.*;
@@ -7,7 +8,7 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
-public class ChooseRacePanel extends JPanel {
+public class ChooseRacePanel extends JPanel implements PanelTheme {
 
 	private String[] raceOptions;
 
@@ -70,10 +71,10 @@ public class ChooseRacePanel extends JPanel {
 
 	private JPanel createRaceButtonPanel() {
 
-		JPanel raceBtnPanel = new JPanel();
-			raceBtnPanel.setBackground(new Color(165, 42, 42));
-			raceBtnPanel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-			raceBtnPanel.setBounds(311, 6, 409, 394);
+		JPanel raceBtnPanel = new JPanel(new GridLayout(raceOptions.length, 1, 15, 5));
+			raceBtnPanel.setBackground(darkBrown);
+			raceBtnPanel.setBounds(311, 6, 109, 394);
+
 
 		for (int i = 0; i < raceOptions.length; i++) {
 
@@ -87,8 +88,7 @@ public class ChooseRacePanel extends JPanel {
 
 	private void panelSetup() {
 
-		setBackground(new Color(222, 184, 135));
-		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(160, 82, 45), new Color(165, 42, 42), new Color(0, 0, 0), null));
+		setBackground(lightBrown);
 		setLayout(new BorderLayout(0, 0));
 
 	}
@@ -96,7 +96,7 @@ public class ChooseRacePanel extends JPanel {
 	private JPanel createNavPanel() {
 
 		JPanel panel = new JPanel();
-			panel.setBackground(new Color(205, 133, 63));
+			panel.setBackground(darkBrown);
 
 			panel.add(backButton);
 			panel.add(continueButton);

@@ -1,5 +1,7 @@
 package GUI.Panels.SubPanels;
 
+import GUI.PanelTheme;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
@@ -9,7 +11,7 @@ import java.io.File;
 import java.util.Objects;
 import java.util.Random;
 
-public class InfoPanel extends JPanel {
+public class InfoPanel extends JPanel implements PanelTheme {
 
     private JTextArea[] descriptions;
     private String[] holderDescriptions;
@@ -75,7 +77,6 @@ public class InfoPanel extends JPanel {
     private void panelSetup() {
 
         setOpaque(false);
-        setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
         setBounds(6, 6, 293, 394);
         setLayout(null);
 
@@ -159,7 +160,7 @@ public class InfoPanel extends JPanel {
 
                 portraits[i][index] = image(file);
                     portraits[i][index].setOpaque(true);
-                    portraits[i][index].setBackground(new Color(238, 232, 170));
+                    portraits[i][index].setBackground(lightBrown);
                     portraits[i][index].setBounds(6, 229, 281, 159);
 
                 index++;
