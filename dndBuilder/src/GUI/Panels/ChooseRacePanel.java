@@ -1,7 +1,6 @@
 package GUI.Panels;
 
-import GUI.Panels.SubPanels.DescriptionPanel;
-import GUI.Panels.SubPanels.ImagePanel;
+import GUI.Panels.SubPanels.*;
 
 import java.awt.*;
 
@@ -13,11 +12,9 @@ public class ChooseRacePanel extends JPanel {
 	private String[] raceOptions;
 
 	private String[] raceDescriptions;
-	private ImagePanel imgPanel;
-	private DescriptionPanel descPanel;
 
-	// DEBUG: raceChoice to be deprecated after testing.
-	private String raceChoice;
+	private InfoPanel infoPanel;
+
 	private int raceIndex;
 	private JButton backButton;
 	private JButton continueButton;
@@ -29,18 +26,18 @@ public class ChooseRacePanel extends JPanel {
 		super();
 			this.backButton = backButton;
 			this.continueButton = continueButton;
-			raceOptions = new String[]{"Dragonborn", "Dwarf", "Elf", "Gnome", "HalfElf", "Halfling", "Halforc", "Human", "Tiefling"};
-			createRaceDescriptions();
-			imgPanel = new ImagePanel(raceOptions);
-			descPanel = new DescriptionPanel(raceDescriptions);
+		createRaces();
+			this.infoPanel = new InfoPanel(raceOptions, raceDescriptions);
 
-			panelSetup();
+		panelSetup();
 		
 		add(createMasterPanel());
 
 	}
 
-	private void createRaceDescriptions() {
+	private void createRaces() {
+
+		raceOptions = new String[]{"Dragonborn", "Dwarf", "Elf", "Gnome", "HalfElf", "Halfling", "Halforc", "Human", "Tiefling"};
 
 		raceDescriptions = new String[]{
 
@@ -60,11 +57,6 @@ public class ChooseRacePanel extends JPanel {
 		JPanel racePanel = new JPanel();
 			racePanel.setOpaque(false);
 			racePanel.setLayout(null);
-
-
-
-			infoPanel.add(imgPanel);
-			infoPanel.add(descPanel);
 
 		racePanel.add(infoPanel);
 
@@ -120,10 +112,8 @@ public class ChooseRacePanel extends JPanel {
 
 					e -> {
 
-						raceChoice = raceName;
 						raceIndex = index;
-						imgPanel.updateImage(raceIndex);
-						descPanel.updateDescription(raceIndex);
+						infoPanel.updateInfo(raceIndex);
 
 					}
 
