@@ -1,5 +1,6 @@
 package FileManagement;
 
+import java.awt.*;
 import java.io.*;
 import java.util.Arrays;
 
@@ -14,6 +15,21 @@ public class FileManager {
         System.out.println("FileManager object created.\n");
 
         findSavedCharacters();
+
+        loadFonts();
+
+    }
+
+    private void loadFonts() {
+
+        try {
+            GraphicsEnvironment ge =
+                    GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("dndBuilder/src/Resources/Fonts/SanSalvi.ttf")));
+        } catch (IOException|FontFormatException e) {
+            //Handle exception
+            System.out.println("Error finding font.");
+        }
 
     }
 

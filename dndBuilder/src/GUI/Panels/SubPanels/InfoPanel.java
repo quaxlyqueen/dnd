@@ -1,17 +1,17 @@
 package GUI.Panels.SubPanels;
 
-import GUI.PanelTheme;
+import GUI.AppTheme;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.BevelBorder;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.Objects;
 import java.util.Random;
 
-public class InfoPanel extends JPanel implements PanelTheme {
+public class InfoPanel extends JPanel implements AppTheme {
 
     private JTextArea[] descriptions;
     private String[] holderDescriptions;
@@ -48,7 +48,7 @@ public class InfoPanel extends JPanel implements PanelTheme {
 
             panelSetup();
 
-        add(descriptions[holderIndex]);
+        add(descriptions[0]);
         add(portraits[holderIndex][getNextPortrait(holderIndex)]);
 
         repaint();
@@ -77,14 +77,16 @@ public class InfoPanel extends JPanel implements PanelTheme {
     private void panelSetup() {
 
         setOpaque(false);
-        setBounds(6, 6, 293, 394);
+        setBounds(5, 5, 600, 400);
         setLayout(null);
 
-        JLabel infoLbl = new JLabel("Information");
-            infoLbl.setFont(new Font("Bodoni 72", Font.PLAIN, 20));
-            infoLbl.setHorizontalAlignment(SwingConstants.CENTER);
-            infoLbl.setBounds(92, 6, 105, 16);
-        add(infoLbl);
+        JLabel subHeader = new JLabel("Description");
+            subHeader.setFont(subHeaderFont);
+            subHeader.setHorizontalAlignment(SwingConstants.LEFT);
+            subHeader.setBounds(275, 10, 300, 35);
+            subHeader.setForeground(darkestBrown);
+
+        add(subHeader);
         
     }
 
@@ -101,8 +103,10 @@ public class InfoPanel extends JPanel implements PanelTheme {
                 tmpDesc.setOpaque(false);
                 tmpDesc.setEditable(false);
                 tmpDesc.setFocusable(false);
-                tmpDesc.setFont(new Font("Bodoni 72", Font.PLAIN, 10));
-                tmpDesc.setBounds(6, 21, 281, 196);
+                tmpDesc.setFont(paragraphFont);
+                tmpDesc.setBounds(275, 45, 300, 355);
+                tmpDesc.setBorder(new EmptyBorder(5, 5, 5, 5));
+                tmpDesc.setForeground(darkestBrown);
 
             descriptions[i] = tmpDesc;
 
@@ -118,32 +122,17 @@ public class InfoPanel extends JPanel implements PanelTheme {
 
             File imagesDir;
 
-            /*
-
-            WINDOWS:
-                attempted
-                        dndBuilder/src/GUI/img/category/
-                        dndBuilder/src/GUI/img/category
-                        /dndBuilder/src/GUI/img/category
-                        /dndBuilder/src/GUI/img/category/
-                        GUI/img/category/
-                        /GUI/img/category/
-                        src/GUI/img/category/
-                        /src/GUI/img/category/
-
-             */
-
             if(OS.startsWith("Windows")) {
 
-                imagesDir = new File("dndBuilder\\src\\GUI\\img\\" + categoryHolder[i] + "\\");
+                imagesDir = new File("dndBuilder\\src\\Resources\\Img\\" + categoryHolder[i] + "\\");
 
             } else if (OS.startsWith("Mac")) {
 
-                imagesDir = new File("dndBuilder/src/GUI/img/" + categoryHolder[i] + "/");
+                imagesDir = new File("dndBuilder/src/Resources/Img/" + categoryHolder[i] + "/");
 
             } else if (OS.startsWith("Linux")) {
 
-                imagesDir = new File("dndBuilder/src/GUI/img/" + categoryHolder[i] + "/");
+                imagesDir = new File("dndBuilder/src/Resources/Img/" + categoryHolder[i] + "/");
 
             } else {
 
@@ -161,7 +150,7 @@ public class InfoPanel extends JPanel implements PanelTheme {
                 portraits[i][index] = image(file);
                     portraits[i][index].setOpaque(true);
                     portraits[i][index].setBackground(lightBrown);
-                    portraits[i][index].setBounds(6, 229, 281, 159);
+                    portraits[i][index].setBounds(10, 45, 250, 355);
 
                 index++;
 
@@ -180,7 +169,7 @@ public class InfoPanel extends JPanel implements PanelTheme {
         try {
 
             img = ImageIO.read(file);
-            finalImg = img.getScaledInstance(281, 196, Image.SCALE_SMOOTH);
+            finalImg = img.getScaledInstance(250, 375, Image.SCALE_SMOOTH);
 
         } catch (Exception e) {
 

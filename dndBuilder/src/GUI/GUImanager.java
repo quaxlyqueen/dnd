@@ -1,29 +1,11 @@
 package GUI;
 
-import Character.AbilityScores.Stats;
-import Character.Classes.*;
-import Character.Races.*;
 import GUI.Panels.*;
+import Resources.CustomAssets.DefaultButton;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-
-/*    private void getNextPanel() {
-
-
-        return switch (currentPanel) {
-            case 1 -> guiPanels.getRacePanel();
-            case 2 -> guiPanels.getClassPanel();
-            case 3 -> guiPanels.getAbilityScorePanel();
-            case 4 -> guiPanels.getDescriptionPanel();
-            case 5 -> guiPanels.getEquipmentPanel();
-            case 6 -> guiPanels.getFinalizePanel();
-            case 7 -> guiPanels.getLoadMenuPanel();
-            default -> guiPanels.getMainMenuPanel();
-        };
-
-    }*/
 
 public class GUImanager extends JFrame {
 
@@ -56,7 +38,7 @@ public class GUImanager extends JFrame {
 
             }*/
 
-        add(createMasterPanel());
+        add(panels[currentPanel]);
 
     }
 
@@ -64,8 +46,10 @@ public class GUImanager extends JFrame {
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
-        setPreferredSize(new Dimension(730,550));
+        setPreferredSize(new Dimension(750,550));
         setSize(getPreferredSize());
+        setResizable(false);
+        setLocationRelativeTo(null);
 
         try {
             UIManager.setLookAndFeel( UIManager.getCrossPlatformLookAndFeelClassName() );
@@ -75,38 +59,38 @@ public class GUImanager extends JFrame {
 
     }
 
-    private JPanel createMasterPanel() {
+    private DefaultButton createBackButton() {
 
-        JPanel masterPanel = new JPanel();
-            masterPanel.add(panels[currentPanel]);
+        DefaultButton button = new DefaultButton("Back");
+            button.addActionListener(
 
-            JPanel navigationContainer = new JPanel(new GridLayout(1, 2, 10, 10));
-                navigationContainer.add(createBackButton());
-                navigationContainer.add(createContinueButton());
+                e -> {
 
-            //masterPanel.add(navigationContainer);
+                    lastPanel--;
+                    currentPanel--;
+                    nextPanel--;
+                    clearAndReset();
 
-//        return masterPanel;
+                }
 
-        return panels[currentPanel];
+            );
+
+        return button;
 
     }
 
-    private JButton createBackButton() {
+    private DefaultButton createContinueButton() {
 
-        JButton button = new JButton("Back");
+        DefaultButton button = new DefaultButton("Continue");
             button.addActionListener(
 
-                    new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
+                    e -> {
 
-                            lastPanel--;
-                            currentPanel--;
-                            nextPanel--;
-                            clearAndReset();
+                        lastPanel++;
+                        currentPanel++;
+                        nextPanel++;
+                        clearAndReset();
 
-                        }
                     }
 
             );
@@ -115,46 +99,20 @@ public class GUImanager extends JFrame {
 
     }
 
-    private JButton createContinueButton() {
+    private DefaultButton createRandomCharacterButton() {
 
-        JButton button = new JButton("Continue");
-            button.addActionListener(
-
-                    new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-
-                            lastPanel++;
-                            currentPanel++;
-                            nextPanel++;
-                            clearAndReset();
-
-                        }
-                    }
-
-            );
-
-        return button;
-
-    }
-
-    private JButton createRandomCharacterButton() {
-
-        JButton button = new JButton("Create Random Character");
+        DefaultButton button = new DefaultButton("Create Random Character");
         button.addActionListener(
 
-                new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
+                e -> {
 
-                        createRandomCharacter();
+                    createRandomCharacter();
 
-                        lastPanel = currentPanel;
-                        currentPanel = 6;
-                        nextPanel = currentPanel + 1;
-                        clearAndReset();
+                    lastPanel = currentPanel;
+                    currentPanel = 6;
+                    nextPanel = currentPanel + 1;
+                    clearAndReset();
 
-                    }
                 }
 
         );
@@ -163,22 +121,19 @@ public class GUImanager extends JFrame {
 
     }
 
-    private JButton createSaveButton() {
+    private DefaultButton createSaveButton() {
 
-        JButton button = new JButton("Save");
+        DefaultButton button = new DefaultButton("Save");
         button.addActionListener(
 
-                new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
+            e -> {
 
-                        lastPanel = currentPanel;
-                        currentPanel = 6;
-                        nextPanel = currentPanel + 1;
-                        clearAndReset();
+                lastPanel = currentPanel;
+                currentPanel = 6;
+                nextPanel = currentPanel + 1;
+                clearAndReset();
 
-                    }
-                }
+            }
 
         );
 
@@ -186,6 +141,7 @@ public class GUImanager extends JFrame {
 
     }
 
+    // TODO: Need to implement.
     private void createRandomCharacter() {
 
 
@@ -196,10 +152,11 @@ public class GUImanager extends JFrame {
 
         getContentPane().removeAll();
 
-        add(createMasterPanel());
+        add(panels[currentPanel]);
 
         repaint();
         revalidate();
+        pack();
 
     }
 
