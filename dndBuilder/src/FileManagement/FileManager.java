@@ -12,8 +12,6 @@ public class FileManager {
 
     public FileManager() {
 
-        System.out.println("FileManager object created.\n");
-
         findSavedCharacters();
 
         loadFonts();
@@ -63,7 +61,7 @@ public class FileManager {
 
         } catch (ClassNotFoundException c) {
 
-            System.out.println("Employee class not found");
+            System.out.println("Saved characters not found");
             c.printStackTrace();
 
         }

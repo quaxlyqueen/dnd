@@ -17,21 +17,15 @@ public class InfoPanel extends JPanel implements AppTheme {
     private String[] holderDescriptions;
     private JLabel[][] portraits;
     private String[] categoryHolder;
-
-    private static String OS = null;
+    private static int numInfoPanelObjects = 0;
     private int lastIndex;
 
     public InfoPanel(String[] categoryHolder, String[] holderDescriptions) {
 
         super();
+            numInfoPanelObjects++;
             this.categoryHolder = categoryHolder;
             this.holderDescriptions = holderDescriptions;
-
-            if (OS == null) {
-
-                OS = System.getProperty("os.name");
-
-            }
 
             panelSetup();
 
@@ -46,9 +40,12 @@ public class InfoPanel extends JPanel implements AppTheme {
 
         removeAll();
 
-            panelSetup();
 
-        add(descriptions[0]);
+            panelSetup();
+        add(descriptions[holderIndex]);
+
+        System.out.println();
+
         add(portraits[holderIndex][getNextPortrait(holderIndex)]);
 
         repaint();
@@ -56,17 +53,18 @@ public class InfoPanel extends JPanel implements AppTheme {
 
     }
 
+
     private int getNextPortrait(int holderIndex) {
 
         Random ran = new Random();
         int bound = portraits[holderIndex].length;
         int newIndex = ran.nextInt(bound);
 
-        while(newIndex == lastIndex) {
+/*        while(newIndex == lastIndex) {
 
             newIndex = ran.nextInt(bound);
 
-        }
+        }*/
 
         lastIndex = newIndex;
 
@@ -116,6 +114,18 @@ public class InfoPanel extends JPanel implements AppTheme {
 
     private void createPortraits() {
 
+        String category = "";
+
+        if(numInfoPanelObjects == 1) {
+
+            category = "Races";
+
+        } else if (numInfoPanelObjects == 2) {
+
+            category = "Classes";
+
+        }
+
         portraits = new JLabel[categoryHolder.length][];
 
         for (int i = 0; i < categoryHolder.length; i++) {
@@ -124,15 +134,15 @@ public class InfoPanel extends JPanel implements AppTheme {
 
             if(OS.startsWith("Windows")) {
 
-                imagesDir = new File("dndBuilder\\src\\Resources\\Img\\" + categoryHolder[i] + "\\");
+                imagesDir = new File("dndBuilder\\src\\Resources\\Img\\" + category + "\\" + categoryHolder[i].toLowerCase() + "\\");
 
             } else if (OS.startsWith("Mac")) {
 
-                imagesDir = new File("dndBuilder/src/Resources/Img/" + categoryHolder[i] + "/");
+                imagesDir = new File("dndBuilder/src/Resources/Img/" + category + "/" + categoryHolder[i].toLowerCase() + "/");
 
             } else if (OS.startsWith("Linux")) {
 
-                imagesDir = new File("dndBuilder/src/Resources/Img/" + categoryHolder[i] + "/");
+                imagesDir = new File("dndBuilder/src/Resources/Img/" + category + "/"  + categoryHolder[i].toLowerCase() + "/");
 
             } else {
 
@@ -146,7 +156,6 @@ public class InfoPanel extends JPanel implements AppTheme {
             int index = 0;
 
             for (File file : dir) {
-
                 portraits[i][index] = image(file);
                     portraits[i][index].setOpaque(true);
                     portraits[i][index].setBackground(lightBrown);
@@ -156,7 +165,9 @@ public class InfoPanel extends JPanel implements AppTheme {
 
             }
 
+
         }
+
 
     }
 
