@@ -13,29 +13,40 @@ public class BasicPanel extends JPanel implements AppTheme {
 
 	private DefaultButton[] optionButtons;
 	private String[] options;
-	private String[] descriptions;
-	private InfoPanel infoPanel;
-	private DefaultButton backButton;
-	private DefaultButton continueButton;
+	private ImageInfoPanel infoPanel;
 	private int choiceIndex;
 	private String panelTitle;
 
-
-
-	public BasicPanel(DefaultButton backButton, DefaultButton continueButton, String[] options, String[] descriptions, String panelTitle) {
+	public BasicPanel(JPanel navPanel, String[] options, String[] descriptions, String panelTitle) {
 
 		super();
-			this.backButton = backButton;
-			this.continueButton = continueButton;
 			this.options = options;
-			this.descriptions = descriptions;
 			this.panelTitle = panelTitle;
 
-			this.infoPanel = new InfoPanel(options, descriptions);
-			choiceIndex = 0;
+			Rectangle[] basicBounds = new Rectangle[]{
+
+					new Rectangle(5, 5, 600, 400), // ImageInfo panel
+					new Rectangle(275, 10, 300, 35), // ImageInfo subheader
+					new Rectangle(275, 45, 300, 355), // ImageInfo text
+					new Rectangle(10, 45, 250, 355)
+
+			};
+
+			this.infoPanel = new ImageInfoPanel(options, descriptions, basicBounds, Integer.parseInt(Character.toString(panelTitle.charAt(5))));
+				infoPanel.updateInfo(0); // Default start with 0th element.
+
+		choiceIndex = 0;
 
 		panelSetup();
 		createMasterPanel();
+		add(navPanel, BorderLayout.SOUTH);
+
+	}
+
+	private void panelSetup() {
+
+		setBackground(lightBrown);
+		setLayout(new BorderLayout(0, 0));
 
 	}
 
@@ -47,14 +58,13 @@ public class BasicPanel extends JPanel implements AppTheme {
 			title.setForeground(darkestBrown);
 		add(title, BorderLayout.NORTH);
 
-			JPanel racePanel = new JPanel();
-				racePanel.setOpaque(false);
-				racePanel.setLayout(null);
-			racePanel.add(infoPanel);
-			racePanel.add(createButtonPanel());
+			JPanel panel = new JPanel();
+				panel.setOpaque(false);
+				panel.setLayout(null);
+			panel.add(infoPanel);
+			panel.add(createButtonPanel());
 
-		add(racePanel);
-		add(createNavPanel(), BorderLayout.SOUTH);
+		add(panel);
 
 	}
 
@@ -91,37 +101,18 @@ public class BasicPanel extends JPanel implements AppTheme {
 
 	}
 
-	private void panelSetup() {
+	private DefaultButton createButton(String holderName, int index) {
 
-		setBackground(lightBrown);
-		setLayout(new BorderLayout(0, 0));
-
-	}
-
-	private JPanel createNavPanel() {
-
-		JPanel panel = new JPanel(new GridLayout(1, 2, 30, 0));
-			panel.setBackground(darkestBrown);
-			panel.setBorder(new EmptyBorder(15, 150, 15, 150));
-			panel.add(backButton);
-			panel.add(continueButton);
-
-		return panel;
-
-	}
-
-	private DefaultButton createButton(String raceName, int index) {
-
-		DefaultButton button = new DefaultButton(raceName);
-			button.addActionListener(e -> updateButtons(choiceIndex, index));
+		DefaultButton button = new DefaultButton(holderName);
+			button.addActionListener(e -> updateButtons(index));
 
 		return button;
 
 	}
 
-	private void updateButtons(int lastIndex, int newIndex) {
+	private void updateButtons(int newIndex) {
 
-		optionButtons[lastIndex].deSelect();
+		optionButtons[choiceIndex].deSelect();
 		optionButtons[newIndex].select();
 
 		choiceIndex = newIndex;

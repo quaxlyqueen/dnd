@@ -1,6 +1,7 @@
 package GUI;
 
 import GUI.Panels.*;
+import GUI.Panels.SubPanels.NavPanel;
 import Resources.CustomAssets.DefaultButton;
 
 import javax.swing.*;
@@ -22,23 +23,30 @@ public class GUImanager extends JFrame {
         private int raceChoice;
         private int classChoice;
 
+    private String[] statOptions;
+    private String[] statDescriptions;
+    private int[] selectedStats;
+
 
 
     public GUImanager (boolean returningUser) {
         super("D&D Character Builder");
         frameSetup();
-            setupRaceAndClass();
+            setupPanelInfo();
                 this.panels = new JPanel[]{
                         new MainMenuPanel(),
-                        new BasicPanel(createBackButton(), createContinueButton(), raceOptions, raceDescriptions, "Step 1: Choose Your Race"), // To choose Race.
-                        new BasicPanel(createBackButton(), createContinueButton(), classOptions, classDescriptions, "Step 2: Choose Your Class"), // To choose Class.
-                        new ChooseAbilityScoresPanel(createBackButton(), createContinueButton())
+                        new BasicPanel(createNavPanel(), raceOptions, raceDescriptions, "Step 1: Choose Your Race"), // To choose Race.
+                        new BasicPanel(createNavPanel(), classOptions, classDescriptions, "Step 2: Choose Your Class"), // To choose Class.
+                        new ChooseAbilityScoresPanel(createNavPanel(27), statOptions, statDescriptions, selectedStats, "Step 3: Choose Your Ability Scores")
                 };
 
-
-                this.lastPanel = 0;
                 this.currentPanel = 1;
-                this.nextPanel = 2;
+                this.lastPanel = currentPanel - 1;
+                this.nextPanel = currentPanel + 1;
+
+/*                this.lastPanel = 0;
+                this.currentPanel = 1;
+                this.nextPanel = 2;*/
 
 /*            if (returningUser) {
 
@@ -72,7 +80,7 @@ public class GUImanager extends JFrame {
 
     }
 
-    private void setupRaceAndClass() {
+    private void setupPanelInfo() {
 
         raceOptions = new String[]{
                 "Dragonborn",
@@ -135,6 +143,42 @@ public class GUImanager extends JFrame {
                 "The Wizard is the iconic arcane spellcaster, capable of doing all manner of fantastic tricks, and generally limited only by their spellbook and their spell slots. " + "A Wizard with a comprehensive spellbook can do essentially anything in the game, often as well as or better than a non-magical character who is built to do that thing. " + "A Wizard with Invisibility is as stealthy as a Rogue."
 
         };
+
+        statOptions = new String[] {
+
+                "Strength",
+                "Dexterity",
+                "Constitution",
+                "Intelligence",
+                "Wisdom",
+                "Charisma"
+
+        };
+
+        statDescriptions = new String[] {
+
+          "Strength is a thing.",
+          "Dexterity is a thing",
+          "Constitution is a thing",
+          "Intelligence is a thing",
+          "Wisdom is a thing",
+          "Charisma is a thing"
+
+        };
+
+        selectedStats = new int[] {8, 8, 8, 8, 8, 8};
+
+    }
+
+    private NavPanel createNavPanel() {
+
+        return new NavPanel(createBackButton(), createContinueButton(), 0);
+
+    }
+
+    private NavPanel createNavPanel(int continueRequirement) {
+
+        return new NavPanel(createBackButton(), createContinueButton(), continueRequirement);
 
     }
 

@@ -1,243 +1,244 @@
 package GUI.Panels;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import GUI.AppTheme;
+import GUI.Panels.SubPanels.InfoPanel;
+import GUI.Panels.SubPanels.NavPanel;
+import Resources.CustomAssets.DefaultButton;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
-import javax.swing.border.BevelBorder;
-import javax.swing.JTextPane;
-import java.awt.GridLayout;
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import java.awt.*;
 
-public class ChooseAbilityScoresPanel extends JPanel {
+public class ChooseAbilityScoresPanel extends JPanel implements AppTheme {
 
-	/**
-	 * Create the panel.
-	 */
-	public ChooseAbilityScoresPanel(JButton backButton, JButton continueButton) {
-		createEntirePanel(backButton, continueButton);
+	private DefaultButton[] statInfoButtons;
+	private JLabel[] statLabels;
+	private String[] statOptions;
+
+	private InfoPanel infoPanel;
+	private NavPanel navPanel;
+
+	private int[] selectedStats;
+	private int selectedStatIndex;
+
+	public ChooseAbilityScoresPanel(NavPanel navPanel, String[] statOptions, String[] statDescriptions, int[] selectedStats, String panelTitle) {
+
+		super();
+			panelSetup();
+			this.statOptions = statOptions;
+			this.selectedStats = selectedStats;
+			this.statInfoButtons = new DefaultButton[statOptions.length];
+			statLabels = new JLabel[statOptions.length];
+			this.navPanel = navPanel;
+
+			Rectangle[] abilityScoreBounds = {
+
+					new Rectangle(520, 5, 200, 400), // ImageInfo panel
+					new Rectangle(5, 10, 200, 35), // ImageInfo subheader
+					new Rectangle(5, 45, 200, 355) // ImageInfo text
+
+			};
+
+			infoPanel = new InfoPanel(statOptions, statDescriptions, abilityScoreBounds, 3);
+					infoPanel.updateInfo(0); // Default start with 0th element.
+
+		createMasterPanel(panelTitle);
+		add(navPanel, BorderLayout.SOUTH);
 
 	}
 
-	/**
-	 * 
-	 */
-	private void createEntirePanel(JButton backButton, JButton continueButton) {
-		setBackground(new Color(222, 184, 135));
-		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(160, 82, 45), new Color(165, 42, 42), new Color(0, 0, 0), null));
+	private void panelSetup() {
+
+		setBackground(lightBrown);
 		setLayout(new BorderLayout(0, 0));
-		
-		JLabel lblNewLabel = createLbl();
-		add(lblNewLabel, BorderLayout.NORTH);
-		//Creates back and continue panel
-		JPanel backContPanel = createBackContinuePanel(backButton, continueButton);
-		add(backContPanel, BorderLayout.SOUTH);
-		
-		JPanel innerPanel = createInnerPanel();
-		add(innerPanel, BorderLayout.CENTER);
+
 	}
 
-	/**
-	 * @return
-	 */
-	private JPanel createInnerPanel() {
-		JPanel innerPanel = new JPanel();
-		innerPanel.setOpaque(false);
-		innerPanel.setLayout(null);
-		
-		createInfoPanel(innerPanel);
-		
-		JPanel mainAbilityPanel = new JPanel();
-		mainAbilityPanel.setOpaque(false);
-		mainAbilityPanel.setBounds(6, 6, 505, 405);
-		innerPanel.add(mainAbilityPanel);
-		mainAbilityPanel.setLayout(new GridLayout(2, 3, 10, 10));
-		
-		JPanel strengthPanel = createAbilityPanel("Strength");
-		mainAbilityPanel.add(strengthPanel);
-		
-		JPanel dexterityPanel = createAbilityPanel("Dexterity");
-		mainAbilityPanel.add(dexterityPanel);
-		
-		JPanel constitutionPanel = createAbilityPanel("Constitution");
-		mainAbilityPanel.add(constitutionPanel);
-		
-		JPanel intelligencePanel = createAbilityPanel("Intelligence");
-		mainAbilityPanel.add(intelligencePanel);
-		
-		JPanel wisdomPanel = createAbilityPanel("Wisdom");
-		mainAbilityPanel.add(wisdomPanel);
-		
-		JPanel charismaPanel = createAbilityPanel("Charisma");
-		mainAbilityPanel.add(charismaPanel);
-		
-		return innerPanel;
-	}
+	private void createMasterPanel(String panelTitle) {
 
-	/**
-	 * @return
-	 */
-	private JPanel createAbilityPanel(String str) {
-		JPanel abilityPanel = new JPanel();
-		abilityPanel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		abilityPanel.setBackground(new Color(205, 133, 63));
-		abilityPanel.setBorder(new LineBorder(new Color(165, 42, 42), 6, true));
-		abilityPanel.setLayout(new BorderLayout(0, 0));
-		
-		JLabel abilityLbl = new JLabel(str);
-		abilityLbl.setFont(new Font("Lucida Grande", Font.PLAIN, 19));
-		abilityLbl.setHorizontalAlignment(SwingConstants.CENTER);
-		abilityPanel.add(abilityLbl, BorderLayout.NORTH);
-		
-		JButton btnNewButton = new JButton("Information");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnNewButton.setName("infoBtn");
-		abilityPanel.add(btnNewButton, BorderLayout.SOUTH);
-		
+		JLabel title = new JLabel(panelTitle);
+			title.setHorizontalAlignment(SwingConstants.CENTER);
+			title.setFont(headerFont);
+			title.setForeground(darkestBrown);
+		add(title, BorderLayout.NORTH);
+
 		JPanel panel = new JPanel();
-		panel.setOpaque(false);
-		abilityPanel.add(panel, BorderLayout.CENTER);
-		panel.setLayout(null);
-		
-		JLabel scoreLbl = new JLabel("1");
-		scoreLbl.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
-		scoreLbl.setHorizontalAlignment(SwingConstants.CENTER);
-		scoreLbl.setBounds(56, 50, 30, 30);
-		panel.add(scoreLbl);
-		
-		JButton btnNewButton_1 = new JButton("+");
-		btnNewButton_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		btnNewButton_1.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
-		btnNewButton_1.setBounds(90, 50, 30, 30);
-		panel.add(btnNewButton_1);
-		
-		JButton decreaseBtn = new JButton("-");
-		decreaseBtn.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
-		decreaseBtn.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		decreaseBtn.setBounds(21, 50, 30, 30);
-		panel.add(decreaseBtn);
-		return abilityPanel;
+				panel.setOpaque(false);
+				panel.setLayout(null);
+			panel.add(createAbilityScorePanels());
+			panel.add(infoPanel);
+
+		add(panel);
+
 	}
 
-	/**
-	 * @param innerPanel
-	 */
-	private void createInfoPanel(JPanel innerPanel) {
-		JPanel infoPanel = new JPanel();
-		infoPanel.setOpaque(false);
-		infoPanel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		infoPanel.setBounds(508, 6, 212, 405);
-		innerPanel.add(infoPanel);
-		infoPanel.setLayout(null);
-		
-		JLabel infoLbl = new JLabel("Information");
-		infoLbl.setHorizontalAlignment(SwingConstants.CENTER);
-		infoLbl.setFont(new Font("Bodoni 72 Oldstyle", Font.PLAIN, 24));
-		infoLbl.setBounds(6, 6, 200, 23);
-		infoPanel.add(infoLbl);
-		
-		JTextPane textPane = new JTextPane();
-		textPane.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		textPane.setBackground(new Color(205, 133, 63));
-		textPane.setBounds(6, 28, 200, 240);
-		infoPanel.add(textPane);
-		
-		JPanel diceRollerPanel = new JPanel();
-		diceRollerPanel.setBackground(new Color(160, 82, 45));
-		diceRollerPanel.setBounds(6, 269, 200, 130);
-		infoPanel.add(diceRollerPanel);
-		diceRollerPanel.setLayout(null);
-		
-		JLabel diceRollLbl = new JLabel("4 X D6 Dice Roll");
-		diceRollLbl.setHorizontalAlignment(SwingConstants.CENTER);
-		diceRollLbl.setFont(new Font("Bodoni 72", Font.PLAIN, 16));
-		diceRollLbl.setBounds(6, 0, 194, 22);
-		diceRollerPanel.add(diceRollLbl);
-		
-		JButton diceRollBtn = new JButton("Roll");
-		diceRollBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+	private JPanel createAbilityScorePanels() {
+
+		JPanel mainAbilityPanel = new JPanel();
+			mainAbilityPanel.setBounds(5, 5, 505, 405);
+			mainAbilityPanel.setLayout(new GridLayout(2, 3, 10, 10));
+			mainAbilityPanel.setBackground(lightBrown);
+
+			for (int i = 0; i < statOptions.length; i++) {
+
+				mainAbilityPanel.add(createAbilityPanel(statOptions[i], i));
+
 			}
-		});
-		diceRollBtn.setBounds(45, 95, 117, 29);
-		diceRollerPanel.add(diceRollBtn);
-		
-		JLabel d6Lbl1 = new JLabel("1");
-		d6Lbl1.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		d6Lbl1.setHorizontalAlignment(SwingConstants.CENTER);
-		d6Lbl1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		d6Lbl1.setOpaque(true);
-		d6Lbl1.setBackground(new Color(255, 215, 0));
-		d6Lbl1.setBounds(26, 50, 30, 30);
-		diceRollerPanel.add(d6Lbl1);
-		
-		JLabel d6Lbl2 = new JLabel("1");
-		d6Lbl2.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		d6Lbl2.setHorizontalAlignment(SwingConstants.CENTER);
-		d6Lbl2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		d6Lbl2.setOpaque(true);
-		d6Lbl2.setBackground(new Color(255, 215, 0));
-		d6Lbl2.setBounds(68, 50, 30, 30);
-		diceRollerPanel.add(d6Lbl2);
-		
-		JLabel d6Lbl3 = new JLabel("1");
-		d6Lbl3.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		d6Lbl3.setHorizontalAlignment(SwingConstants.CENTER);
-		d6Lbl3.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		d6Lbl3.setOpaque(true);
-		d6Lbl3.setBackground(new Color(255, 215, 0));
-		d6Lbl3.setBounds(110, 50, 30, 30);
-		diceRollerPanel.add(d6Lbl3);
-		
-		JLabel d6lbl4 = new JLabel("1");
-		d6lbl4.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		d6lbl4.setHorizontalAlignment(SwingConstants.CENTER);
-		d6lbl4.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		d6lbl4.setOpaque(true);
-		d6lbl4.setBackground(new Color(255, 215, 0));
-		d6lbl4.setBounds(152, 50, 30, 30);
-		diceRollerPanel.add(d6lbl4);
+
+		return mainAbilityPanel;
+
 	}
-	
-	private JPanel createBackContinuePanel(JButton backButton, JButton continueButton) {
-		JPanel backContPanel = new JPanel();
-		backContPanel.setBackground(new Color(205, 133, 63));
-		
-		
-/*		JButton backBtn = new JButton("<--- Back      ");
-		backBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+
+	private JPanel createAbilityPanel(String ability, int statIndex) {
+		JPanel panel = new JPanel();
+			panel.setFont(paragraphFont);
+			panel.setBackground(medBrown);
+			panel.setBorder(new LineBorder(darkestBrown, 4, true));
+			panel.setLayout(new BorderLayout(0, 0));
+
+			DefaultButton tmpButton = new DefaultButton(ability);
+				tmpButton.setFont(paragraphFont);
+				tmpButton.setHorizontalAlignment(SwingConstants.CENTER);
+				tmpButton.addActionListener(e -> updateButtons(statIndex));
+
+			statInfoButtons[statIndex] = tmpButton;
+
+		panel.add(statInfoButtons[statIndex], BorderLayout.NORTH);
+
+		panel.add(createScorePanel(statIndex));
+
+		return panel;
+
+	}
+
+	private JPanel createScorePanel(int statIndex) {
+
+		JPanel subPanel = new JPanel();
+
+			JLabel scoreLabel = new JLabel("" + selectedStats[statIndex]);
+				scoreLabel.setFont(paragraphFont);
+				scoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
+				scoreLabel.setBounds(56, 50, 30, 30);
+
+				statLabels[statIndex] = scoreLabel;
+
+
+			DefaultButton increaseButton = new DefaultButton("+");
+				increaseButton.setBounds(90, 50, 30, 30);
+				increaseButton.addActionListener(e -> increase(statIndex));
+
+			DefaultButton decreaseButton = new DefaultButton("-");
+				decreaseButton.setBounds(21, 50, 30, 30);
+				decreaseButton.addActionListener(e -> decrease(statIndex));
+
+		subPanel.add(decreaseButton);
+		subPanel.add(scoreLabel);
+		subPanel.add(increaseButton);
+
+		subPanel.setBackground(lightBrown);
+
+		return subPanel;
+
+	}
+
+	private int statCostCalculator(int statIndex, boolean isDecreasing) {
+
+		int cost = 0;
+
+		int currentStatValue = selectedStats[statIndex];
+
+		if (isDecreasing) {
+
+			if(currentStatValue <= 8) {
+				System.out.println("registered invalid decrease");
+
+				return -1;
+
 			}
-		});
-		backContPanel.add(backBtn);*/
-		backContPanel.add(backButton);
-		
-/*		JButton continueBtn = new JButton("Continue --->");
-		continueBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+
+			if(currentStatValue < 14) {
+
+				cost = 1;
+
+			} else if (currentStatValue == 14 || currentStatValue == 15) {
+
+				cost = 2;
+
 			}
-		});
-		backContPanel.add(continueBtn);*/
-		backContPanel.add(continueButton);
-		return backContPanel;
+
+		} else {
+
+			if(currentStatValue < 13) {
+
+				cost = 1;
+
+			} else if (currentStatValue == 13 || currentStatValue == 14) {
+
+				cost = 2;
+
+			} else {
+				System.out.println("registered invalid increase");
+				return -1;
+
+			}
+
+		}
+
+		return cost;
+
 	}
-	
-	/**
-	 * @return
-	 */
-	private JLabel createLbl() {
-		JLabel titleLbl = new JLabel("Step 3: Ability Scores");
-		titleLbl.setHorizontalAlignment(SwingConstants.CENTER);
-		titleLbl.setFont(new Font("Bodoni 72 Oldstyle", Font.PLAIN, 33));
-		return titleLbl;
+
+	private void increase(int statIndex) {
+
+		int value = statCostCalculator(statIndex, false);
+
+		if(value == -1) {
+
+			return;
+
+		}
+
+		if(navPanel.getContinueRequirement() - value >= 0) {
+
+			selectedStats[statIndex]++;
+			statLabels[statIndex].setText("" + selectedStats[statIndex]);
+
+			navPanel.decreaseContinueRequirement(value);
+
+		}
+
 	}
+
+	private void decrease(int statIndex) {
+
+		int value = statCostCalculator(statIndex, true);
+
+		if(value == -1) {
+
+			return;
+
+		}
+
+		if(navPanel.getContinueRequirement() + value <= 27) {
+
+			selectedStats[statIndex]--;
+			statLabels[statIndex].setText("" + selectedStats[statIndex]);
+
+			navPanel.increaseContinueRequirement(value);
+
+		}
+
+	}
+
+	private void updateButtons(int newIndex) {
+
+		statInfoButtons[selectedStatIndex].deSelect();
+		statInfoButtons[newIndex].select();
+
+		selectedStatIndex = newIndex;
+		infoPanel.updateInfo(selectedStatIndex);
+
+	}
+
 }

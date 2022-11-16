@@ -13,75 +13,59 @@ import java.util.Random;
 
 public class InfoPanel extends JPanel implements AppTheme {
 
-    private JTextArea[] descriptions;
-    private String[] holderDescriptions;
-    private JLabel[][] portraits;
-    private String[] categoryHolder;
-    private static int numInfoPanelObjects = 0;
-    private int lastIndex;
+    protected JTextArea[] descriptions;
+    protected Rectangle[] bounds;
+    protected String[] holderDescriptions;
+    protected String[] categoryHolder;
+    protected int panelIndex;
 
-    public InfoPanel(String[] categoryHolder, String[] holderDescriptions) {
+    public InfoPanel(String[] categoryHolder, String[] holderDescriptions, Rectangle[] bounds, int panelIndex) {
 
         super();
-            numInfoPanelObjects++;
             this.categoryHolder = categoryHolder;
             this.holderDescriptions = holderDescriptions;
+            this.bounds = bounds;
+            this.panelIndex = panelIndex;
 
             panelSetup();
 
             createDescriptions();
-            createPortraits();
-
-        updateInfo(0); // Default selection of the 0th elements.
 
     }
 
     public void updateInfo(int holderIndex) {
-
         removeAll();
+        panelSetup();
 
-
-            panelSetup();
         add(descriptions[holderIndex]);
-
-        System.out.println();
-
-        add(portraits[holderIndex][getNextPortrait(holderIndex)]);
 
         repaint();
         revalidate();
 
     }
 
+    protected void updateInfo(int holderIndex, JLabel portrait) {
+        removeAll();
+        panelSetup();
 
-    private int getNextPortrait(int holderIndex) {
+        add(descriptions[holderIndex]);
+        add(portrait);
 
-        Random ran = new Random();
-        int bound = portraits[holderIndex].length;
-        int newIndex = ran.nextInt(bound);
-
-/*        while(newIndex == lastIndex) {
-
-            newIndex = ran.nextInt(bound);
-
-        }*/
-
-        lastIndex = newIndex;
-
-        return newIndex;
+        repaint();
+        revalidate();
 
     }
 
     private void panelSetup() {
 
         setOpaque(false);
-        setBounds(5, 5, 600, 400);
+        setBounds(bounds[0]);
         setLayout(null);
 
         JLabel subHeader = new JLabel("Description");
             subHeader.setFont(subHeaderFont);
             subHeader.setHorizontalAlignment(SwingConstants.LEFT);
-            subHeader.setBounds(275, 10, 300, 35);
+            subHeader.setBounds(bounds[1]);
             subHeader.setForeground(darkestBrown);
 
         add(subHeader);
@@ -98,109 +82,18 @@ public class InfoPanel extends JPanel implements AppTheme {
                 tmpDesc.setText(holderDescriptions[i]);
                 tmpDesc.setWrapStyleWord(true);
                 tmpDesc.setLineWrap(true);
-                tmpDesc.setOpaque(false);
+                tmpDesc.setOpaque(true);
                 tmpDesc.setEditable(false);
                 tmpDesc.setFocusable(false);
                 tmpDesc.setFont(paragraphFont);
-                tmpDesc.setBounds(275, 45, 300, 355);
+                tmpDesc.setBounds(bounds[2]);
                 tmpDesc.setBorder(new EmptyBorder(5, 5, 5, 5));
+                tmpDesc.setBackground(medBrown);
                 tmpDesc.setForeground(darkestBrown);
 
             descriptions[i] = tmpDesc;
 
         }
-
-    }
-
-    private void createPortraits() {
-
-        String category = "";
-
-        if(numInfoPanelObjects == 1) {
-
-            category = "Races";
-
-        } else if (numInfoPanelObjects == 2) {
-
-            category = "Classes";
-
-        }
-
-        portraits = new JLabel[categoryHolder.length][];
-
-        for (int i = 0; i < categoryHolder.length; i++) {
-
-            File imagesDir;
-
-            if(OS.startsWith("Windows")) {
-
-                imagesDir = new File("dndBuilder\\src\\Resources\\Img\\" + category + "\\" + categoryHolder[i].toLowerCase() + "\\");
-
-            } else if (OS.startsWith("Mac")) {
-
-                imagesDir = new File("dndBuilder/src/Resources/Img/" + category + "/" + categoryHolder[i].toLowerCase() + "/");
-
-            } else if (OS.startsWith("Linux")) {
-
-                imagesDir = new File("dndBuilder/src/Resources/Img/" + category + "/"  + categoryHolder[i].toLowerCase() + "/");
-
-            } else {
-
-                System.out.println("Unable to detect operating system.");
-                return;
-
-            }
-
-            File[] dir = imagesDir.listFiles();
-            portraits[i] = new JLabel[dir.length];
-            int index = 0;
-
-            for (File file : dir) {
-                portraits[i][index] = image(file);
-                    portraits[i][index].setOpaque(true);
-                    portraits[i][index].setBackground(lightBrown);
-                    portraits[i][index].setBounds(10, 45, 250, 355);
-
-                index++;
-
-            }
-
-
-        }
-
-
-    }
-
-    private JLabel image(File file) {
-
-        BufferedImage img;
-        Image finalImg;
-        JLabel picture;
-
-        try {
-
-            img = ImageIO.read(file);
-            finalImg = img.getScaledInstance(250, 375, Image.SCALE_SMOOTH);
-
-        } catch (Exception e) {
-
-            System.out.println("Error reading file.");
-            img = null;
-            finalImg = null;
-
-        }
-
-        if(Objects.isNull(finalImg)) {
-
-            picture = new JLabel("ERROR: Image not found.");
-
-        } else {
-
-            picture = new JLabel(new ImageIcon(finalImg));
-
-        }
-
-        return picture;
 
     }
 
