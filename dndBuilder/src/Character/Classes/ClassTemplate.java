@@ -1,6 +1,6 @@
 package Character.Classes;
 
-import Character.AbilityScores.*;
+import Character.AbilityScores.Stats;
 
 public interface ClassTemplate {
 

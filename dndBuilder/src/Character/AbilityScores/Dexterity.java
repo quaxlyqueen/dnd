@@ -30,7 +30,7 @@ public class Dexterity extends Stats {
 
     }
 
-// TODO: Need description.
+    // TODO: Need description.
     public String getDescription() {
 
         return "";
@@ -49,7 +49,7 @@ public class Dexterity extends Stats {
     public void increaseScore() {
 
         abilityScore++;
-        
+
     }
 
 }

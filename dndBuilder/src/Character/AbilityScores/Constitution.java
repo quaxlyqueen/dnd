@@ -30,7 +30,7 @@ public class Constitution extends Stats {
 
     }
 
-// TODO: Need description.
+    // TODO: Need description.
     public String getDescription() {
 
         return "Health, stamina, vital force.";
@@ -49,7 +49,7 @@ public class Constitution extends Stats {
     public void increaseScore() {
 
         abilityScore++;
-        
+
     }
 
 }

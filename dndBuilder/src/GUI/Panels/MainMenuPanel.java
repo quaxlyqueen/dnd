@@ -1,83 +1,69 @@
 package GUI.Panels;
 
-import javax.swing.JPanel;
-import java.awt.BorderLayout;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import java.awt.Font;
-import java.awt.Color;
+import GUI.AppTheme;
+import Resources.CustomAssets.DefaultButton;
+
+import javax.swing.*;
 import javax.swing.border.BevelBorder;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class MainMenuPanel extends JPanel {
+public class MainMenuPanel extends JPanel implements AppTheme {
 
-	/**
-	 * Create the panel.
-	 */
-	public MainMenuPanel() {
-		setBackground(new Color(222, 184, 135));
-		setBorder(new BevelBorder(BevelBorder.RAISED, new Color(160, 82, 45), new Color(165, 42, 42), new Color(0, 0, 0), null));
-		setLayout(new BorderLayout(0, 0));
-		
-		JLabel mainMenuLbl = mainMenuLbl();
-		add(mainMenuLbl, BorderLayout.NORTH);
-		
-		JPanel controlPanel = createControlPanel();
-		add(controlPanel, BorderLayout.CENTER);
-	}
+    private DefaultButton newCharacter;
+    private DefaultButton randomCharacter;
+    private DefaultButton loadCharacter;
 
-	/**
-	 * @return
-	 */
-	private JPanel createControlPanel() {
-		JPanel controlPanel = new JPanel();
-		controlPanel.setOpaque(false);
-		controlPanel.setLayout(null);
-		
-		JButton newCharBtn = new JButton("New \nCharacter");
-		newCharBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		newCharBtn.setOpaque(true);
-		newCharBtn.setBackground(new Color(160, 82, 45));
-		newCharBtn.setFont(new Font("Bodoni 72 Oldstyle", Font.PLAIN, 23));
-		newCharBtn.setBounds(118, 90, 200, 50);
-		controlPanel.add(newCharBtn);
-		
-		JButton randCharacterBtn = new JButton("Random Character");
-		randCharacterBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		randCharacterBtn.setOpaque(true);
-		randCharacterBtn.setBackground(new Color(160, 82, 45));
-		randCharacterBtn.setFont(new Font("Bodoni 72 Oldstyle", Font.PLAIN, 23));
-		randCharacterBtn.setBounds(118, 156, 200, 50);
-		controlPanel.add(randCharacterBtn);
-		
-		JButton loadCharacter = new JButton("Load Character");
-		loadCharacter.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		loadCharacter.setOpaque(true);
-		loadCharacter.setBackground(new Color(160, 82, 45));
-		loadCharacter.setFont(new Font("Bodoni 72 Oldstyle", Font.PLAIN, 23));
-		loadCharacter.setBounds(376, 98, 233, 97);
-		controlPanel.add(loadCharacter);
-		return controlPanel;
-	}
+    public MainMenuPanel(DefaultButton newCharacter, DefaultButton randomCharacter, DefaultButton loadCharacter) {
 
-	/**
-	 * @return
-	 */
-	private JLabel mainMenuLbl() {
-		JLabel mainMenuLbl = new JLabel("Main Menu");
-		mainMenuLbl.setFont(new Font("Bodoni 72 Smallcaps", Font.PLAIN, 33));
-		mainMenuLbl.setHorizontalAlignment(SwingConstants.CENTER);
-		return mainMenuLbl;
-	}
+        super();
+        panelSetup();
+        this.newCharacter = newCharacter;
+        this.randomCharacter = randomCharacter;
+        this.loadCharacter = loadCharacter;
+
+        add(createLabel(), BorderLayout.NORTH);
+
+        add(createControlPanel(), BorderLayout.CENTER);
+    }
+
+    private void panelSetup() {
+
+        setBackground(lightBrown);
+        setLayout(new BorderLayout(0, 0));
+
+    }
+
+    private JLabel createLabel() {
+
+        JLabel label = new JLabel("D&D Character Builder");
+            label.setFont(headerFont);
+            label.setForeground(darkestBrown);
+            label.setOpaque(false);
+            label.setHorizontalAlignment(SwingConstants.CENTER);
+            label.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+        return label;
+
+    }
+
+    private JPanel createControlPanel() {
+        JPanel panel = new JPanel(new GridLayout(1, 2, 50, 0));
+            panel.setOpaque(false);
+            panel.setBorder(new EmptyBorder(25, 25, 25, 25));
+
+            JPanel subPanel = new JPanel(new GridLayout(2, 1, 0, 50));
+                subPanel.setOpaque(false);
+
+                subPanel.add(newCharacter);
+                subPanel.add(randomCharacter);
+
+            panel.add(subPanel);
+            panel.add(loadCharacter);
+
+        return panel;
+    }
+
 }

@@ -1,10 +1,9 @@
 package FileManagement;
 
+import Character.CharacterSheet;
+
 import java.awt.*;
 import java.io.*;
-import java.util.Arrays;
-
-import Character.*;
 
 public class FileManager {
 
@@ -24,7 +23,7 @@ public class FileManager {
             GraphicsEnvironment ge =
                     GraphicsEnvironment.getLocalGraphicsEnvironment();
             ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("dndBuilder/src/Resources/Fonts/SanSalvi.ttf")));
-        } catch (IOException|FontFormatException e) {
+        } catch (IOException | FontFormatException e) {
             //Handle exception
             System.out.println("Error finding font.");
         }
@@ -33,7 +32,7 @@ public class FileManager {
 
     public boolean isReturninguser() {
 
-        if(savedCharacters == null) {
+        if (savedCharacters == null) {
 
             return false;
 
@@ -70,7 +69,7 @@ public class FileManager {
 
     }
 
-    public void saveCharacter (CharacterSheet completedCharacter) {
+    public void saveCharacter(CharacterSheet completedCharacter) {
 
         try {
 
@@ -97,7 +96,7 @@ public class FileManager {
 
         for (int i = 0; i < savedCharacters.length; i++) {
 
-            if(i != index) {
+            if (i != index) {
 
                 tmp[i] = savedCharacters[i];
 

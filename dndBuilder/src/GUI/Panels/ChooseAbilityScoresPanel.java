@@ -1,9 +1,9 @@
 package GUI.Panels;
 
 import GUI.AppTheme;
-import Resources.CustomAssets.InfoPanel;
 import Resources.CustomAssets.BasicNavPanel;
 import Resources.CustomAssets.DefaultButton;
+import Resources.CustomAssets.InfoPanel;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -11,231 +11,228 @@ import java.awt.*;
 
 public class ChooseAbilityScoresPanel extends JPanel implements AppTheme {
 
-	private DefaultButton[] statInfoButtons;
-	private JLabel[] statLabels;
-	private String[] statOptions;
-	private InfoPanel infoPanel;
-	private BasicNavPanel basicNavPanel;
-	private int[] selectedStats;
-	private int selectedStatIndex;
+    private DefaultButton[] statInfoButtons;
+    private JLabel[] statLabels;
+    private String[] statOptions;
+    private InfoPanel infoPanel;
+    private BasicNavPanel basicNavPanel;
+    private int[] selectedStats;
+    private int selectedStatIndex;
 
-	public ChooseAbilityScoresPanel(BasicNavPanel basicNavPanel, String[] statOptions, String[] statDescriptions, int[] selectedStats, String panelTitle) {
+    public ChooseAbilityScoresPanel(BasicNavPanel basicNavPanel, String[] statOptions, String[] statDescriptions, int[] selectedStats, String panelTitle) {
 
-		super();
-			panelSetup();
-			this.statOptions = statOptions;
-			this.selectedStats = selectedStats;
-			this.statInfoButtons = new DefaultButton[statOptions.length];
-			statLabels = new JLabel[statOptions.length];
-			this.basicNavPanel = basicNavPanel;
+        super();
+        panelSetup();
+        this.statOptions = statOptions;
+        this.selectedStats = selectedStats;
+        this.statInfoButtons = new DefaultButton[statOptions.length];
+        statLabels = new JLabel[statOptions.length];
+        this.basicNavPanel = basicNavPanel;
 
-			Rectangle[] abilityScoreBounds = {
+        Rectangle[] abilityScoreBounds = {
 
-					new Rectangle(520, 5, 200, 400), // ImageInfo panel
-					new Rectangle(5, 10, 200, 35), // ImageInfo subheader
-					new Rectangle(5, 45, 200, 355) // ImageInfo text
+                new Rectangle(520, 5, 200, 400), // ImageInfo panel
+                new Rectangle(5, 10, 200, 35), // ImageInfo subheader
+                new Rectangle(5, 45, 200, 355) // ImageInfo text
 
-			};
+        };
 
-			infoPanel = new InfoPanel(statOptions, statDescriptions, abilityScoreBounds, 3);
-					infoPanel.updateInfo(0); // Default start with 0th element.
+        infoPanel = new InfoPanel(statOptions, statDescriptions, abilityScoreBounds, 3);
+        infoPanel.updateInfo(0); // Default start with 0th element.
 
-		createMasterPanel(panelTitle);
-		add(basicNavPanel, BorderLayout.SOUTH);
+        createMasterPanel(panelTitle);
+        add(basicNavPanel, BorderLayout.SOUTH);
 
-	}
+    }
 
-	private void panelSetup() {
+    private void panelSetup() {
 
-		setBackground(lightBrown);
-		setLayout(new BorderLayout(0, 0));
+        setBackground(lightBrown);
+        setLayout(new BorderLayout(0, 0));
 
-	}
+    }
 
-	private void createMasterPanel(String panelTitle) {
+    private void createMasterPanel(String panelTitle) {
 
-		JLabel title = new JLabel(panelTitle);
-			title.setHorizontalAlignment(SwingConstants.CENTER);
-			title.setFont(headerFont);
-			title.setForeground(darkestBrown);
-		add(title, BorderLayout.NORTH);
+        JLabel title = new JLabel(panelTitle);
+        title.setHorizontalAlignment(SwingConstants.CENTER);
+        title.setFont(headerFont);
+        title.setForeground(darkestBrown);
+        add(title, BorderLayout.NORTH);
 
-		JPanel panel = new JPanel();
-				panel.setOpaque(false);
-				panel.setLayout(null);
-			panel.add(createAbilityScorePanels());
-			panel.add(infoPanel);
+        JPanel panel = new JPanel();
+        panel.setOpaque(false);
+        panel.setLayout(null);
+        panel.add(createAbilityScorePanels());
+        panel.add(infoPanel);
 
-		add(panel);
+        add(panel);
 
-	}
+    }
 
-	private JPanel createAbilityScorePanels() {
+    private JPanel createAbilityScorePanels() {
 
-		JPanel mainAbilityPanel = new JPanel();
-			mainAbilityPanel.setBounds(5, 5, 505, 405);
-			mainAbilityPanel.setLayout(new GridLayout(2, 3, 10, 10));
-			mainAbilityPanel.setBackground(lightBrown);
+        JPanel mainAbilityPanel = new JPanel();
+        mainAbilityPanel.setBounds(5, 5, 505, 405);
+        mainAbilityPanel.setLayout(new GridLayout(2, 3, 10, 10));
+        mainAbilityPanel.setBackground(lightBrown);
 
-			for (int i = 0; i < statOptions.length; i++) {
+        for (int i = 0; i < statOptions.length; i++) {
 
-				mainAbilityPanel.add(createAbilityPanel(statOptions[i], i));
+            mainAbilityPanel.add(createAbilityPanel(statOptions[i], i));
 
-			}
+        }
 
-		return mainAbilityPanel;
+        return mainAbilityPanel;
 
-	}
+    }
 
-	private JPanel createAbilityPanel(String ability, int statIndex) {
-		JPanel panel = new JPanel();
-			panel.setFont(paragraphFont);
-			panel.setBackground(medBrown);
-			panel.setBorder(new LineBorder(darkestBrown, 4, true));
-			panel.setLayout(new BorderLayout(0, 0));
+    private JPanel createAbilityPanel(String ability, int statIndex) {
+        JPanel panel = new JPanel();
+        panel.setFont(paragraphFont);
+        panel.setBackground(medBrown);
+        panel.setBorder(new LineBorder(darkestBrown, 4, true));
+        panel.setLayout(new BorderLayout(0, 0));
 
-			DefaultButton tmpButton = new DefaultButton(ability);
-				tmpButton.setFont(paragraphFont);
-				tmpButton.setHorizontalAlignment(SwingConstants.CENTER);
-				tmpButton.addActionListener(e -> updateButtons(statIndex));
+        DefaultButton tmpButton = new DefaultButton(ability);
+        tmpButton.setFont(paragraphFont);
+        tmpButton.setHorizontalAlignment(SwingConstants.CENTER);
+        tmpButton.addActionListener(e -> updateButtons(statIndex));
 
-			statInfoButtons[statIndex] = tmpButton;
+        statInfoButtons[statIndex] = tmpButton;
 
-		panel.add(statInfoButtons[statIndex], BorderLayout.NORTH);
+        panel.add(statInfoButtons[statIndex], BorderLayout.NORTH);
 
-		panel.add(createScorePanel(statIndex));
+        panel.add(createScorePanel(statIndex));
 
-		return panel;
+        return panel;
 
-	}
+    }
 
-	private JPanel createScorePanel(int statIndex) {
+    private JPanel createScorePanel(int statIndex) {
 
-		JPanel subPanel = new JPanel();
+        JPanel subPanel = new JPanel();
 
-			JLabel scoreLabel = new JLabel("" + selectedStats[statIndex]);
-				scoreLabel.setFont(paragraphFont);
-				scoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
-				scoreLabel.setBounds(56, 50, 30, 30);
+        JLabel scoreLabel = new JLabel("" + selectedStats[statIndex]);
+        scoreLabel.setFont(paragraphFont);
+        scoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-				statLabels[statIndex] = scoreLabel;
+        statLabels[statIndex] = scoreLabel;
 
 
-			DefaultButton increaseButton = new DefaultButton("+");
-				increaseButton.setBounds(90, 50, 50, 50);
-				increaseButton.addActionListener(e -> increase(statIndex));
+        DefaultButton increaseButton = new DefaultButton("+");
+        increaseButton.addActionListener(e -> increase(statIndex));
 
-			DefaultButton decreaseButton = new DefaultButton("-");
-				decreaseButton.setBounds(21, 50, 50, 50);
-				decreaseButton.addActionListener(e -> decrease(statIndex));
+        DefaultButton decreaseButton = new DefaultButton("-");
+        decreaseButton.addActionListener(e -> decrease(statIndex));
 
-		subPanel.add(decreaseButton);
-		subPanel.add(scoreLabel);
-		subPanel.add(increaseButton);
+        subPanel.add(decreaseButton);
+        subPanel.add(scoreLabel);
+        subPanel.add(increaseButton);
 
-		subPanel.setBackground(lightBrown);
+        subPanel.setBackground(lightBrown);
 
-		return subPanel;
+        return subPanel;
 
-	}
+    }
 
-	private int statCostCalculator(int statIndex, boolean isDecreasing) {
+    private int statCostCalculator(int statIndex, boolean isDecreasing) {
 
-		int cost = 0;
+        int cost = 0;
 
-		int currentStatValue = selectedStats[statIndex];
+        int currentStatValue = selectedStats[statIndex];
 
-		if (isDecreasing) {
+        if (isDecreasing) {
 
-			if(currentStatValue <= 8) {
-				System.out.println("registered invalid decrease");
+            if (currentStatValue <= 8) {
+                System.out.println("registered invalid decrease");
 
-				return -1;
+                return -1;
 
-			}
+            }
 
-			if(currentStatValue < 14) {
+            if (currentStatValue < 14) {
 
-				cost = 1;
+                cost = 1;
 
-			} else if (currentStatValue == 14 || currentStatValue == 15) {
+            } else if (currentStatValue == 14 || currentStatValue == 15) {
 
-				cost = 2;
+                cost = 2;
 
-			}
+            }
 
-		} else {
+        } else {
 
-			if(currentStatValue < 13) {
+            if (currentStatValue < 13) {
 
-				cost = 1;
+                cost = 1;
 
-			} else if (currentStatValue == 13 || currentStatValue == 14) {
+            } else if (currentStatValue == 13 || currentStatValue == 14) {
 
-				cost = 2;
+                cost = 2;
 
-			} else {
-				System.out.println("registered invalid increase");
-				return -1;
+            } else {
+                System.out.println("registered invalid increase");
+                return -1;
 
-			}
+            }
 
-		}
+        }
 
-		return cost;
+        return cost;
 
-	}
+    }
 
-	private void increase(int statIndex) {
+    private void increase(int statIndex) {
 
-		int value = statCostCalculator(statIndex, false);
+        int value = statCostCalculator(statIndex, false);
 
-		if(value == -1) {
+        if (value == -1) {
 
-			return;
+            return;
 
-		}
+        }
 
-		if(basicNavPanel.getContinueRequirement() - value >= 0) {
+        if (basicNavPanel.getContinueRequirement() - value >= 0) {
 
-			selectedStats[statIndex]++;
-			statLabels[statIndex].setText("" + selectedStats[statIndex]);
+            selectedStats[statIndex]++;
+            statLabels[statIndex].setText("" + selectedStats[statIndex]);
 
-			basicNavPanel.decreaseContinueRequirement(value);
+            basicNavPanel.decreaseContinueRequirement(value);
 
-		}
+        }
 
-	}
+    }
 
-	private void decrease(int statIndex) {
+    private void decrease(int statIndex) {
 
-		int value = statCostCalculator(statIndex, true);
+        int value = statCostCalculator(statIndex, true);
 
-		if(value == -1) {
+        if (value == -1) {
 
-			return;
+            return;
 
-		}
+        }
 
-		if(basicNavPanel.getContinueRequirement() + value <= 27) {
+        if (basicNavPanel.getContinueRequirement() + value <= 27) {
 
-			selectedStats[statIndex]--;
-			statLabels[statIndex].setText("" + selectedStats[statIndex]);
+            selectedStats[statIndex]--;
+            statLabels[statIndex].setText("" + selectedStats[statIndex]);
 
-			basicNavPanel.increaseContinueRequirement(value);
+            basicNavPanel.increaseContinueRequirement(value);
 
-		}
+        }
 
-	}
+    }
 
-	private void updateButtons(int newIndex) {
+    private void updateButtons(int newIndex) {
 
-		statInfoButtons[selectedStatIndex].deSelect();
-		statInfoButtons[newIndex].select();
+        statInfoButtons[selectedStatIndex].deSelect();
+        statInfoButtons[newIndex].select();
 
-		selectedStatIndex = newIndex;
-		infoPanel.updateInfo(selectedStatIndex);
+        selectedStatIndex = newIndex;
+        infoPanel.updateInfo(selectedStatIndex);
 
-	}
+    }
 
 }

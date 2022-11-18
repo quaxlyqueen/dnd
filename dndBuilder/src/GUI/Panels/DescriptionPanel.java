@@ -3,7 +3,6 @@ package GUI.Panels;
 import GUI.AppTheme;
 import Resources.CustomAssets.BasicNavPanel;
 import Resources.CustomAssets.DefaultButton;
-import Resources.CustomAssets.InfoPanel;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -29,12 +28,12 @@ public class DescriptionPanel extends JPanel implements AppTheme {
     public DescriptionPanel(BasicNavPanel nav, String[] characteristics, String[] alignmentOptions, String[] alignmentDescriptions, String[] backgroundOptions, String[] backgroundDescriptions, String panelTitle) {
 
         super();
-            this.nav = nav;
-            this.characteristics = characteristics;
-            this.alignmentOptions = alignmentOptions;
-            this.alignmentDescriptions = alignmentDescriptions;
-            this.backgroundOptions = backgroundOptions;
-            this.backgroundDescriptions = backgroundDescriptions;
+        this.nav = nav;
+        this.characteristics = characteristics;
+        this.alignmentOptions = alignmentOptions;
+        this.alignmentDescriptions = alignmentDescriptions;
+        this.backgroundOptions = backgroundOptions;
+        this.backgroundDescriptions = backgroundDescriptions;
 
         panelSetup();
 
@@ -71,7 +70,7 @@ public class DescriptionPanel extends JPanel implements AppTheme {
         alignmentButtons = new DefaultButton[alignmentOptions.length];
         backgroundButtons = new DefaultButton[backgroundOptions.length];
 
-        characteristicsHolder = new String[] {
+        characteristicsHolder = new String[]{
 
                 "Name: ",
                 "Age: ",
@@ -87,7 +86,6 @@ public class DescriptionPanel extends JPanel implements AppTheme {
     }
 
 
-
     private void createPanel(String panelTitle, BasicNavPanel nav) {
 
         add(createPanelTitle(panelTitle), BorderLayout.NORTH);
@@ -101,10 +99,10 @@ public class DescriptionPanel extends JPanel implements AppTheme {
     private JLabel createPanelTitle(String panelTitle) {
 
         JLabel title = new JLabel(panelTitle);
-            title.setHorizontalAlignment(SwingConstants.CENTER);
-            title.setFont(headerFont);
-            title.setForeground(darkestBrown);
-            title.setBorder(new EmptyBorder(25, 25, 25, 25));
+        title.setHorizontalAlignment(SwingConstants.CENTER);
+        title.setFont(headerFont);
+        title.setForeground(darkestBrown);
+        title.setBorder(new EmptyBorder(25, 25, 25, 25));
 
         return title;
 
@@ -115,10 +113,10 @@ public class DescriptionPanel extends JPanel implements AppTheme {
         GridBagConstraints c = new GridBagConstraints();
 
         JPanel bodyPanel = new JPanel(new GridBagLayout());
-            bodyPanel.setOpaque(false);
+        bodyPanel.setOpaque(false);
 
-            bodyPanel.add(createNamePanel());
-            bodyPanel.add(createFooterPanel());
+        bodyPanel.add(createNamePanel());
+        bodyPanel.add(createFooterPanel());
 
         return bodyPanel;
 
@@ -127,13 +125,13 @@ public class DescriptionPanel extends JPanel implements AppTheme {
     private JPanel createNamePanel() {
 
         JPanel panel = new JPanel();
-            panel.setBackground(medBrown);
+        panel.setBackground(medBrown);
 
-            for (int i = 0; i < characteristicsHolder.length; i++) {
+        for (int i = 0; i < characteristicsHolder.length; i++) {
 
-                panel.add(createField(i));
+            panel.add(createField(i));
 
-            }
+        }
 
         return panel;
 
@@ -142,17 +140,17 @@ public class DescriptionPanel extends JPanel implements AppTheme {
     private JPanel createField(int index) {
 
         JPanel panel = new JPanel();
-            panel.setOpaque(false);
+        panel.setOpaque(false);
 
-            JLabel label = new JLabel(characteristicsHolder[index]);
-            label.setFont(paragraphFont);
-                label.setOpaque(false);
-            label.setForeground(darkestBrown);
+        JLabel label = new JLabel(characteristicsHolder[index]);
+        label.setFont(paragraphFont);
+        label.setOpaque(false);
+        label.setForeground(darkestBrown);
 
-            JTextField field = new JTextField(10);
-                field.setFont(paragraphFont);
-                field.setBackground(lightBrown);
-                field.setBorder(null);
+        JTextField field = new JTextField(10);
+        field.setFont(paragraphFont);
+        field.setBackground(lightBrown);
+        field.setBorder(null);
 
         panel.add(label);
         panel.add(field);
@@ -164,102 +162,81 @@ public class DescriptionPanel extends JPanel implements AppTheme {
     private JPanel createFooterPanel() {
 
         JPanel panel = new JPanel(new GridLayout(1, 3));
-            panel.setOpaque(false);
-            panel.add(createAlignmentPanel());
-            panel.add(createBackgroundPanel());
-            panel.add(createTextBoxPanel());
+        panel.setOpaque(false);
+        panel.add(createSubPanel("Alignment"));
+        panel.add(createSubPanel("Background"));
+        panel.add(createTextBoxPanel());
 
         return panel;
 
     }
 
-    private JPanel createAlignmentPanel() {
+    private JPanel createSubPanel(String labelName) {
 
-        JPanel alignmentPanel = new JPanel(new BorderLayout(0, 0));
-            alignmentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-            alignmentPanel.setOpaque(false);
+        JPanel panel = new JPanel(new BorderLayout(0, 0));
+            panel.setBorder(new EmptyBorder(5, 5, 5, 5));
+            panel.setOpaque(false);
 
-            JLabel backgroundLabel = new JLabel("Alignment");
-                backgroundLabel.setForeground(darkestBrown);
-                backgroundLabel.setFont(subHeaderFont);
-                backgroundLabel.setHorizontalAlignment(SwingConstants.CENTER);
+            JLabel label = new JLabel(labelName);
+                label.setForeground(darkestBrown);
+                label.setFont(subHeaderFont);
+                label.setHorizontalAlignment(SwingConstants.CENTER);
 
-            JPanel innerPanel = new JPanel(new GridLayout(9, 1));
-                innerPanel.setOpaque(false);
+            JPanel innerPanel;
 
-                for (int i = 0; i < alignmentOptions.length; i++) {
+            if(labelName.equals("Alignment")) {
 
-                    alignmentButtons[i] = createButton(alignmentOptions[i], false, i);
-                        innerPanel.add(alignmentButtons[i]);
+                innerPanel = new JPanel(new GridLayout(9, 1));
+                    innerPanel.setOpaque(false);
 
-                        if(i == 0) {
+                    createButtons(alignmentOptions, alignmentButtons, labelName);
 
-                            alignmentButtons[i].select();
+                for (int i = 0; i < alignmentButtons.length; i++) {
 
-                        }
+                    innerPanel.add(alignmentButtons[i]);
 
                 }
 
-        alignmentPanel.add(backgroundLabel, BorderLayout.NORTH);
-        alignmentPanel.add(innerPanel);
+            } else {
 
-        return alignmentPanel;
-
-    }
-
-    private JPanel createBackgroundPanel() {
-
-        JPanel backgroundPanel = new JPanel(new BorderLayout(0, 0));
-            backgroundPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-            backgroundPanel.setOpaque(false);
-
-            JLabel backgroundLabel = new JLabel("Background");
-                backgroundLabel.setForeground(darkestBrown);
-                backgroundLabel.setFont(subHeaderFont);
-                backgroundLabel.setHorizontalAlignment(SwingConstants.CENTER);
-
-        backgroundPanel.add(backgroundLabel, BorderLayout.NORTH);
-
-            JPanel innerPanel = new JPanel(new GridLayout(9, 2));
+                innerPanel = new JPanel(new GridLayout(9, 2));
                 innerPanel.setOpaque(false);
 
-            for (int i = 0; i < backgroundOptions.length; i++) {
+                createButtons(backgroundOptions, backgroundButtons, labelName);
 
-                backgroundButtons[i] = createButton(backgroundOptions[i], false, i);
+                for (int i = 0; i < backgroundButtons.length; i++) {
+
                     innerPanel.add(backgroundButtons[i]);
 
-                    if(i == 0) {
-
-                        backgroundButtons[i].select();
-
-                    }
+                }
 
             }
 
-        backgroundPanel.add(innerPanel);
+        panel.add(label);
+        panel.add(innerPanel);
 
-        return backgroundPanel;
+        return panel;
 
     }
 
     private JPanel createTextBoxPanel() {
 
         JPanel panel = new JPanel(new BorderLayout(0, 0));
-            panel.setOpaque(false);
+        panel.setOpaque(false);
 
-            JLabel label = new JLabel("Enter a Description");
-                label.setFont(paragraphFont);
-                label.setOpaque(false);
-                label.setForeground(darkestBrown);
+        JLabel label = new JLabel("Enter a Description");
+        label.setFont(paragraphFont);
+        label.setOpaque(false);
+        label.setForeground(darkestBrown);
 
-            JTextArea textArea = new JTextArea();
-                textArea.setForeground(darkestBrown);
-                textArea.setFont(userTextFont);
-                textArea.setOpaque(false);
-                textArea.setBorder(new LineBorder(darkestBrown, 3));
+        JTextArea textArea = new JTextArea();
+        textArea.setForeground(darkestBrown);
+        textArea.setFont(userTextFont);
+        textArea.setOpaque(false);
+        textArea.setBorder(new LineBorder(darkestBrown, 3));
 
-            panel.add(label);
-            panel.add(textArea);
+        panel.add(label);
+        panel.add(textArea);
 
         return panel;
 
@@ -288,17 +265,35 @@ public class DescriptionPanel extends JPanel implements AppTheme {
 
     }
 
+    private void createButtons(String[] options, DefaultButton[] buttons, String type) {
+
+        boolean tmp = type.equals("Alignment");
+
+        for (int i = 0; i < options.length; i++) {
+
+            buttons[i] = createButton(options[i], tmp, i);
+
+            if(i == 0) {
+
+                buttons[i].select();
+
+            }
+
+        }
+
+    }
+
     private DefaultButton createButton(String name, boolean isAlignmentElseBackground, int index) {
 
         DefaultButton button = new DefaultButton(name);
 
         if (isAlignmentElseBackground) {
 
-                button.addActionListener(e -> updateAlignmentButtons(index));
+            button.addActionListener(e -> updateAlignmentButtons(index));
 
         } else {
 
-                button.addActionListener(e -> updateBackgroundButtons(index));
+            button.addActionListener(e -> updateBackgroundButtons(index));
 
         }
 

@@ -3,7 +3,7 @@ package Tests;
 public class dndTestClient {
 
 
-	// Antiquated test, need to refactor for new project setup.
+    // Antiquated test, need to refactor for new project setup.
 /*	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 

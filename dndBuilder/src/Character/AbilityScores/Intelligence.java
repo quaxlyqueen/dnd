@@ -1,6 +1,6 @@
 package Character.AbilityScores;
 
-public class Intelligence extends Stats{
+public class Intelligence extends Stats {
 
     private int abilityScore;
     private int abilityScoreModifier;
@@ -30,7 +30,7 @@ public class Intelligence extends Stats{
 
     }
 
-// TODO: Need description.
+    // TODO: Need description.
     public String getDescription() {
 
         return "";
@@ -49,7 +49,7 @@ public class Intelligence extends Stats{
     public void increaseScore() {
 
         abilityScore++;
-        
+
     }
 
 }

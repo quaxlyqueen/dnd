@@ -1,6 +1,9 @@
 package GUI;
 
-import GUI.Panels.*;
+import GUI.Panels.BasicPanel;
+import GUI.Panels.ChooseAbilityScoresPanel;
+import GUI.Panels.DescriptionPanel;
+import GUI.Panels.MainMenuPanel;
 import Resources.CustomAssets.BasicNavPanel;
 import Resources.CustomAssets.DefaultButton;
 
@@ -10,17 +13,17 @@ import java.awt.*;
 public class GUImanager extends JFrame {
 
     private static JPanel[] panels;
-        private int lastPanel;
-        private int currentPanel;
-        private int nextPanel;
+    private int lastPanel;
+    private int currentPanel;
+    private int nextPanel;
 
 
     private String[] raceOptions;
     private String[] raceDescriptions;
     private String[] classOptions;
     private String[] classDescriptions;
-        private int raceChoice;
-        private int classChoice;
+    private int raceChoice;
+    private int classChoice;
 
     private String[] statOptions;
     private String[] statDescriptions;
@@ -32,28 +35,23 @@ public class GUImanager extends JFrame {
     private int[] selectedStats;
 
 
-
-    public GUImanager (boolean returningUser) {
+    public GUImanager(boolean returningUser) {
         super("D&D Character Builder");
         frameSetup();
-            setupPanelInfo();
-                this.panels = new JPanel[]{
-                        new MainMenuPanel(),
-                        new BasicPanel(createNavPanel(), raceOptions, raceDescriptions, "Step 1: Choose Your Race"), // To choose Race.
-                        new BasicPanel(createNavPanel(), classOptions, classDescriptions, "Step 2: Choose Your Class"), // To choose Class.
-                        new ChooseAbilityScoresPanel(createNavPanel(27), statOptions, statDescriptions, selectedStats, "Step 3: Choose Your Ability Scores"),
-                        new DescriptionPanel(createNavPanel(), characteristics, alignmentOptions, alignmentDescriptions, backgroundOptions, backgroundDescriptions, "Step 4: Describe your character")
-                };
+        setupPanelInfo();
+        this.panels = new JPanel[]{
+                new MainMenuPanel(createNewCharacterButton(), createRandomCharacterButton(), createLoadButton()),
+                new BasicPanel(createNavPanel(), raceOptions, raceDescriptions, "Step 1: Choose Your Race"), // To choose Race.
+                new BasicPanel(createNavPanel(), classOptions, classDescriptions, "Step 2: Choose Your Class"), // To choose Class.
+                new ChooseAbilityScoresPanel(createNavPanel(1), statOptions, statDescriptions, selectedStats, "Step 3: Choose Your Ability Scores"),
+                new DescriptionPanel(createNavPanel(), characteristics, alignmentOptions, alignmentDescriptions, backgroundOptions, backgroundDescriptions, "Step 4: Describe your character")
+        };
+/*
+        this.currentPanel = 0;
+        this.lastPanel = currentPanel - 1;
+        this.nextPanel = currentPanel + 1;*/
 
-                this.currentPanel = 4;
-                this.lastPanel = currentPanel - 1;
-                this.nextPanel = currentPanel + 1;
-
-/*                this.lastPanel = 0;
-                this.currentPanel = 1;
-                this.nextPanel = 2;*/
-
-/*            if (returningUser) {
+            if (returningUser) {
 
                 this.currentPanel = 0;
 
@@ -62,7 +60,6 @@ public class GUImanager extends JFrame {
                 this.currentPanel = 1;
 
             }
-*/
 
         add(panels[currentPanel]);
 
@@ -72,13 +69,13 @@ public class GUImanager extends JFrame {
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
-        setPreferredSize(new Dimension(750,550));
+        setPreferredSize(new Dimension(750, 550));
         setSize(getPreferredSize());
 //        setResizable(false);
         setLocationRelativeTo(null);
 
         try {
-            UIManager.setLookAndFeel( UIManager.getCrossPlatformLookAndFeelClassName() );
+            UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
         } catch (Exception e) {
             System.out.println("Error with cross platform look/feel in frameSetup().");
         }
@@ -113,7 +110,7 @@ public class GUImanager extends JFrame {
 
         };
 
-        classOptions = new String[] {
+        classOptions = new String[]{
 
                 "Artificer",
                 "Barbarian",
@@ -149,7 +146,7 @@ public class GUImanager extends JFrame {
 
         };
 
-        statOptions = new String[] {
+        statOptions = new String[]{
 
                 "Strength",
                 "Dexterity",
@@ -160,20 +157,20 @@ public class GUImanager extends JFrame {
 
         };
 
-        statDescriptions = new String[] {
+        statDescriptions = new String[]{
 
-              "Strength is a thing.",
-              "Dexterity is a thing",
-              "Constitution is a thing",
-              "Intelligence is a thing",
-              "Wisdom is a thing",
-              "Charisma is a thing"
+                "Strength is a thing.",
+                "Dexterity is a thing",
+                "Constitution is a thing",
+                "Intelligence is a thing",
+                "Wisdom is a thing",
+                "Charisma is a thing"
 
         };
 
-        selectedStats = new int[] {8, 8, 8, 8, 8, 8};
+        selectedStats = new int[]{8, 8, 8, 8, 8, 8};
 
-        characteristics = new String[] {
+        characteristics = new String[]{
 
                 "Name",
                 "Age",
@@ -184,7 +181,7 @@ public class GUImanager extends JFrame {
 
         };
 
-        alignmentOptions = new String[] {
+        alignmentOptions = new String[]{
 
                 "Lawful Good",
                 "Neutral Good",
@@ -198,7 +195,7 @@ public class GUImanager extends JFrame {
 
         };
 
-        alignmentDescriptions = new String[] {
+        alignmentDescriptions = new String[]{
 
                 "LG - need description",
                 "NG - need description",
@@ -212,7 +209,7 @@ public class GUImanager extends JFrame {
 
         };
 
-        backgroundOptions = new String[] {
+        backgroundOptions = new String[]{
 
                 "Acolyte",
                 "Charlatan",
@@ -235,7 +232,7 @@ public class GUImanager extends JFrame {
 
         };
 
-        backgroundDescriptions = new String[] {
+        backgroundDescriptions = new String[]{
 
                 "Acolyte - need description",
                 "Charlatan - need description",
@@ -275,7 +272,7 @@ public class GUImanager extends JFrame {
     private DefaultButton createBackButton() {
 
         DefaultButton button = new DefaultButton("Back");
-            button.addActionListener(
+        button.addActionListener(
 
                 e -> {
 
@@ -286,7 +283,7 @@ public class GUImanager extends JFrame {
 
                 }
 
-            );
+        );
 
         return button;
 
@@ -295,18 +292,27 @@ public class GUImanager extends JFrame {
     private DefaultButton createContinueButton() {
 
         DefaultButton button = new DefaultButton("Continue");
-            button.addActionListener(
+        button.addActionListener(
 
-                    e -> {
+                e -> {
 
-                        lastPanel++;
-                        currentPanel++;
-                        nextPanel++;
-                        clearAndReset();
+                    lastPanel++;
+                    currentPanel++;
+                    nextPanel++;
+                    clearAndReset();
 
-                    }
+                }
 
-            );
+        );
+
+        return button;
+
+    }
+
+    private DefaultButton createNewCharacterButton() {
+
+        DefaultButton button = createContinueButton();
+            button.setText("Create New Character");
 
         return button;
 
@@ -323,6 +329,27 @@ public class GUImanager extends JFrame {
                     createRandomCharacter();
 
                     lastPanel = currentPanel;
+                    currentPanel = 3;
+                    nextPanel = currentPanel + 1;
+                    clearAndReset();
+
+                }
+
+        );
+
+        return button;
+
+    }
+
+    // TODO: Need to implement with exact indices and file manager logic.
+    private DefaultButton createSaveButton() {
+
+        DefaultButton button = new DefaultButton("Save");
+        button.addActionListener(
+
+                e -> {
+
+                    lastPanel = currentPanel;
                     currentPanel = 6;
                     nextPanel = currentPanel + 1;
                     clearAndReset();
@@ -335,20 +362,19 @@ public class GUImanager extends JFrame {
 
     }
 
-    // TODO: Need to implement.
-    private DefaultButton createSaveButton() {
+    private DefaultButton createLoadButton() {
 
-        DefaultButton button = new DefaultButton("Save");
+        DefaultButton button = new DefaultButton("Load");
         button.addActionListener(
 
-            e -> {
+                e -> {
 
-                lastPanel = currentPanel;
-                currentPanel = 6;
-                nextPanel = currentPanel + 1;
-                clearAndReset();
+                    lastPanel = currentPanel;
+                    currentPanel = 3;
+                    nextPanel = currentPanel + 1;
+                    clearAndReset();
 
-            }
+                }
 
         );
 
@@ -356,10 +382,10 @@ public class GUImanager extends JFrame {
 
     }
 
-    // TODO: Need to implement.
+    // TODO: Need to implement random character creation.
     private void createRandomCharacter() {
 
-
+        System.out.println("Request to create random character. Need to implement.");
 
     }
 

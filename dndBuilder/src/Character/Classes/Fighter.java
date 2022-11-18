@@ -1,6 +1,6 @@
 package Character.Classes;
 
-import Character.AbilityScores.*;
+import Character.AbilityScores.Stats;
 
 public class Fighter implements ClassTemplate {
 
@@ -8,11 +8,10 @@ public class Fighter implements ClassTemplate {
 
     private int level;
 
-// TODO: This should be the type of die.
+    // TODO: This should be the type of die.
     private int hitDie;
 
     public Fighter(Stats[] stats, int level) {
-
 
 
     }

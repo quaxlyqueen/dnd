@@ -1,17 +1,17 @@
 package Character.Classes;
 
-import Character.AbilityScores.*;
+import Character.AbilityScores.Stats;
+
 public class Wizard implements ClassTemplate {
 
     private int HP;
 
     private int level;
 
-// TODO: This should be the type of die.
+    // TODO: This should be the type of die.
     private int hitDie;
 
     public Wizard(Stats[] stats, int level) {
-
 
 
     }

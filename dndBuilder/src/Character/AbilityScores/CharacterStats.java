@@ -10,17 +10,17 @@ public class CharacterStats {
 
     }
 
-// TODO: Need to implement constructor, validates all proposed ability scores and creates new objects containing corresponding values.
+    // TODO: Need to implement constructor, validates all proposed ability scores and creates new objects containing corresponding values.
     public CharacterStats(int str, int dex, int con, int intel, int wis, int cha) {
 
         this.stats = new Stats[]{
 
-            new Strength(str),
-            new Dexterity(dex),
-            new Constitution(con),
-            new Intelligence(intel),
-            new Wisdom(wis),
-            new Charisma(cha)
+                new Strength(str),
+                new Dexterity(dex),
+                new Constitution(con),
+                new Intelligence(intel),
+                new Wisdom(wis),
+                new Charisma(cha)
 
         };
 
@@ -32,7 +32,7 @@ public class CharacterStats {
 
     }
 
-// TODO: Need to implement ability score validation.
+    // TODO: Need to implement ability score validation.
     public boolean validateAbilityScore(int abilityScore) {
 
         return false;
@@ -46,12 +46,10 @@ public class CharacterStats {
     }
 
     /**
-     *
      * Allows for access to a particular stat.
      *
-     * @param  index
+     * @param index
      * @return a specific stat
-     *
      */
     public Stats getStats(int index) {
 
@@ -70,7 +68,7 @@ public class CharacterStats {
 
         String statsString = "";
 
-        for(int i = 0; i < stats.length; i++) {
+        for (int i = 0; i < stats.length; i++) {
 
             statsString = statsString.concat(stats[i].getClass().getSimpleName() + ": " + stats[i].getScore() + " | ");
 

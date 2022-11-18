@@ -14,8 +14,8 @@ public class DefaultButton extends JButton implements AppTheme {
     public DefaultButton(String buttonLabel) {
 
         super(buttonLabel);
-            applyDefaultButtonStyle();
-            applyCommon();
+        applyDefaultButtonStyle();
+        applyCommon();
 
     }
 
@@ -42,23 +42,32 @@ public class DefaultButton extends JButton implements AppTheme {
 
     private void applyFocusedButtonStyle() {
 
-            setBackground(darkestBrown);
-            setForeground(lightAccent);
+        setBackground(darkestBrown);
+        setForeground(lightAccent);
 
     }
 
     private void applyCommon() {
 
         addMouseListener(
-            new MouseListener() {
+                new MouseListener() {
                     @Override
-                    public void mouseClicked(MouseEvent e) {}
+                    public void mouseClicked(MouseEvent e) {
+                    }
+
                     @Override
-                    public void mousePressed(MouseEvent e) {}
+                    public void mousePressed(MouseEvent e) {
+                    }
+
                     @Override
-                    public void mouseReleased(MouseEvent e) {}
+                    public void mouseReleased(MouseEvent e) {
+                    }
+
                     @Override
-                    public void mouseEntered(MouseEvent e) { applyFocusedButtonStyle(); }
+                    public void mouseEntered(MouseEvent e) {
+                        applyFocusedButtonStyle();
+                    }
+
                     @Override
                     public void mouseExited(MouseEvent e) {
 
@@ -81,7 +90,6 @@ public class DefaultButton extends JButton implements AppTheme {
         revalidate();
 
     }
-
 
 
 }

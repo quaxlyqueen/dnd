@@ -42,7 +42,7 @@ public class ImageInfoPanel extends InfoPanel implements AppTheme {
 
         }*/
 
-                lastIndex = newIndex;
+        lastIndex = newIndex;
 
         return newIndex;
 
@@ -52,7 +52,7 @@ public class ImageInfoPanel extends InfoPanel implements AppTheme {
 
         String category = "";
 
-        if(panelIndex == 1) {
+        if (panelIndex == 1) {
 
             category = "Races";
 
@@ -68,7 +68,7 @@ public class ImageInfoPanel extends InfoPanel implements AppTheme {
 
             File imagesDir;
 
-            if(OS.startsWith("Windows")) {
+            if (OS.startsWith("Windows")) {
 
                 imagesDir = new File("dndBuilder\\src\\Resources\\Img\\" + category + "\\" + categoryHolder[i].toLowerCase() + "\\");
 
@@ -78,7 +78,7 @@ public class ImageInfoPanel extends InfoPanel implements AppTheme {
 
             } else if (OS.startsWith("Linux")) {
 
-                imagesDir = new File("dndBuilder/src/Resources/Img/" + category + "/"  + categoryHolder[i].toLowerCase() + "/");
+                imagesDir = new File("dndBuilder/src/Resources/Img/" + category + "/" + categoryHolder[i].toLowerCase() + "/");
 
             } else {
 
@@ -125,7 +125,7 @@ public class ImageInfoPanel extends InfoPanel implements AppTheme {
 
         }
 
-        if(Objects.isNull(finalImg)) {
+        if (Objects.isNull(finalImg)) {
 
             picture = new JLabel("ERROR: Image not found.");
 

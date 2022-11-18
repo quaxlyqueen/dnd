@@ -2,21 +2,21 @@ package Character.Races;
 
 public interface Race {
 
-	String getRace();
+    String getRace();
 
-	int maxAge();
+    int maxAge();
 
-	int getSpeed();
+    int getSpeed();
 
-	String[] getTraits();
+    String[] getTraits();
 
-	String[] getSkills();
+    String[] getSkills();
 
-	String[] getLanguages();
+    String[] getLanguages();
 
-	String[] getProficiencies();
+    String[] getProficiencies();
 
-	int[] getASI();
+    int[] getASI();
 
 // 	private ArrayList<String> traits;
 // 	private ArrayList<String> skills;
@@ -42,7 +42,6 @@ public interface Race {
 // 		this.laugnuage = laugnuage;
 // 		this.proficiencies = proficiencies;
 // 	}
-
 
 
 }

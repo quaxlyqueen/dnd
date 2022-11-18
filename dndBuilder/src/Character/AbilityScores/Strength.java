@@ -61,7 +61,7 @@ public class Strength extends Stats {
     public void increaseScore() {
 
         abilityScore++;
-        
+
     }
 
 }

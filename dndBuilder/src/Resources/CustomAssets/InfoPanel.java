@@ -2,14 +2,9 @@ package Resources.CustomAssets;
 
 import GUI.AppTheme;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.util.Objects;
-import java.util.Random;
 
 public class InfoPanel extends JPanel implements AppTheme {
 
@@ -22,14 +17,14 @@ public class InfoPanel extends JPanel implements AppTheme {
     public InfoPanel(String[] categoryHolder, String[] holderDescriptions, Rectangle[] bounds, int panelIndex) {
 
         super();
-            this.categoryHolder = categoryHolder;
-            this.holderDescriptions = holderDescriptions;
-            this.bounds = bounds;
-            this.panelIndex = panelIndex;
+        this.categoryHolder = categoryHolder;
+        this.holderDescriptions = holderDescriptions;
+        this.bounds = bounds;
+        this.panelIndex = panelIndex;
 
-            panelSetup();
+        panelSetup();
 
-            createDescriptions();
+        createDescriptions();
 
     }
 
@@ -63,13 +58,13 @@ public class InfoPanel extends JPanel implements AppTheme {
         setLayout(null);
 
         JLabel subHeader = new JLabel("Description");
-            subHeader.setFont(subHeaderFont);
-            subHeader.setHorizontalAlignment(SwingConstants.LEFT);
-            subHeader.setBounds(bounds[1]);
-            subHeader.setForeground(darkestBrown);
+        subHeader.setFont(subHeaderFont);
+        subHeader.setHorizontalAlignment(SwingConstants.LEFT);
+        subHeader.setBounds(bounds[1]);
+        subHeader.setForeground(darkestBrown);
 
         add(subHeader);
-        
+
     }
 
     private void createDescriptions() {
@@ -79,17 +74,17 @@ public class InfoPanel extends JPanel implements AppTheme {
         for (int i = 0; i < holderDescriptions.length; i++) {
 
             JTextArea tmpDesc = new JTextArea();
-                tmpDesc.setText(holderDescriptions[i]);
-                tmpDesc.setWrapStyleWord(true);
-                tmpDesc.setLineWrap(true);
-                tmpDesc.setOpaque(true);
-                tmpDesc.setEditable(false);
-                tmpDesc.setFocusable(false);
-                tmpDesc.setFont(paragraphFont);
-                tmpDesc.setBounds(bounds[2]);
-                tmpDesc.setBorder(new EmptyBorder(5, 5, 5, 5));
-                tmpDesc.setBackground(medBrown);
-                tmpDesc.setForeground(darkestBrown);
+            tmpDesc.setText(holderDescriptions[i]);
+            tmpDesc.setWrapStyleWord(true);
+            tmpDesc.setLineWrap(true);
+            tmpDesc.setOpaque(true);
+            tmpDesc.setEditable(false);
+            tmpDesc.setFocusable(false);
+            tmpDesc.setFont(paragraphFont);
+            tmpDesc.setBounds(bounds[2]);
+            tmpDesc.setBorder(new EmptyBorder(5, 5, 5, 5));
+            tmpDesc.setBackground(medBrown);
+            tmpDesc.setForeground(darkestBrown);
 
             descriptions[i] = tmpDesc;
 
