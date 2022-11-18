@@ -1,12 +1,11 @@
 package GUI;
 
 import GUI.Panels.*;
-import GUI.Panels.SubPanels.NavPanel;
+import Resources.CustomAssets.BasicNavPanel;
 import Resources.CustomAssets.DefaultButton;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 
 public class GUImanager extends JFrame {
 
@@ -25,6 +24,11 @@ public class GUImanager extends JFrame {
 
     private String[] statOptions;
     private String[] statDescriptions;
+    private String[] characteristics;
+    private String[] alignmentOptions;
+    private String[] alignmentDescriptions;
+    private String[] backgroundOptions;
+    private String[] backgroundDescriptions;
     private int[] selectedStats;
 
 
@@ -37,10 +41,11 @@ public class GUImanager extends JFrame {
                         new MainMenuPanel(),
                         new BasicPanel(createNavPanel(), raceOptions, raceDescriptions, "Step 1: Choose Your Race"), // To choose Race.
                         new BasicPanel(createNavPanel(), classOptions, classDescriptions, "Step 2: Choose Your Class"), // To choose Class.
-                        new ChooseAbilityScoresPanel(createNavPanel(27), statOptions, statDescriptions, selectedStats, "Step 3: Choose Your Ability Scores")
+                        new ChooseAbilityScoresPanel(createNavPanel(27), statOptions, statDescriptions, selectedStats, "Step 3: Choose Your Ability Scores"),
+                        new DescriptionPanel(createNavPanel(), characteristics, alignmentOptions, alignmentDescriptions, backgroundOptions, backgroundDescriptions, "Step 4: Describe your character")
                 };
 
-                this.currentPanel = 3;
+                this.currentPanel = 4;
                 this.lastPanel = currentPanel - 1;
                 this.nextPanel = currentPanel + 1;
 
@@ -69,7 +74,7 @@ public class GUImanager extends JFrame {
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(750,550));
         setSize(getPreferredSize());
-        setResizable(false);
+//        setResizable(false);
         setLocationRelativeTo(null);
 
         try {
@@ -157,28 +162,113 @@ public class GUImanager extends JFrame {
 
         statDescriptions = new String[] {
 
-          "Strength is a thing.",
-          "Dexterity is a thing",
-          "Constitution is a thing",
-          "Intelligence is a thing",
-          "Wisdom is a thing",
-          "Charisma is a thing"
+              "Strength is a thing.",
+              "Dexterity is a thing",
+              "Constitution is a thing",
+              "Intelligence is a thing",
+              "Wisdom is a thing",
+              "Charisma is a thing"
 
         };
 
         selectedStats = new int[] {8, 8, 8, 8, 8, 8};
 
+        characteristics = new String[] {
+
+                "Name",
+                "Age",
+                "Height",
+                "Weight",
+                "Eyes",
+                "Hair"
+
+        };
+
+        alignmentOptions = new String[] {
+
+                "Lawful Good",
+                "Neutral Good",
+                "Chaotic Good",
+                "Lawful Neutral",
+                "True Neutral",
+                "Chaotic Neutral",
+                "Lawful Evil",
+                "Neutral Evil",
+                "Chaotic Evil"
+
+        };
+
+        alignmentDescriptions = new String[] {
+
+                "LG - need description",
+                "NG - need description",
+                "cg - need description",
+                "ln - need description",
+                "tn - need description",
+                "cn - need description",
+                "le - need description",
+                "ne - need description",
+                "ce - need description"
+
+        };
+
+        backgroundOptions = new String[] {
+
+                "Acolyte",
+                "Charlatan",
+                "Criminal",
+                "Entertainer",
+                "Folk Hero",
+                "Gladiator",
+                "Guild Artisan",
+                "Guild Merchant",
+                "Hermit",
+                "Knight",
+                "Noble",
+                "Outlander",
+                "Pirate",
+                "Sage",
+                "Sailor",
+                "Soldier",
+                "Spy",
+                "Urchin"
+
+        };
+
+        backgroundDescriptions = new String[] {
+
+                "Acolyte - need description",
+                "Charlatan - need description",
+                "Criminal - need description",
+                "Entertainer - need description",
+                "Folk Hero - need description",
+                "Gladiator - need description",
+                "Guild Artisan - need description",
+                "Guild Merchant - need description",
+                "Hermit - need description",
+                "Knight - need description",
+                "Noble - need description",
+                "Outlander - need description",
+                "Pirate - need description",
+                "Sage - need description",
+                "Sailor - need description",
+                "Soldier - need description",
+                "Spy - need description",
+                "Urchin - need description"
+
+        };
+
     }
 
-    private NavPanel createNavPanel() {
+    private BasicNavPanel createNavPanel() {
 
-        return new NavPanel(createBackButton(), createContinueButton(), 0);
+        return new BasicNavPanel(createBackButton(), createContinueButton(), 0);
 
     }
 
-    private NavPanel createNavPanel(int continueRequirement) {
+    private BasicNavPanel createNavPanel(int continueRequirement) {
 
-        return new NavPanel(createBackButton(), createContinueButton(), continueRequirement);
+        return new BasicNavPanel(createBackButton(), createContinueButton(), continueRequirement);
 
     }
 

@@ -1,4 +1,4 @@
-package GUI.Panels.SubPanels;
+package Resources.CustomAssets;
 
 import GUI.AppTheme;
 

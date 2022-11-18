@@ -1,21 +1,19 @@
-package GUI.Panels.SubPanels;
+package Resources.CustomAssets;
 
 import GUI.AppTheme;
-import Resources.CustomAssets.DefaultButton;
 
-import javax.sound.sampled.Line;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 
-public class NavPanel extends JPanel implements AppTheme {
+public class BasicNavPanel extends JPanel implements AppTheme {
 
     private DefaultButton backButton;
     private DefaultButton continueButton;
     private int continueRequirement;
 
-    public NavPanel(DefaultButton backButton, DefaultButton continueButton, int continueRequirement) {
+    public BasicNavPanel(DefaultButton backButton, DefaultButton continueButton, int continueRequirement) {
 
         super(new GridLayout(1, 2, 30, 0));
             this.backButton = backButton;

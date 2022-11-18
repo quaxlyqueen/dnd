@@ -22,6 +22,7 @@ public interface AppTheme {
     public Font subHeaderFont = new Font("SanSalvi", Font.PLAIN, 35);
 
     public Font paragraphFont = new Font("SanSalvi", Font.PLAIN, 20);
+    public Font userTextFont = new Font("SanSalvi", Font.PLAIN, 15);
     public Font buttonFont = new Font("SanSalvi", Font.PLAIN, 15);
 
     public String OS = System.getProperty("os.name");

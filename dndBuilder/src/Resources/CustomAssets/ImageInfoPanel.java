@@ -1,7 +1,6 @@
-package GUI.Panels.SubPanels;
+package Resources.CustomAssets;
 
 import GUI.AppTheme;
-import org.w3c.dom.css.Rect;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

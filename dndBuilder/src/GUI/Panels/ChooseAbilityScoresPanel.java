@@ -1,12 +1,11 @@
 package GUI.Panels;
 
 import GUI.AppTheme;
-import GUI.Panels.SubPanels.InfoPanel;
-import GUI.Panels.SubPanels.NavPanel;
+import Resources.CustomAssets.InfoPanel;
+import Resources.CustomAssets.BasicNavPanel;
 import Resources.CustomAssets.DefaultButton;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 
@@ -16,11 +15,11 @@ public class ChooseAbilityScoresPanel extends JPanel implements AppTheme {
 	private JLabel[] statLabels;
 	private String[] statOptions;
 	private InfoPanel infoPanel;
-	private NavPanel navPanel;
+	private BasicNavPanel basicNavPanel;
 	private int[] selectedStats;
 	private int selectedStatIndex;
 
-	public ChooseAbilityScoresPanel(NavPanel navPanel, String[] statOptions, String[] statDescriptions, int[] selectedStats, String panelTitle) {
+	public ChooseAbilityScoresPanel(BasicNavPanel basicNavPanel, String[] statOptions, String[] statDescriptions, int[] selectedStats, String panelTitle) {
 
 		super();
 			panelSetup();
@@ -28,7 +27,7 @@ public class ChooseAbilityScoresPanel extends JPanel implements AppTheme {
 			this.selectedStats = selectedStats;
 			this.statInfoButtons = new DefaultButton[statOptions.length];
 			statLabels = new JLabel[statOptions.length];
-			this.navPanel = navPanel;
+			this.basicNavPanel = basicNavPanel;
 
 			Rectangle[] abilityScoreBounds = {
 
@@ -42,7 +41,7 @@ public class ChooseAbilityScoresPanel extends JPanel implements AppTheme {
 					infoPanel.updateInfo(0); // Default start with 0th element.
 
 		createMasterPanel(panelTitle);
-		add(navPanel, BorderLayout.SOUTH);
+		add(basicNavPanel, BorderLayout.SOUTH);
 
 	}
 
@@ -197,12 +196,12 @@ public class ChooseAbilityScoresPanel extends JPanel implements AppTheme {
 
 		}
 
-		if(navPanel.getContinueRequirement() - value >= 0) {
+		if(basicNavPanel.getContinueRequirement() - value >= 0) {
 
 			selectedStats[statIndex]++;
 			statLabels[statIndex].setText("" + selectedStats[statIndex]);
 
-			navPanel.decreaseContinueRequirement(value);
+			basicNavPanel.decreaseContinueRequirement(value);
 
 		}
 
@@ -218,12 +217,12 @@ public class ChooseAbilityScoresPanel extends JPanel implements AppTheme {
 
 		}
 
-		if(navPanel.getContinueRequirement() + value <= 27) {
+		if(basicNavPanel.getContinueRequirement() + value <= 27) {
 
 			selectedStats[statIndex]--;
 			statLabels[statIndex].setText("" + selectedStats[statIndex]);
 
-			navPanel.increaseContinueRequirement(value);
+			basicNavPanel.increaseContinueRequirement(value);
 
 		}
 

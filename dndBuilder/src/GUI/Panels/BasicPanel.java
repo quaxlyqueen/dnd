@@ -1,13 +1,11 @@
 package GUI.Panels;
 
 import GUI.AppTheme;
-import GUI.Panels.SubPanels.*;
 import Resources.CustomAssets.*;
 
 import java.awt.*;
 
 import javax.swing.*;
-import javax.swing.border.*;
 
 public class BasicPanel extends JPanel implements AppTheme {
 
