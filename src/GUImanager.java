@@ -34,7 +34,7 @@ public class GUImanager extends JFrame {
                 new MainMenuPanel(createNewCharacterButton(), createRandomCharacterButton(), createLoadButton()),
                 new BasicPanel(createNavPanel(), raceOptions, raceDescriptions, "Step 1: Choose Your Race"), // To choose Race.
                 new BasicPanel(createNavPanel(), classOptions, classDescriptions, "Step 2: Choose Your Class"), // To choose Class.
-                new ChooseAbilityScoresPanel(createNavPanel(1), statOptions, statDescriptions, selectedStats, "Step 3: Choose Your Ability Scores"),
+                new ChooseAbilityScoresPanel(createNavPanel(27), statOptions, statDescriptions, selectedStats, "Step 3: Choose Your Ability Scores"),
                 new DescriptionPanel(createNavPanel(), characteristics, alignmentOptions, alignmentDescriptions, backgroundOptions, backgroundDescriptions, "Step 4: Describe your character")
         };
 /*
