@@ -1,3 +1,5 @@
+package src;
+
 import java.io.Serializable;
 
 public class Strength extends Stats implements Serializable {

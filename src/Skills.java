@@ -1,3 +1,5 @@
+package src;
+
 /**
  * Object stores information about a character's skills arrays. Firstly, the name of each skill, and secondly the value of each skill. When constructed, a private method is called
  * which adds any proficiency bonus to each skill and then adds the ability score modifier to each skill.

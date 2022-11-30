@@ -1,22 +1,38 @@
+package src;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
-public class InfoPanel extends JPanel implements AppTheme {
+import static src.AppConstants.*;
+
+public class InfoPanel extends JPanel {
 
     protected JTextArea[] descriptions;
     protected Rectangle[] bounds;
     protected String[] holderDescriptions;
     protected String[] categoryHolder;
-    protected int panelIndex;
+    protected ImageManager images;
 
-    public InfoPanel(String[] categoryHolder, String[] holderDescriptions, Rectangle[] bounds, int panelIndex) {
+    public InfoPanel(String[] categoryHolder, String[] holderDescriptions, Rectangle[] bounds) {
 
         super();
         this.categoryHolder = categoryHolder;
         this.holderDescriptions = holderDescriptions;
         this.bounds = bounds;
-        this.panelIndex = panelIndex;
+
+        panelSetup();
+
+        createDescriptions();
+
+    }
+
+    public InfoPanel(String[] categoryHolder, String[] holderDescriptions, Rectangle[] bounds, ImageManager images) {
+
+        super();
+            this.categoryHolder = categoryHolder;
+            this.holderDescriptions = holderDescriptions;
+            this.bounds = bounds;
 
         panelSetup();
 
@@ -76,7 +92,7 @@ public class InfoPanel extends JPanel implements AppTheme {
             tmpDesc.setOpaque(true);
             tmpDesc.setEditable(false);
             tmpDesc.setFocusable(false);
-            tmpDesc.setFont(paragraphFont);
+            tmpDesc.setFont(paragraphText);
             tmpDesc.setBounds(bounds[2]);
             tmpDesc.setBorder(new EmptyBorder(5, 5, 5, 5));
             tmpDesc.setBackground(medBrown);

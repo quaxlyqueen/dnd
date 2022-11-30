@@ -1,3 +1,5 @@
+package src;
+
 public class Human implements Race {
 
     private final int speed = 30;

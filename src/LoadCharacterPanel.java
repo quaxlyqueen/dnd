@@ -1,8 +1,12 @@
+package src;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;
 
-public class LoadCharacterPanel extends JPanel implements AppTheme {
+import static src.AppConstants.*;
+
+public class LoadCharacterPanel extends JPanel {
 
     private ArrayList<DefaultButton> savedCharacters;
 

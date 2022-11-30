@@ -1,9 +1,13 @@
+package src;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 
-public class BasicNavPanel extends JPanel implements AppTheme {
+import static src.AppConstants.*;
+
+public class BasicNavPanel extends JPanel {
 
     private DefaultButton backButton;
     private DefaultButton continueButton;

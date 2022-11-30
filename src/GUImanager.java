@@ -1,6 +1,10 @@
+package src;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;
+
+import src.AppConstants.*;
 
 public class GUImanager extends JFrame {
 

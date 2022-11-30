@@ -1,3 +1,5 @@
+package src;
+
 import java.io.Serializable;
 
 public class Wisdom extends Stats implements Serializable {

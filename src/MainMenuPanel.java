@@ -1,3 +1,5 @@
+package src;
+
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
@@ -5,7 +7,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MainMenuPanel extends JPanel implements AppTheme {
+import static src.AppConstants.*;
+
+public class MainMenuPanel extends JPanel {
 
     private DefaultButton newCharacter;
     private DefaultButton randomCharacter;

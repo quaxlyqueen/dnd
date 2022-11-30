@@ -1,6 +1,10 @@
+package src;
+
 import java.awt.*;
 import java.io.*;
 import java.util.*;
+
+import static src.AppConstants.*;
 
 public class FileManager {
 
@@ -12,8 +16,6 @@ public class FileManager {
 
     public FileManager() {
 
-        filepath = System.getProperty("user.dir");
-
         saveFiles = new ArrayList<>();
 
         setSaveFiles();
@@ -22,11 +24,11 @@ public class FileManager {
 
     } 
 
-   public String getOSFilepath() {
+    public int getNumSaves() {
 
-       return filepath;
+        return saveFiles.size();
 
-   }
+    }
 
    public boolean isReturningUser() {
 
@@ -63,11 +65,11 @@ public class FileManager {
 
            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 
-           ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File(filepath + "/.resources/SanSalvi.ttf")));
+           ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File(fontFilepath)));
            
        } catch(IOException | FontFormatException e) {
 
-           System.out.println("Filepath of font not found: " + filepath + "/.resources/SanSalvi.ttf does not exist.");
+           System.out.println("Filepath of font not found: " + fontFilepath + " does not exist.");
 
        }
 
@@ -75,7 +77,7 @@ public class FileManager {
 
    private void setSaveFiles() {
 
-       File[] tmp = new File(filepath + "/.savedSheets/").listFiles();
+       File[] tmp = new File(savesFilepath).listFiles();
 
        if(tmp != null) {
 
@@ -107,8 +109,6 @@ public class FileManager {
 
        CharacterSheet sheet = null;
 
-       System.out.println("filepath: " + file.getPath());
-
        try {
 
            FileInputStream fileIn = new FileInputStream(file.getPath());
@@ -134,19 +134,15 @@ public class FileManager {
 
        try(
 
-               FileOutputStream fileOut = new FileOutputStream(filepath + "/.savedSheets/" + sheet.getName() + ".dnd");
+               FileOutputStream fileOut = new FileOutputStream(savesFilepath + sheet.getName() + ".dnd");
 
                ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
 
           ) {
 
-           System.out.println("Inside saving char method.");
-
            objOut.writeObject(sheet);
 
            setSaveFiles();
-
-System.out.println("Object written to file.");
 
        } catch (IOException e) {
 

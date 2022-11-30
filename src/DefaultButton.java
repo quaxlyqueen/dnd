@@ -1,9 +1,13 @@
+package src;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class DefaultButton extends JButton implements AppTheme {
+import static src.AppConstants.*;
+
+public class DefaultButton extends JButton {
 
     private boolean selected;
 

@@ -1,3 +1,5 @@
+package src;
+
 public class Cleric implements ClassTemplate {
 
     private int HP;

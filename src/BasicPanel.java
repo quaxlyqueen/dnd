@@ -1,13 +1,20 @@
+package src;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class BasicPanel extends JPanel implements AppTheme {
+import static src.AppConstants.*;
+import static src.ImageManager.*;
+
+public class BasicPanel extends JPanel {
 
     private DefaultButton[] optionButtons;
     private String[] options;
-    private ImageInfoPanel infoPanel;
+    private InfoPanel infoPanel;
     private int choiceIndex;
     private String panelTitle;
+    private ImageManager images;
+    private int currentPanel;
 
     public BasicPanel(JPanel navPanel, String[] options, String[] descriptions, String panelTitle) {
 
@@ -24,14 +31,41 @@ public class BasicPanel extends JPanel implements AppTheme {
 
         };
 
-        this.infoPanel = new ImageInfoPanel(options, descriptions, basicBounds, Integer.parseInt(Character.toString(panelTitle.charAt(5))));
-        infoPanel.updateInfo(0); // Default start with 0th element.
+        images = new ImageManager();
+
+        infoPanel = new InfoPanel(options, descriptions, basicBounds, images); 
+
+        currentPanel = Integer.parseInt(Character.toString(panelTitle.charAt(5)));
+
+        infoPanel.updateInfo(0, getNextPortrait(0));
 
         choiceIndex = 0;
 
         panelSetup();
         createMasterPanel();
         add(navPanel, BorderLayout.SOUTH);
+
+    }
+
+    private JLabel getNextPortrait(int index) {
+
+        JLabel nextPortrait;
+
+        if(currentPanel == 1) {
+
+            nextPortrait = images.getRacePortrait(index);
+
+        } else if(currentPanel == 2) {
+
+            nextPortrait = images.getClassPortrait(index);
+
+        } else {
+
+            nextPortrait = null;
+
+        } 
+
+        return nextPortrait;
 
     }
 
@@ -108,7 +142,16 @@ public class BasicPanel extends JPanel implements AppTheme {
         optionButtons[newIndex].select();
 
         choiceIndex = newIndex;
-        infoPanel.updateInfo(choiceIndex);
+
+        if(currentPanel == 1 || currentPanel == 2) {
+
+            infoPanel.updateInfo(choiceIndex, getNextPortrait(choiceIndex));
+
+        } else {
+
+            infoPanel.updateInfo(choiceIndex);
+
+        }
 
     }
 

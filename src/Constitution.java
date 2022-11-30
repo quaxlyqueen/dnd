@@ -1,3 +1,5 @@
+package src;
+
 import java.io.Serializable;
 
 public class Constitution extends Stats implements Serializable {
