@@ -1,115 +1,163 @@
 import java.awt.*;
 import java.io.*;
+import java.util.*;
 
 public class FileManager {
 
-    private File[] savedCharacters;
+    private String filepath;
+    private boolean returningUser;
+
+    private ArrayList<File> saveFiles;
+    private ArrayList<CharacterSheet> saves;
 
     public FileManager() {
 
-        findSavedCharacters();
+        filepath = System.getProperty("user.dir");
 
-        loadFonts();
+        saveFiles = new ArrayList<>();
 
-    }
+        setSaveFiles();
 
-    private void loadFonts() {
+        loadFont();
 
-        try {
-            GraphicsEnvironment ge =
-                    GraphicsEnvironment.getLocalGraphicsEnvironment();
-            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("SanSalvi.ttf")));
-        } catch (IOException | FontFormatException e) {
-            //Handle exception
-            System.out.println("Error finding font.");
-        }
+    } 
 
-    }
+   public String getOSFilepath() {
 
-    public boolean isReturninguser() {
+       return filepath;
 
-        if (savedCharacters == null) {
+   }
 
-            return false;
+   public boolean isReturningUser() {
 
-        }
+       return returningUser;
 
-        return savedCharacters.length > 0;
+   }
 
-    }
+   public CharacterSheet readSavedCharacter(int index) {
 
-    public CharacterSheet readCharacter(int index) {
+       return readCharacter(saveFiles.get(index)); 
 
-        CharacterSheet sheet = null;
+   }
 
-        try {
+   public void saveCharacter(CharacterSheet completedCharacter) {
 
-            FileInputStream fileIn = new FileInputStream("/dndBuilder/" + savedCharacters[index].getPath() + ".dnd");
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-            sheet = (CharacterSheet) in.readObject();
-            in.close();
-            fileIn.close();
+       writeCharacter(completedCharacter);
 
-        } catch (IOException i) {
+   }
 
-            i.printStackTrace();
+   public ArrayList<CharacterSheet> getSaves() {
 
-        } catch (ClassNotFoundException c) {
+       return saves;
 
-            System.out.println("Saved characters not found");
-            c.printStackTrace();
+   }
 
-        }
+   // TODO: Need to implement.
+   public void deleteCharacter() {
 
-        return sheet;
+   }
 
-    }
+   private void loadFont() {
 
-    public void saveCharacter(CharacterSheet completedCharacter) {
+       try {
 
-        try {
+           GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 
-            FileOutputStream fileOut =
-                    new FileOutputStream("/dndBuilder/" + completedCharacter.getName().hashCode() + ".dnd");
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(completedCharacter);
-            out.close();
-            fileOut.close();
+           ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File(filepath + "/.resources/SanSalvi.ttf")));
+           
+       } catch(IOException | FontFormatException e) {
 
-        } catch (IOException i) {
+           System.out.println("Filepath of font not found: " + filepath + "/.resources/SanSalvi.ttf does not exist.");
 
-            i.printStackTrace();
+       }
 
-        }
+   }
 
-        findSavedCharacters();
+   private void setSaveFiles() {
 
-    }
+       File[] tmp = new File(filepath + "/.savedSheets/").listFiles();
 
-    public void deleteCharacter(int index) {
+       if(tmp != null) {
 
-        File[] tmp = new File[savedCharacters.length - 1];
+           for(int i = 0; i < tmp.length; i++) {
 
-        for (int i = 0; i < savedCharacters.length; i++) {
+               saveFiles.add(tmp[i]);
 
-            if (i != index) {
+           }
 
-                tmp[i] = savedCharacters[i];
+           returningUser = true;
 
-            }
+       } else {
 
-        }
+           returningUser = false;
 
-        savedCharacters = tmp;
+       } 
 
-        findSavedCharacters();
+       saves = new ArrayList<>();
 
-    }
+       for(File file : saveFiles) {
 
-    private void findSavedCharacters() {
+           saves.add(readCharacter(file));
 
-        savedCharacters = new File("/dndBuilder").listFiles();
+       }
 
-    }
+   }
+
+   private CharacterSheet readCharacter(File file) {
+
+       CharacterSheet sheet = null;
+
+       System.out.println("filepath: " + file.getPath());
+
+       try {
+
+           FileInputStream fileIn = new FileInputStream(file.getPath());
+
+           ObjectInputStream in = new ObjectInputStream(fileIn);
+
+           sheet = (CharacterSheet) in.readObject();
+
+           in.close();
+           fileIn.close();
+
+       } catch (IOException | ClassNotFoundException e) {
+
+           System.out.println("No saved characters were found");
+
+       }
+
+       return sheet;
+
+   }
+
+   private void writeCharacter(CharacterSheet sheet) {
+
+       try(
+
+               FileOutputStream fileOut = new FileOutputStream(filepath + "/.savedSheets/" + sheet.getName() + ".dnd");
+
+               ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
+
+          ) {
+
+           System.out.println("Inside saving char method.");
+
+           objOut.writeObject(sheet);
+
+           setSaveFiles();
+
+System.out.println("Object written to file.");
+
+       } catch (IOException e) {
+
+           System.out.println("ERROR: ");
+
+           e.printStackTrace();
+
+           System.out.println("\nERROR: Unable to write character sheet object to \n" + filepath + "/.savedSheets");
+
+       }
+
+   }
 
 }

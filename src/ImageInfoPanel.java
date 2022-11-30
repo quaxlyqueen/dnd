@@ -11,6 +11,23 @@ public class ImageInfoPanel extends InfoPanel implements AppTheme {
     private JLabel[][] portraits;
     private int lastIndex;
 
+    //private JLabel[] savesPortraits;
+
+    //private int numSaveCharacters;
+
+// TODO: Need to implement
+/*
+    public ImageInfoPanel(int panelIndex, int numSaveCharacters) {
+
+        super(panelIndex);
+
+            this.numSaveCharacters = numSaveCharacters;
+            this.characterName = characterName;
+
+        createSavesPortraits();
+
+    }
+*/
     public ImageInfoPanel(String[] categoryHolder, String[] holderDescriptions, Rectangle[] bounds, int panelIndex) {
 
         super(categoryHolder, holderDescriptions, bounds, panelIndex);
@@ -43,6 +60,31 @@ public class ImageInfoPanel extends InfoPanel implements AppTheme {
 
     }
 
+ // TODO: Need to create a separate class/refactor ImageInfoPanel to be multi-purpose.   
+/*
+    private void createSavesPortraits() {
+
+        File imagesDir;
+
+        imagesDir = new File("Img/.savesPortraits").listFiles(); 
+
+        savesPortraits = new JLabel[imagesDir.length);
+
+        int index = 0;
+
+        for(File file : imagesDir) {
+
+            savesPortraits[index] = image(file);
+                savesPortraits[index].setOpaque(true);
+                savesPortraits[index].setBackground(lightBrown);
+                savesPortraits[index].setBounds(bounds[3]);
+
+            index++;
+
+        }
+
+    }
+*/
     private void createPortraits() {
 
         String category = "";

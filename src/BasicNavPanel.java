@@ -13,7 +13,16 @@ public class BasicNavPanel extends JPanel implements AppTheme {
 
         super(new GridLayout(1, 2, 30, 0));
         this.backButton = backButton;
-        this.continueButton = continueButton;
+
+        if(continueButton == null) {
+
+            this.continueButton = null;
+
+        } else {
+
+            this.continueButton = continueButton;
+
+        } 
 
         this.continueRequirement = continueRequirement;
         createNavPanel();
@@ -56,7 +65,11 @@ public class BasicNavPanel extends JPanel implements AppTheme {
 
         if (continueRequirement == 0) {
 
-            add(continueButton);
+            if(continueButton != null) {
+
+                add(continueButton);
+
+            }
 
         } else {
 

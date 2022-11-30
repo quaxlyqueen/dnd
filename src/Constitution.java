@@ -1,4 +1,6 @@
-public class Constitution extends Stats {
+import java.io.Serializable;
+
+public class Constitution extends Stats implements Serializable {
 
     private int abilityScore;
     private int abilityScoreModifier;

@@ -1,4 +1,6 @@
-public class Wisdom extends Stats {
+import java.io.Serializable;
+
+public class Wisdom extends Stats implements Serializable {
 
     private int abilityScore;
     private int abilityScoreModifier;

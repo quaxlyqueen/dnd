@@ -1,4 +1,6 @@
-public class Fighter implements ClassTemplate {
+import java.io.Serializable;
+
+public class Fighter implements ClassTemplate, Serializable {
 
     private int HP;
 
@@ -7,7 +9,7 @@ public class Fighter implements ClassTemplate {
     // TODO: This should be the type of die.
     private int hitDie;
 
-    public Fighter(Stats[] stats, int level) {
+    public Fighter() {
 
 
     }
@@ -83,6 +85,13 @@ public class Fighter implements ClassTemplate {
     public String[] getSavingThrows() {
         // TODO Auto-generated method stub
         return null;
+    }
+
+    @Override
+    public String toString() {
+
+        return this.getClass().getSimpleName();
+
     }
 
 }
