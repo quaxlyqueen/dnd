@@ -1,4 +1,8 @@
-public class CharacterStats {
+package src;
+
+import java.io.Serializable;
+
+public class CharacterStats implements Serializable {
 
     private Stats[] stats;
 

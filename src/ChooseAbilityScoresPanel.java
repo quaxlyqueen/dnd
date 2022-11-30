@@ -1,8 +1,12 @@
+package src;
+
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 
-public class ChooseAbilityScoresPanel extends JPanel implements AppTheme {
+import static src.AppConstants.*;
+
+public class ChooseAbilityScoresPanel extends JPanel {
 
     private DefaultButton[] statInfoButtons;
     private JLabel[] statLabels;
@@ -30,7 +34,7 @@ public class ChooseAbilityScoresPanel extends JPanel implements AppTheme {
 
         };
 
-        infoPanel = new InfoPanel(statOptions, statDescriptions, abilityScoreBounds, 3);
+        infoPanel = new InfoPanel(statOptions, statDescriptions, abilityScoreBounds);
         infoPanel.updateInfo(0); // Default start with 0th element.
 
         createMasterPanel(panelTitle);
@@ -82,13 +86,13 @@ public class ChooseAbilityScoresPanel extends JPanel implements AppTheme {
 
     private JPanel createAbilityPanel(String ability, int statIndex) {
         JPanel panel = new JPanel();
-        panel.setFont(paragraphFont);
+        panel.setFont(paragraphText);
         panel.setBackground(medBrown);
         panel.setBorder(new LineBorder(darkestBrown, 4, true));
         panel.setLayout(new BorderLayout(0, 0));
 
         DefaultButton tmpButton = new DefaultButton(ability);
-        tmpButton.setFont(paragraphFont);
+        tmpButton.setFont(paragraphText);
         tmpButton.setHorizontalAlignment(SwingConstants.CENTER);
         tmpButton.addActionListener(e -> updateButtons(statIndex));
 
@@ -107,7 +111,7 @@ public class ChooseAbilityScoresPanel extends JPanel implements AppTheme {
         JPanel subPanel = new JPanel();
 
         JLabel scoreLabel = new JLabel("" + selectedStats[statIndex]);
-        scoreLabel.setFont(paragraphFont);
+        scoreLabel.setFont(paragraphText);
         scoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
         statLabels[statIndex] = scoreLabel;

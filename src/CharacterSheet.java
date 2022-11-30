@@ -1,3 +1,5 @@
+package src;
+
 import java.io.Serializable;
 
 public class CharacterSheet implements Serializable {
@@ -6,97 +8,113 @@ public class CharacterSheet implements Serializable {
     private int heightFeet;
     private int heightInch;
     private int weight;
-    private String eye;
-    private String hair;
+    private String eyeColor;
+    private String hairColor;
     private Race race;
-
+    private ClassTemplate chClass;
+    private String[] spells;
+    private String[] equipment;
+    private String alignment;
+    private String background;
     private CharacterStats stats;
 
-    /**
-     * @param name
-     * @param age
-     * @param heightFeet
-     * @param heightInch
-     * @param weight
-     * @param eye
-     * @param hair
+    /*
+     * TODO: Need to add the following variables:
+     *
+     *      - CharacterClass        x1 var
+     *      - ChosenSpells          xN vars
+     *      - Equipment             xN vars
+     *      - Description           x3 vars
+     *
+     *          TOTAL: Minimum 12, + N spells and N equipment
+     * 
      */
-    public CharacterSheet(String name, int age,
-                          int heightFeet, int heightInch,
-                          int weight, String eye, String hair,
-                          Race race, CharacterStats stats) {
+
+    public CharacterSheet(
+
+            String name,
+            int age,
+            int heightFeet,
+            int heightInch,
+            int weight,
+            String eyeColor,
+            String hairColor,
+            Race race,
+            ClassTemplate chClass,
+            String alignment,
+            String background,
+            CharacterStats stats 
+
+    ) {
+
         this.name = name;
         this.age = age;
         this.heightFeet = heightFeet;
         this.heightInch = heightInch;
         this.weight = weight;
-        this.eye = eye;
-        this.hair = hair;
+        this.eyeColor = eyeColor;
+        this.hairColor = hairColor;
+
         this.race = race;
+        this.chClass = chClass;
+        this.alignment = alignment;
+        this.background = background;
         this.stats = stats;
-    }
-
-    /**
-     * Default constructor
-     */
-    public CharacterSheet() {
-        this.name = "null";
-        this.age = 0;
-        this.heightFeet = 0;
-        this.heightInch = 0;
-        this.weight = 0;
-        this.eye = "null";
-        this.hair = "null";
 
     }
 
-    /**
-     * @return the name
-     */
     public String getName() {
+
         return name;
+
     }
 
-    /**
-     * @return the age
-     */
     public int getAge() {
+
         return age;
+
     }
 
-    /**
-     * @return the heightFeet
-     */
     public int getHeightFeet() {
+
         return heightFeet;
+
     }
 
-    /**
-     * @return the heightInch
-     */
     public int getHeightInch() {
+
         return heightInch;
+
     }
 
-    /**
-     * @return the weigth
-     */
     public int getWeight() {
+
         return weight;
+
     }
 
-    /**
-     * @return the eye
-     */
-    public String getEye() {
-        return eye;
+    public String getEyeColor() {
+
+        return eyeColor;
+
     }
 
-    /**
-     * @return the hair
-     */
-    public String getHair() {
-        return hair;
+    public String getHairColor() {
+
+        return hairColor;
+
+    }
+
+    public Race getRace() {
+
+        return race;
+
+    }
+
+    public ClassTemplate getCharacterClass() {
+
+        return chClass;
+
     }
 
     public CharacterStats getStats() {
@@ -107,10 +125,11 @@ public class CharacterSheet implements Serializable {
 
     @Override
     public String toString() {
-        return "name: " + name + " | age: " + age + " | height: "
-                + heightFeet + "\'" + heightInch + "\" | weight: "
-                + weight + " | eye: " + eye + " | hair: " + hair
-                + " | race: " + race.toString() + " | stats: " + stats.toString();
+
+        String output = "Character name: " + name + "\nAge: " + age + "\nHeight: " + heightFeet + "\'" + heightInch + "\"" + "\nWeight: " + weight + "\nEye Color: " + eyeColor + "\nHair Color: " + hairColor + "\nRace: " + race.toString() + "\nClass: " + chClass.toString() + "\nStats: " + stats.toString();
+
+        return output;
+
     }
 
 }

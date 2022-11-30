@@ -1,9 +1,13 @@
+package src;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 
-public class BasicNavPanel extends JPanel implements AppTheme {
+import static src.AppConstants.*;
+
+public class BasicNavPanel extends JPanel {
 
     private DefaultButton backButton;
     private DefaultButton continueButton;
@@ -13,7 +17,16 @@ public class BasicNavPanel extends JPanel implements AppTheme {
 
         super(new GridLayout(1, 2, 30, 0));
         this.backButton = backButton;
-        this.continueButton = continueButton;
+
+        if(continueButton == null) {
+
+            this.continueButton = null;
+
+        } else {
+
+            this.continueButton = continueButton;
+
+        } 
 
         this.continueRequirement = continueRequirement;
         createNavPanel();
@@ -56,7 +69,11 @@ public class BasicNavPanel extends JPanel implements AppTheme {
 
         if (continueRequirement == 0) {
 
-            add(continueButton);
+            if(continueButton != null) {
+
+                add(continueButton);
+
+            }
 
         } else {
 

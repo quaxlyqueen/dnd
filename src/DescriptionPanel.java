@@ -1,9 +1,13 @@
+package src;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 
-public class DescriptionPanel extends JPanel implements AppTheme {
+import static src.AppConstants.*;
+
+public class DescriptionPanel extends JPanel {
 
     private BasicNavPanel nav;
     private String[] characteristics;
@@ -137,12 +141,12 @@ public class DescriptionPanel extends JPanel implements AppTheme {
         panel.setOpaque(false);
 
         JLabel label = new JLabel(characteristicsHolder[index]);
-        label.setFont(paragraphFont);
+        label.setFont(paragraphText);
         label.setOpaque(false);
         label.setForeground(darkestBrown);
 
         JTextField field = new JTextField(10);
-        field.setFont(paragraphFont);
+        field.setFont(paragraphText);
         field.setBackground(lightBrown);
         field.setBorder(null);
 
@@ -219,13 +223,13 @@ public class DescriptionPanel extends JPanel implements AppTheme {
         panel.setOpaque(false);
 
         JLabel label = new JLabel("Enter a Description");
-        label.setFont(paragraphFont);
+        label.setFont(paragraphText);
         label.setOpaque(false);
         label.setForeground(darkestBrown);
 
         JTextArea textArea = new JTextArea();
         textArea.setForeground(darkestBrown);
-        textArea.setFont(userTextFont);
+        textArea.setFont(userText);
         textArea.setOpaque(false);
         textArea.setBorder(new LineBorder(darkestBrown, 3));
 

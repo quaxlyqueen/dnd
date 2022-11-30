@@ -1,3 +1,5 @@
+package src;
+
 public class Dwarf implements Race {
     private final int speed = 25;
     private final int maxAge = 350;

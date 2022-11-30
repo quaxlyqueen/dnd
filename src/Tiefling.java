@@ -1,3 +1,5 @@
+package src;
+
 public class Tiefling implements Race {
     private final int speed = 30;
     private final int maxAge = 85;

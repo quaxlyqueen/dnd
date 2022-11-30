@@ -1,3 +1,5 @@
+package src;
+
 public interface ClassTemplate {
 
     abstract String getDescription();

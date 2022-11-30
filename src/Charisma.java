@@ -1,4 +1,8 @@
-public class Charisma extends Stats {
+package src;
+
+import java.io.Serializable;
+
+public class Charisma extends Stats implements Serializable {
 
     private int abilityScore;
     private int abilityScoreModifier;

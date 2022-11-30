@@ -1,3 +1,5 @@
+package src;
+
 public class HalfOrc implements Race {
     private final int speed = 30;
     private final int maxAge = 75;

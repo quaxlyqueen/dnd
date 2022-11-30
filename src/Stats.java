@@ -1,3 +1,5 @@
+package src;
+
 public abstract class Stats {
 
     public int calcSavingThrow(int abilityScore) {
