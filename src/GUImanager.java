@@ -269,7 +269,7 @@ public class GUImanager extends JFrame {
 
     private BasicNavPanel createBackPanel() {
 
-        return new BasicNavPanel(createBackButton(), null, 0);
+        return new BasicNavPanel(createBackButton(0), null, 0);
 
     }
 
@@ -291,6 +291,25 @@ public class GUImanager extends JFrame {
 
         return button;
 
+    }
+
+    private DefaultButton createBackButton(int manualBackPoint) {
+
+        DefaultButton button = new DefaultButton("Back");
+        button.addActionListener(
+
+                e -> {
+
+                    lastPanel = currentPanel;
+                    currentPanel = manualBackPoint;
+                    nextPanel = 0;
+                    clearAndReset();
+
+                }
+
+        );
+
+        return button;
     }
 
     private DefaultButton createContinueButton() {
