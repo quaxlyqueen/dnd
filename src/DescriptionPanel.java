@@ -1,8 +1,7 @@
 package src;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
+import javax.swing.border.*;
 import java.awt.*;
 
 import static src.AppConstants.*;
@@ -97,10 +96,10 @@ public class DescriptionPanel extends JPanel {
     private JLabel createPanelTitle(String panelTitle) {
 
         JLabel title = new JLabel(panelTitle);
-        title.setHorizontalAlignment(SwingConstants.CENTER);
-        title.setFont(headerFont);
-        title.setForeground(darkestBrown);
-        title.setBorder(new EmptyBorder(25, 25, 25, 25));
+            title.setHorizontalAlignment(SwingConstants.CENTER);
+            title.setFont(headerFont);
+            title.setForeground(darkestBrown);
+            title.setBorder(new EmptyBorder(25, 25, 25, 25));
 
         return title;
 
@@ -108,13 +107,11 @@ public class DescriptionPanel extends JPanel {
 
     private JPanel createBodyPanel() {
 
-        GridBagConstraints c = new GridBagConstraints();
-
         JPanel bodyPanel = new JPanel(new GridBagLayout());
-        bodyPanel.setOpaque(false);
+            bodyPanel.setOpaque(false);
 
-        bodyPanel.add(createNamePanel());
-        bodyPanel.add(createFooterPanel());
+            bodyPanel.add(createNamePanel());
+            bodyPanel.add(createFooterPanel());
 
         return bodyPanel;
 
@@ -123,13 +120,14 @@ public class DescriptionPanel extends JPanel {
     private JPanel createNamePanel() {
 
         JPanel panel = new JPanel();
-        panel.setBackground(medBrown);
 
-        for (int i = 0; i < characteristicsHolder.length; i++) {
+            panel.setBackground(medBrown);
 
-            panel.add(createField(i));
+            for (int i = 0; i < characteristicsHolder.length; i++) {
 
-        }
+                panel.add(createField(i));
+
+            }
 
         return panel;
 
@@ -138,20 +136,23 @@ public class DescriptionPanel extends JPanel {
     private JPanel createField(int index) {
 
         JPanel panel = new JPanel();
-        panel.setOpaque(false);
 
-        JLabel label = new JLabel(characteristicsHolder[index]);
-        label.setFont(paragraphText);
-        label.setOpaque(false);
-        label.setForeground(darkestBrown);
+            panel.setOpaque(false);
 
-        JTextField field = new JTextField(10);
-        field.setFont(paragraphText);
-        field.setBackground(lightBrown);
-        field.setBorder(null);
+            JLabel label = new JLabel(characteristicsHolder[index]);
 
-        panel.add(label);
-        panel.add(field);
+                label.setFont(paragraphText);
+                label.setOpaque(false);
+                label.setForeground(darkestBrown);
+
+            JTextField field = new JTextField(10);
+
+                field.setFont(paragraphText);
+                field.setBackground(lightBrown);
+                field.setBorder(null);
+
+            panel.add(label);
+            panel.add(field);
 
         return panel;
 
@@ -160,10 +161,11 @@ public class DescriptionPanel extends JPanel {
     private JPanel createFooterPanel() {
 
         JPanel panel = new JPanel(new GridLayout(1, 3));
-        panel.setOpaque(false);
-        panel.add(createSubPanel("Alignment"));
-        panel.add(createSubPanel("Background"));
-        panel.add(createTextBoxPanel());
+
+            panel.setOpaque(false);
+            panel.add(createSubPanel("Alignment"));
+            panel.add(createSubPanel("Background"));
+            panel.add(createTextBoxPanel());
 
         return panel;
 
@@ -172,6 +174,7 @@ public class DescriptionPanel extends JPanel {
     private JPanel createSubPanel(String labelName) {
 
         JPanel panel = new JPanel(new BorderLayout(0, 0));
+
             panel.setBorder(new EmptyBorder(5, 5, 5, 5));
             panel.setOpaque(false);
 
@@ -220,18 +223,18 @@ public class DescriptionPanel extends JPanel {
     private JPanel createTextBoxPanel() {
 
         JPanel panel = new JPanel(new BorderLayout(0, 0));
-        panel.setOpaque(false);
+            panel.setOpaque(false);
 
-        JLabel label = new JLabel("Enter a Description");
-        label.setFont(paragraphText);
-        label.setOpaque(false);
-        label.setForeground(darkestBrown);
+            JLabel label = new JLabel("Enter a Description");
+                label.setFont(paragraphText);
+                label.setOpaque(false);
+                label.setForeground(darkestBrown);
 
-        JTextArea textArea = new JTextArea();
-        textArea.setForeground(darkestBrown);
-        textArea.setFont(userText);
-        textArea.setOpaque(false);
-        textArea.setBorder(new LineBorder(darkestBrown, 3));
+            JTextArea textArea = new JTextArea();
+                textArea.setForeground(darkestBrown);
+                textArea.setFont(userText);
+                textArea.setOpaque(false);
+                textArea.setBorder(new LineBorder(darkestBrown, 3));
 
         panel.add(label);
         panel.add(textArea);
@@ -247,8 +250,6 @@ public class DescriptionPanel extends JPanel {
 
         alignmentChoice = newIndex;
 
-        System.out.println("Updating alignment to index " + newIndex + ", " + alignmentOptions[newIndex]);
-
     }
 
     private void updateBackgroundButtons(int newIndex) {
@@ -257,9 +258,6 @@ public class DescriptionPanel extends JPanel {
         backgroundButtons[newIndex].select();
 
         backgroundChoice = newIndex;
-
-        System.out.println("Updating background to index " + newIndex + ", " + backgroundOptions[newIndex]);
-
 
     }
 

@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.*;
 
-import src.AppConstants.*;
+import static src.AppConstants.*;
 
 public class GUImanager extends JFrame {
 
@@ -39,11 +39,13 @@ public class GUImanager extends JFrame {
         fileManager = new FileManager();
         frameSetup();
         setupPanelInfo();
+
+        ImageManager images = new ImageManager();
         this.panels = new JPanel[]{
 
                 new MainMenuPanel(createNewCharacterButton(), createRandomCharacterButton(), createLoadButton()),
-                new BasicPanel(createNavPanel(), raceOptions, raceDescriptions, "Step 1: Choose Your Race"), // To choose Race.
-                new BasicPanel(createNavPanel(), classOptions, classDescriptions, "Step 2: Choose Your Class"), // To choose Class.
+                new BasicPanel(createNavPanel(), raceOptions, raceDescriptions, "Step 1: Choose Your Race", images), // To choose Race.
+                new BasicPanel(createNavPanel(), classOptions, classDescriptions, "Step 2: Choose Your Class", images), // To choose Class.
                 new ChooseAbilityScoresPanel(createNavPanel(1), statOptions, statDescriptions, selectedStats, "Step 3: Choose Your Ability Scores"),
                 new DescriptionPanel(createNavPanel(), characteristics, alignmentOptions, alignmentDescriptions, backgroundOptions, backgroundDescriptions, "Step 4: Describe your character"),
                 new LoadCharacterPanel(createBackPanel(), loadableCharacters()),
@@ -280,18 +282,20 @@ public class GUImanager extends JFrame {
     private DefaultButton createBackButton() {
 
         DefaultButton button = new DefaultButton("Back");
-        button.addActionListener(
 
-                e -> {
+            button.addActionListener(
 
-                    lastPanel--;
-                    currentPanel--;
-                    nextPanel--;
-                    clearAndReset();
+                    e -> {
 
-                }
+                        lastPanel--;
+                        currentPanel--;
+                        nextPanel--;
 
-        );
+                        clearAndReset();
+
+                    }
+
+            );
 
         return button;
 
@@ -300,18 +304,20 @@ public class GUImanager extends JFrame {
     private DefaultButton createBackButton(int manualBackPoint) {
 
         DefaultButton button = new DefaultButton("Back");
-        button.addActionListener(
 
-                e -> {
+            button.addActionListener(
 
-                    lastPanel = currentPanel;
-                    currentPanel = manualBackPoint;
-                    nextPanel = 0;
-                    clearAndReset();
+                    e -> {
 
-                }
+                        lastPanel = 0;
+                        currentPanel = manualBackPoint;
+                        nextPanel = 0;
 
-        );
+                        clearAndReset();
+
+                    }
+
+            );
 
         return button;
     }
@@ -319,18 +325,20 @@ public class GUImanager extends JFrame {
     private DefaultButton createContinueButton() {
 
         DefaultButton button = new DefaultButton("Continue");
-        button.addActionListener(
 
-                e -> {
+            button.addActionListener(
 
-                    lastPanel++;
-                    currentPanel++;
-                    nextPanel++;
-                    clearAndReset();
+                    e -> {
 
-                }
+                        lastPanel++;
+                        currentPanel++;
+                        nextPanel++;
 
-        );
+                        clearAndReset();
+
+                    }
+
+            );
 
         return button;
 
@@ -345,9 +353,10 @@ public class GUImanager extends JFrame {
 
                 e -> {
 
-                    lastPanel = currentPanel;
+                    lastPanel = 0;
                     currentPanel = 1;
                     nextPanel = 2; 
+
                     clearAndReset();
                     
                 }
@@ -362,20 +371,21 @@ public class GUImanager extends JFrame {
     private DefaultButton createRandomCharacterButton() {
 
         DefaultButton button = new DefaultButton("Create Random Character");
-        button.addActionListener(
 
-                e -> {
+            button.addActionListener(
 
-                    createRandomCharacter();
+                    e -> {
 
-                    lastPanel = currentPanel;
-                    currentPanel = 3;
-                    nextPanel = currentPanel + 1;
-                    clearAndReset();
+                        createRandomCharacter();
 
-                }
+                        lastPanel = currentPanel;
+                        currentPanel = 3;
+                        nextPanel = currentPanel + 1;
+                        clearAndReset();
 
-        );
+                    }
+
+            );
 
         return button;
 
@@ -385,18 +395,19 @@ public class GUImanager extends JFrame {
     private DefaultButton createSaveButton() {
 
         DefaultButton button = new DefaultButton("Save");
-        button.addActionListener(
 
-                e -> {
+            button.addActionListener(
 
-                    lastPanel = currentPanel;
-                    currentPanel = 6;
-                    nextPanel = currentPanel + 1;
-                    clearAndReset();
+                    e -> {
 
-                }
+                        lastPanel = currentPanel;
+                        currentPanel = 6;
+                        nextPanel = currentPanel + 1;
+                        clearAndReset();
 
-        );
+                    }
+
+            );
 
         return button;
 
@@ -405,25 +416,24 @@ public class GUImanager extends JFrame {
     private DefaultButton createLoadButton() {
 
         DefaultButton button = new DefaultButton("Load");
-        button.addActionListener(
 
-                e -> {
+            button.addActionListener(
 
-                    lastPanel = currentPanel;
-                    currentPanel = 5;
-                    clearAndReset();
+                    e -> {
 
-                }
+                        lastPanel = currentPanel;
+                        currentPanel = 5;
+                        clearAndReset();
 
-        );
+                    }
 
-        return button;
+            );
+
+            return button;
 
     }
 
     private ArrayList<DefaultButton> loadableCharacters() {
-
-        System.out.println("Loading characters...");
 
         saves = fileManager.getSaves();
 
@@ -448,13 +458,14 @@ public class GUImanager extends JFrame {
     private DefaultButton createLoadNCharacterButton(int index) {
 
         DefaultButton button = new DefaultButton(saves.get(index).getName());
+
             button.addActionListener(
 
                     e -> {
 
                         lastPanel = currentPanel;
-                        panels[5] = new ViewCharacterPanel(createBackPanel(), saves.get(index));
-                        currentPanel = 5;
+                        panels[6] = new ViewCharacterPanel(createBackPanel(), saves.get(index));
+                        currentPanel = 6;
                         clearAndReset();
 
                     }

@@ -16,7 +16,7 @@ public class BasicPanel extends JPanel {
     private ImageManager images;
     private int currentPanel;
 
-    public BasicPanel(JPanel navPanel, String[] options, String[] descriptions, String panelTitle) {
+    public BasicPanel(JPanel navPanel, String[] options, String[] descriptions, String panelTitle, ImageManager images) {
 
         super();
         this.options = options;
@@ -31,18 +31,20 @@ public class BasicPanel extends JPanel {
 
         };
 
-        images = new ImageManager();
+        this.images = images;
 
         infoPanel = new InfoPanel(options, descriptions, basicBounds, images); 
 
         currentPanel = Integer.parseInt(Character.toString(panelTitle.charAt(5)));
 
-        infoPanel.updateInfo(0, getNextPortrait(0));
+        System.out.println("CurrentPanel: " + currentPanel);
 
         choiceIndex = 0;
 
         panelSetup();
         createMasterPanel();
+
+        infoPanel.updateInfo(choiceIndex, getNextPortrait(choiceIndex));
         add(navPanel, BorderLayout.SOUTH);
 
     }
@@ -54,13 +56,13 @@ public class BasicPanel extends JPanel {
         if(currentPanel == 1) {
 
             nextPortrait = images.getRacePortrait(index);
-
+System.out.println("next portrait for race.");
         } else if(currentPanel == 2) {
 
             nextPortrait = images.getClassPortrait(index);
-
+System.out.println("next portrait for class.");
         } else {
-
+System.out.println("Returning null.");
             nextPortrait = null;
 
         } 
@@ -79,16 +81,16 @@ public class BasicPanel extends JPanel {
     private void createMasterPanel() {
 
         JLabel title = new JLabel(panelTitle);
-        title.setHorizontalAlignment(SwingConstants.CENTER);
-        title.setFont(headerFont);
-        title.setForeground(darkestBrown);
+            title.setHorizontalAlignment(SwingConstants.CENTER);
+            title.setFont(headerFont);
+            title.setForeground(darkestBrown);
         add(title, BorderLayout.NORTH);
 
         JPanel panel = new JPanel();
-        panel.setOpaque(false);
-        panel.setLayout(null);
-        panel.add(infoPanel);
-        panel.add(createButtonPanel());
+            panel.setOpaque(false);
+            panel.setLayout(null);
+            panel.add(infoPanel);
+            panel.add(createButtonPanel());
 
         add(panel);
 
@@ -130,7 +132,9 @@ public class BasicPanel extends JPanel {
     private DefaultButton createButton(String holderName, int index) {
 
         DefaultButton button = new DefaultButton(holderName);
-        button.addActionListener(e -> updateButtons(index));
+        button.addActionListener(e -> {
+            updateButtons(index);
+        });
 
         return button;
 
@@ -148,6 +152,8 @@ public class BasicPanel extends JPanel {
             infoPanel.updateInfo(choiceIndex, getNextPortrait(choiceIndex));
 
         } else {
+
+System.out.println("No image chosen.");
 
             infoPanel.updateInfo(choiceIndex);
 
