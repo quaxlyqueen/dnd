@@ -150,25 +150,23 @@ public class GUImanager extends JFrame {
 
         };
 
-        statOptions = new String[]{
-
-                "Strength",
-                "Dexterity",
-                "Constitution",
-                "Intelligence",
-                "Wisdom",
-                "Charisma"
-
+        statOptions = new String[]{ 
+            "strength",
+            "Dexterity",
+            "Constitution",
+            "Intelligence",
+            "Widsom",
+            "Charisma"
         };
 
         statDescriptions = new String[]{
 
-                "Strength is a thing.",
-                "Dexterity is a thing",
-                "Constitution is a thing",
-                "Intelligence is a thing",
-                "Wisdom is a thing",
-                "Charisma is a thing"
+                "A Strength check can model any attempt to lift, push, pull, or break something, to force your body through a space, or to otherwise apply brute force to a situation. You add your Strength modifier to your attack roll and your damage roll when attacking with a melee weapon Skills: Athletics",
+                "A Dexterity check can model any attempt to move nimbly, quickly, or quietly, or to keep from falling on tricky footing. You add your Dexterity modifier to your attack roll and your damage roll when attacking with a ranged weapon, or a melee weapon that has the finesse property. Skills: Acrobatics, Sleight of Hand, Stealth",
+                "CConstitution checks are uncommon, and no skills apply to Constitution checks, because the endurance this ability represents is largely passive rather than involving a specific effort on the part of a character or monster. A Constitution check can model your attempt to push beyond normal limits, however. Your Constitution modifier contributes to your hit points. Typically, you add your Constitution modifier to each Hit Die you roll for your hit points.",
+                "An Intelligence check comes into play when you need to draw on logic, education, memory, or deductive reasoning. Skills: Arcana, History, Investigation, Nature, Religion",
+                "A Wisdom check might reflect an effort to read body language, understand someone’s feelings, notice things about the environment, or care for an injured person. Skills: Animal Handling, Insight, Medicine, Perception, Survival",
+                "A Charisma check might arise when you try to influence or entertain others, when you try to make an impression or tell a convincing lie, or when you are navigating a tricky social situation. Skills: Deception, Intimidation, Performance, Persuasion"
 
         };
 
@@ -201,15 +199,15 @@ public class GUImanager extends JFrame {
 
         alignmentDescriptions = new String[]{
 
-                "LG - need description",
-                "NG - need description",
-                "cg - need description",
-                "ln - need description",
-                "tn - need description",
-                "cn - need description",
-                "le - need description",
-                "ne - need description",
-                "ce - need description"
+                "Lawful Good (LG) creatures can be counted on to do the right thing as expected by society. Gold dragons and paladins are typically lawful good.",
+                "Neutral Good (NG) folk do the best they can to help others according to their needs. Many celestials are neutral good.",
+                "cChaotic Good (CG) creatures act as their conscience directs, with little regard for what others expect. Copper dragons and unicorns are typically chaotic good.",
+                "Lawful Neutral (LN) individuals act in accordance with law, tradition, or personal codes. Modrons and many wizards and monks are lawful neutral.",
+                "Neutral (N) is the alignment of those who prefer to steer clear of moral questions and don’t take sides, doing what seems best at the time. Druids are traditionally neutral, as are typical townsfolk.",
+                "Chaotic Neutral (CN) creatures follow their whims, holding their personal freedom above all else. Many rogues and bards are chaotic neutral.",
+                "Lawful Evil (LE) creatures methodically take what they want, within the limits of a code of tradition, loyalty, or order. Devils and blue dragons are typically lawful evil.",
+                "Neutral Evil (NE) is the alignment of those who do whatever they can get away with, without compassion or qualms. Yugoloths are typically neutral evil.",
+                "Chaotic Evil (CE) creatures act with arbitrary violence, spurred by their greed, hatred, or bloodlust. Demons and red dragons are typically chaotic evil."
 
         };
 
@@ -237,26 +235,61 @@ public class GUImanager extends JFrame {
         };
 
         backgroundDescriptions = new String[]{
+            //Acolyte
+            "You have spent your life in the service of a temple to a specific god or pantheon of gods. You act as an intermediary between the realm of the holy and the mortal world, performing sacred rites and offering sacrifices in order to conduct worshipers into the presence of the divine. You are not necessarily a cleric—performing sacred rites is not the same thing as channeling divine power. Feature: Shelter of the Faithful Proficiencies: Insight, Religion
+",
+                //Charlatan
+                "You have always had a way with people. You know what makes them tick, you can tease out their hearts’ desires after a few minutes of conversation, and with a few leading questions you can read them like they were children’s books. It’s a useful talent, and one that you’re perfectly willing to use for your advantage. Feature: False Identity Proficiencies: Deception, Sleight of Hand
+",
+                //Criminal
+             "You are an experienced criminal with a history of breaking the law. You have spent a lot of time among other criminals and still have contacts within the criminal underworld. You’re far closer than most people to the world of murder, theft, and violence that pervades the underbelly of civilization, and you have survived up to this point by flouting the rules and regulations of society. Feature: Criminal Contact Proficiencies: Deception, Stealth
+",
+                //Entertainer
+             "You thrive in front of an audience. You know how to entrance them, entertain them, and even inspire them. Your poetics can stir the hearts of those who hear you, awakening grief or joy, laughter or anger. Your music raises their spirits or captures their sorrow. Your dance steps captivate, your humor cuts to the quick. Whatever techniques you use, your art is your life. Feature: By Popular Demand Proficiencies: Acrobatics, Performance
+",
+                //Folk Hero
+             "You come from a humble social rank, but you are destined for so much more. Already the people of your home village regard you as their champion, and your destiny calls you to stand against the tyrants and monsters that threaten the common folk everywhere. Feature: Rustic Hospitality Proficiencies: Animal Handling, Survival
+",
+                //Gladiator
+             "A gladiator is as much an entertainer as any minstrel or circus performer, trained to make the arts of combat into a spectacle the crowd can enjoy. This kind of flashy combat is your entertainer routine, though you might also have some skills as a tumbler or actor. Feature: By Popular Demand Proficiencies: Acrobatics, Performance
+",
+                //Guild Artisan
+             "You are a member of an artisan’s guild, skilled in a particular field and closely associated with other artisans. You are a well-established part of the mercantile world, freed by talent and wealth from the constraints of a feudal social order. You learned your skills as an apprentice to a master artisan, under the sponsorship of your guild, until you became a master in your own right. Feature: Guild Membership Proficiencies: Insight, Persuasion
+",
+                //Guild Merchant
+             "Instead of an artisans’ guild, you might belong to a guild of traders, caravan masters, or shopkeepers. You don’t craft items yourself but earn a living by buying and selling the works of others (or the raw materials artisans need to practice their craft). Your guild might be a large merchant consortium (or family) with interests across the region. Perhaps you transported goods from one place to another, by ship, wagon, or caravan, or bought them from traveling traders and sold them in your own little shop. In some ways, the traveling merchant’s life lends itself to adventure far more than the life of an artisan. Feature: Guild Membership Proficiencies: Insight, Persuasion
+",
+                //Hermit
+             "You lived in seclusion — either in a sheltered community such as a monastery, or entirely alone — for a formative part of your life. In your time apart from the clamor of society, you found quiet, solitude, and perhaps some of the answers you were looking for. Feature: Discovery Proficiencies: Medicine, Religion
+",
+                //Knight
+             "A knighthood is among the lowest noble titles in most societies, but it can be a path to higher status. One of your commoner retainers is a noble who serves as your squire, aiding you in exchange for training on his or her own path to knighthood. Your two remaining retainers might include a groom to care for your horse and a servant who polishes your armor (and even helps you put it on).  Feature: Retainers Proficiencies: History, Persuasion
+",
+                //Noble
+             "You understand wealth, power, and privilege. You carry a noble title, and your family owns land, collects taxes, and wields significant political influence. You might be a pampered aristocrat unfamiliar with work or discomfort, a former merchant just elevated to the nobility, or a disinherited scoundrel with a disproportionate sense of entitlement. Or you could be an honest, hard-working landowner who cares deeply about the people who live and work on your land, keenly aware of your responsibility to them. Feature: Position of Privilege Proficiencies: History, Persuasion
+",
+                //Outlander
+             "You grew up in the wilds, far from civilization and the comforts of town and technology. You’ve witnessed the migration of herds larger than forests, survived weather more extreme than any city-dweller could comprehend, and enjoyed the solitude of being the only thinking creature for miles in any direction. The wilds are in your blood, whether you were a nomad, an explorer, a recluse, a hunter-gatherer, or even a marauder. Even in places where you don’t know the specific features of the terrain, you know the ways of the wild. Feature: Wanderer Proficiencies: Athletics, Survival
+",
+                //Pirate
+             "You spent your youth under the sway of a dread pirate, a ruthless cutthroat who taught you how to survive in a world of sharks and lawlessness. You’ve indulged in larceny on the high seas and sent more than one deserving soul to a briny grave. Fear and bloodshed are no strangers to you, and you’ve garnered a somewhat unsavory reputation in many a port town. Feature: Bad Reputation Proficiencies: Athletics, Perception
+",
+                //Sage
+             "You spent years learning the lore of the multiverse. You scoured manuscripts, studied scrolls, and listened to the greatest experts on the subjects that interest you. Your efforts have made you a master in your fields of study. Feature: Researcher Proficiencies: Arcana, History
+",
+                //Sailer
+             "You sailed on a seagoing vessel for years. In that time, you faced down mighty storms, monsters of the deep, and those who wanted to sink your craft to the bottomless depths. Your first love is the distant line of the horizon, but the time has come to try your hand at something new. Feature: Ship's Passage Proficiencies: Athletics, Perception
+",
+                //Soldier
+             "War has been your life for as long as you care to remember. You trained as a youth, studied the use of weapons and armor, learned basic survival techniques, including how to stay alive on the battlefield. You might have been part of a standing national army or a mercenary company, or perhaps a member of a local militia who rose to prominence during a recent war. Feature: Military Rank Proficiencies: Athletics, Intimidation
 
-                "Acolyte - need description",
-                "Charlatan - need description",
-                "Criminal - need description",
-                "Entertainer - need description",
-                "Folk Hero - need description",
-                "Gladiator - need description",
-                "Guild Artisan - need description",
-                "Guild Merchant - need description",
-                "Hermit - need description",
-                "Knight - need description",
-                "Noble - need description",
-                "Outlander - need description",
-                "Pirate - need description",
-                "Sage - need description",
-                "Sailor - need description",
-                "Soldier - need description",
-                "Spy - need description",
-                "Urchin - need description"
-
+",
+                //Spy
+             "Although your capabilities are not much different from those of a burglar or smuggler, you learned and practiced them in a very different context: as an espionage agent. You might have been an officially sanctioned agent of the crown, or perhaps you sold the secrets you uncovered to the highest bidder. Feature: Criminal Contact Proficiencies: Deception, Stealth
+",
+                //Urchin
+             "You grew up on the streets alone, orphaned, and poor. You had no one to watch over you or to provide for you, so you learned to provide for yourself. You fought fiercely over food and kept a constant watch out for other desperate souls who might steal from you. You slept on rooftops and in alleyways, exposed to the elements, and endured sickness without the advantage of medicine or a place to recuperate. You’ve survived despite all odds, and did so through cunning, strength, speed, or some combination of each. Feature: City Secrets Proficiencies: Sleight of Hand, Stealth
+"
         };
 
     }
