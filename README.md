@@ -1,60 +1,55 @@
 # Application
-CSIS 1410 - Group Project
-
-CURRENT TODO ITEMS:
+Originally a group project for CSIS 1410 at Salt Lake Community College.
+Looking to create a D&D character management application at the minimum.
+Goal: create a virtualized D&D experience that is easy to use, lightweight, and easily customizable.
 
 **************** CONTENT ****************
 
-    - All PHB classes should be included.
+    - [ ] All PHB classes should be included.
+    - [ ] Race and class images
 
 **************** GUI ********************
 
-    - Finish GUI panels
+    - [ ] Finish GUI panels
 
         PANELS:
-        - Race
+        - [ ] Race
             Upload custom profile picture button.
-        - Description (needs positioning)
-        - Spells & Equipment
-        - Preview
-        - Load Character/View character
-        - Save as PDF / Print
+        - [ ] Description (needs positioning)
+        - [ ] Spells & Equipment
+        - [ ] Preview
+        - [ ] Load Character/View character
+        - [ ] Save as PDF / Print
 
         DESCRIPTIONS:
 
-        - Class action scene pictures.
-        - Ability Scores description text.
-        - Class descriptions.
-        - Race descriptions.
+        - [ ] Class action scene pictures.
+        - [ ] Ability Scores description text.
+        - [ ] Class descriptions.
+        - [ ] Race descriptions.
 
 *************** FILES ******************
 
-NOTE:   user.dir = /home/joshuaashton/Development/misc/dndApp/src
-        user.home = /home/joshuaashton 
+    - [ ] Upload custom profile picture.
 
-NOTE:   user.dir is changed to exe directory by application launch4j. This creates an exe file from .jar.
-        see Inno Setup Compiler to package .exe and the JRE into a singular installer.
+        - [ ] Character sheet from selections.
 
-    - Upload custom profile picture.
+        - [ ] Load existing characters to edit.
 
-        - Character sheet from selections.
+        - [ ] Save new characters.
 
-        - Load existing characters to edit.
+    - [ ] File directory based upon OS used.
 
-        - Save new characters.
+    - [ ] Export to PDF.
 
-    - File directory based upon OS used.
-
-    - Export to PDF.
-
-    - Print
+    - [ ] Print
 
 ************** FINAL TOUCHES **********
 
-    - Generate a random character.
+    - [ ] Generate a random character.
 
-    - Character levels.
+    - [ ] Character levels.
 
-    - Spells.
+    - [ ] Spells.
 
-    - Dice roller.
+    - [ ] Dice roller.
