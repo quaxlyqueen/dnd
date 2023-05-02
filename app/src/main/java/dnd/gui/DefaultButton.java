@@ -1,11 +1,11 @@
-package dnd;
+package dnd.gui;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import static dnd.AppConstants.*;
+import static dnd.gui.AppConstants.*;
 
 public class DefaultButton extends JButton {
 

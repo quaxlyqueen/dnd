@@ -1,16 +1,23 @@
-package dnd;
+package dnd.character;
 
 import java.io.Serializable;
 
-public class Intelligence extends Stats implements Serializable {
+public class Strength extends Stats implements Serializable {
 
     private int abilityScore;
     private int abilityScoreModifier;
 
-    public Intelligence(int abilityScore) {
+    public Strength(int abilityScore) {
 
         this.abilityScore = abilityScore;
         this.abilityScoreModifier = calcSavingThrow(abilityScore);
+
+    }
+
+    public Strength(Strength str) {
+
+        this.abilityScore = str.getScore();
+        this.abilityScoreModifier = str.getModifier();
 
     }
 
@@ -32,10 +39,15 @@ public class Intelligence extends Stats implements Serializable {
 
     }
 
-    // TODO: Need description.
     public String getDescription() {
 
-        return "";
+        return "Natural athleticism and bodily power.";
+
+    }
+
+    public int getMaxCarryWeight() {
+
+        return abilityScore * 15;
 
     }
 

@@ -1,13 +1,13 @@
-package dnd;
+package dnd.character;
 
 import java.io.Serializable;
 
-public class Constitution extends Stats implements Serializable {
+public class Intelligence extends Stats implements Serializable {
 
     private int abilityScore;
     private int abilityScoreModifier;
 
-    public Constitution(int abilityScore) {
+    public Intelligence(int abilityScore) {
 
         this.abilityScore = abilityScore;
         this.abilityScoreModifier = calcSavingThrow(abilityScore);
@@ -35,7 +35,7 @@ public class Constitution extends Stats implements Serializable {
     // TODO: Need description.
     public String getDescription() {
 
-        return "Health, stamina, vital force.";
+        return "";
 
     }
 

@@ -7,7 +7,7 @@ import java.awt.image.*;
 import java.io.*;
 import java.util.*;
 
-import static dnd.AppConstants.*;
+import static dnd.gui.AppConstants.*;
 
 public class ImageManager extends FileManager {
     private static JLabel[][] racePortraits;
@@ -19,11 +19,9 @@ public class ImageManager extends FileManager {
             racePortraits = new JLabel[9][];
             classPortraits = new JLabel[12][];
             savesPortraits = new ArrayList<>();
-
         createPortraitArray(racePortraits, "race");
         createPortraitArray(classPortraits, "class"); 
         createSavesPortraits();
-
     }
 
     public JLabel getRacePortrait(int raceIndex) {

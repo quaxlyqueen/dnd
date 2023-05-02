@@ -1,4 +1,4 @@
-package dnd;
+package dnd.gui;
 
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static dnd.AppConstants.*;
+import static dnd.gui.AppConstants.*;
 
 public class MainMenuPanel extends JPanel {
 

@@ -1,17 +1,19 @@
-package dnd.species;
+package dnd.character;
 
-public class HalfOrc implements Race {
+public class Human implements Race {
+
     private final int speed = 30;
-    private final int maxAge = 75;
+    private final int maxAge = 80;
     private String[] traits;
     private String[] skills;
     private String[] languages;
     private String[] proficiencies;
 
-    public HalfOrc() {
+    public Human(String chosenLanguage) {
 
-        this.languages = new String[]{"Common", "Orc"};
+        this.languages = new String[]{"Common", chosenLanguage};
         this.skills = new String[]{};
+
     }
 
     @Override
@@ -60,7 +62,7 @@ public class HalfOrc implements Race {
     @Override
     public int[] getASI() {
         // TODO Auto-generated method stub
-        return new int[]{0, 0, 2};
+        return new int[]{0, 1, 2, 3, 4, 5};
     }
 
     @Override

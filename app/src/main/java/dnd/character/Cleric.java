@@ -1,8 +1,6 @@
-package dnd;
+package dnd.character;
 
-import java.io.Serializable;
-
-public class Fighter implements ClassTemplate, Serializable {
+public class Cleric implements ClassTemplate {
 
     private int HP;
 
@@ -11,7 +9,7 @@ public class Fighter implements ClassTemplate, Serializable {
     // TODO: This should be the type of die.
     private int hitDie;
 
-    public Fighter() {
+    public Cleric(Stats[] stats, int level) {
 
 
     }
@@ -87,13 +85,6 @@ public class Fighter implements ClassTemplate, Serializable {
     public String[] getSavingThrows() {
         // TODO Auto-generated method stub
         return null;
-    }
-
-    @Override
-    public String toString() {
-
-        return this.getClass().getSimpleName();
-
     }
 
 }

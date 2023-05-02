@@ -1,4 +1,4 @@
-package dnd.species;
+package dnd.character;
 
 public class Dragonborn implements Race {
     private final int speed = 30;

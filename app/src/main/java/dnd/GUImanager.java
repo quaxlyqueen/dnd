@@ -4,28 +4,25 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.*;
 
-import static dnd.AppConstants.*;
-import dnd.species.*;
+import static dnd.gui.AppConstants.*;
+import dnd.gui.*;
+import dnd.character.*;
 
 public class GUImanager extends JFrame {
 
     private FileManager fileManager;
     private ArrayList<CharacterSheet> saves;
     private ArrayList<DefaultButton> savesButtons;
-
     private static JPanel[] panels;
     private int lastPanel;
     private int currentPanel;
     private int nextPanel;
-
-
     private String[] raceOptions;
     private String[] raceDescriptions;
     private String[] classOptions;
     private String[] classDescriptions;
     private int raceChoice;
     private int classChoice;
-
     private String[] statOptions;
     private String[] statDescriptions;
     private String[] characteristics;
@@ -40,10 +37,8 @@ public class GUImanager extends JFrame {
         fileManager = new FileManager();
         frameSetup();
         setupPanelInfo();
-
         ImageManager images = new ImageManager();
         this.panels = new JPanel[]{
-
                 new MainMenuPanel(createNewCharacterButton(), createRandomCharacterButton(), createLoadButton()),
                 new BasicPanel(createNavPanel(), raceOptions, raceDescriptions, "Step 1: Choose Your Race", images), // To choose Race.
                 new BasicPanel(createNavPanel(), classOptions, classDescriptions, "Step 2: Choose Your Class", images), // To choose Class.
@@ -53,15 +48,8 @@ public class GUImanager extends JFrame {
                 new ViewCharacterPanel(createBackPanel(), new CharacterSheet("Josh", 21, 5, 8, 180, "Brown", "Dark Brown", new Elf(), new Fighter(), "Neutral", "Nomad", new CharacterStats(9, 15, 12, 10, 13, 10)))
         };
 
-            if (fileManager.isReturningUser()) {
-
-                this.currentPanel = 0;
-
-            } else {
-
-                this.currentPanel = 1;
-
-            }
+            if (fileManager.isReturningUser()) this.currentPanel = 0;
+            else this.currentPanel = 1;
 
         this.lastPanel = currentPanel - 1;
         this.nextPanel = currentPanel + 1;
@@ -84,11 +72,9 @@ public class GUImanager extends JFrame {
         } catch (Exception e) {
             System.out.println("Error with cross platform look/feel in frameSetup().");
         }
-
     }
 
     private void setupPanelInfo() {
-
         raceOptions = new String[]{
                 "Dragonborn",
                 "Dwarf",
@@ -102,7 +88,6 @@ public class GUImanager extends JFrame {
         };
 
         raceDescriptions = new String[]{
-
                 "Born of dragons, as their name proclaims, the dragonborn walk proudly through a world that greets them with fearful incomprehension." + "Shaped by draconic gods or the dragons themselves, dragonborn originally hatched from dragon eggs as a unique race, combining the best attributes of dragons and humanoids." + "Some dragonborn are faithful servants to true dragons, others form the ranks of soldiers in great wars, and still others find themselves adrift, with no clear calling in life.",
                 "By the numbers, dwarves are one of the best races in the Player’s Handbook. " + "" + "Their ability score increases are good, and their other racial traits make them durable and flexible enough to succeed in several classes.",
                 "A staple of fantasy fiction and folklore, Elves are a simple yet effective base race with subraces which are numerous and diverse enough that elves are usable in a variety of builds and character concepts. " + "Unfortunately, because the subraces differentiate the Elf’s traits so much, it’s rare for more than one subrace to be viable in the same class unless you’re using the Customizing Your Origins optional rules presented in Tasha’s Cauldron of Everything.",
@@ -112,12 +97,9 @@ public class GUImanager extends JFrame {
                 "Halflings are perhaps the most iconic small race in Dungeons and Dragons, dating back to its earliest editions. " + "Their mechanics have changed as much as any race, but they have consistently remained a staple option for players who enjoy playing thieves, rogues, or other stealthy characters.",
                 "Human come in two flavors: the standard human and the “variant” human. " + "The standard human receives +1 increases to each ability score, making it easy to fit into any build. " + "However, it lacks any other racial traits, which makes the standard human extremely bland. " + "It also lacks the numerical appeal of a +2 ability increase, so more focused races will frequently outpace the standard human in nearly every case.",
                 "Thanks to the variants presented in Sword Coast Adventurer’s Guide and the subraces presented in Mordenkainen’s Tome of Foes, the Tiefling has the longest list of subrace options of any published race, totaling an impressive 14 individual subraces and variants. " + "These options make tieflings diverse, flexible, and viable in an impressively large number of builds."
-
         };
 
         classOptions = new String[]{
-
-                "Artificer",
                 "Barbarian",
                 "Bard",
                 "Cleric",
@@ -130,11 +112,9 @@ public class GUImanager extends JFrame {
                 "Sorcerer",
                 "Warlock",
                 "Wizard"
-
         };
 
         classDescriptions = new String[]{
-
                 "The Artificer is a class with a tool for every job and a solution to every problem. " + "They excel as a Support character, but make decent Defenders, Healers, and Strikers, too. " + "With the right infusions and spells, they can fill nearly any role in the party, making the Artificer’s versatility rival that of the Bard.",
                 "Barbarians are all about getting angry and dealing damage. " + "They have a ton of hit points, resistance to damage, and Rage gives a wonderful bonus to damage. " + "Barbarians don’t get much in the way of skills, so generally they’re stuck as combat monsters, but they function equally well as a Defender and a Striker, and certain character options can even expand them into a limited Support role.",
                 "The Bard is fantastically versatile. " + "With access to every skill, expertise, full casting, and a decent set of proficiencies, the Bard can fill essentially every role in the party. " + "Subclasses like College of Lore are more of the classic supportive Bard, with improved magical options and support abilities, while College of Swords and College of Valor can serve as front-line melee characters who can bring their spellcasting and support capabilities into the heat of battle.",
@@ -148,7 +128,6 @@ public class GUImanager extends JFrame {
                 "Sorcerers are a challenge, but at the same time they can be less complex than most spellcasting classes. " + "The Sorcerer’s spell list allows them to serve as a Blaster, Controller, Striker, and Utility Caster, and sorcerers make one of the easiest Faces in the game due to their skill list and their dependence on Charisma.",
                 "The Warlock is likely the easiest of any spellcaster to play. " + "You get only a handful of spell slots at a time, and never have to juggle multiple spell slot levels. " + "Warlocks learn spells permanently, so you don’t need to worry about changing your spells on a daily basis. " + "Warlocks also get the most powerful damage cantrip in the game, giving them a solid, reliable option for damage output in between your big spells.",
                 "The Wizard is the iconic arcane spellcaster, capable of doing all manner of fantastic tricks, and generally limited only by their spellbook and their spell slots. " + "A Wizard with a comprehensive spellbook can do essentially anything in the game, often as well as or better than a non-magical character who is built to do that thing. " + "A Wizard with Invisibility is as stealthy as a Rogue."
-
         };
 
         statOptions = new String[]{ 
@@ -161,31 +140,26 @@ public class GUImanager extends JFrame {
         };
 
         statDescriptions = new String[]{
-
                 "A Strength check can model any attempt to lift, push, pull, or break something, to force your body through a space, or to otherwise apply brute force to a situation. You add your Strength modifier to your attack roll and your damage roll when attacking with a melee weapon Skills: Athletics",
                 "A Dexterity check can model any attempt to move nimbly, quickly, or quietly, or to keep from falling on tricky footing. You add your Dexterity modifier to your attack roll and your damage roll when attacking with a ranged weapon, or a melee weapon that has the finesse property. Skills: Acrobatics, Sleight of Hand, Stealth",
                 "Constitution checks are uncommon, and no skills apply to Constitution checks, because the endurance this ability represents is largely passive rather than involving a specific effort on the part of a character or monster. A Constitution check can model your attempt to push beyond normal limits, however. Your Constitution modifier contributes to your hit points. Typically, you add your Constitution modifier to each Hit Die you roll for your hit points.",
                 "An Intelligence check comes into play when you need to draw on logic, education, memory, or deductive reasoning. Skills: Arcana, History, Investigation, Nature, Religion",
                 "A Wisdom check might reflect an effort to read body language, understand someone’s feelings, notice things about the environment, or care for an injured person. Skills: Animal Handling, Insight, Medicine, Perception, Survival",
                 "A Charisma check might arise when you try to influence or entertain others, when you try to make an impression or tell a convincing lie, or when you are navigating a tricky social situation. Skills: Deception, Intimidation, Performance, Persuasion"
-
         };
 
         selectedStats = new int[]{8, 8, 8, 8, 8, 8};
 
         characteristics = new String[]{
-
                 "Name",
                 "Age",
                 "Height",
                 "Weight",
                 "Eyes",
                 "Hair"
-
         };
 
         alignmentOptions = new String[]{
-
                 "Lawful Good",
                 "Neutral Good",
                 "Chaotic Good",
@@ -195,11 +169,9 @@ public class GUImanager extends JFrame {
                 "Lawful Evil",
                 "Neutral Evil",
                 "Chaotic Evil"
-
         };
 
         alignmentDescriptions = new String[]{
-
                 "Lawful Good (LG) creatures can be counted on to do the right thing as expected by society. Gold dragons and paladins are typically lawful good.",
                 "Neutral Good (NG) folk do the best they can to help others according to their needs. Many celestials are neutral good.",
                 "cChaotic Good (CG) creatures act as their conscience directs, with little regard for what others expect. Copper dragons and unicorns are typically chaotic good.",
@@ -209,11 +181,9 @@ public class GUImanager extends JFrame {
                 "Lawful Evil (LE) creatures methodically take what they want, within the limits of a code of tradition, loyalty, or order. Devils and blue dragons are typically lawful evil.",
                 "Neutral Evil (NE) is the alignment of those who do whatever they can get away with, without compassion or qualms. Yugoloths are typically neutral evil.",
                 "Chaotic Evil (CE) creatures act with arbitrary violence, spurred by their greed, hatred, or bloodlust. Demons and red dragons are typically chaotic evil."
-
         };
 
         backgroundOptions = new String[]{
-
                 "Acolyte",
                 "Charlatan",
                 "Criminal",
@@ -232,285 +202,194 @@ public class GUImanager extends JFrame {
                 "Soldier",
                 "Spy",
                 "Urchin"
-
         };
 
         backgroundDescriptions = new String[]{
             //Acolyte
             "You have spent your life in the service of a temple to a specific god or pantheon of gods. You act as an intermediary between the realm of the holy and the mortal world, performing sacred rites and offering sacrifices in order to conduct worshipers into the presence of the divine. You are not necessarily a cleric—performing sacred rites is not the same thing as channeling divine power. Feature: Shelter of the Faithful Proficiencies: Insight, Religion",
                 //Charlatan
-                "You have always had a way with people. You know what makes them tick, you can tease out their hearts’ desires after a few minutes of conversation, and with a few leading questions you can read them like they were children’s books. It’s a useful talent, and one that you’re perfectly willing to use for your advantage. Feature: False Identity Proficiencies: Deception, Sleight of Hand",
+            "You have always had a way with people. You know what makes them tick, you can tease out their hearts’ desires after a few minutes of conversation, and with a few leading questions you can read them like they were children’s books. It’s a useful talent, and one that you’re perfectly willing to use for your advantage. Feature: False Identity Proficiencies: Deception, Sleight of Hand",
                 //Criminal
-             "You are an experienced criminal with a history of breaking the law. You have spent a lot of time among other criminals and still have contacts within the criminal underworld. You’re far closer than most people to the world of murder, theft, and violence that pervades the underbelly of civilization, and you have survived up to this point by flouting the rules and regulations of society. Feature: Criminal Contact Proficiencies: Deception, Stealth",
+            "You are an experienced criminal with a history of breaking the law. You have spent a lot of time among other criminals and still have contacts within the criminal underworld. You’re far closer than most people to the world of murder, theft, and violence that pervades the underbelly of civilization, and you have survived up to this point by flouting the rules and regulations of society. Feature: Criminal Contact Proficiencies: Deception, Stealth",
                 //Entertainer
-             "You thrive in front of an audience. You know how to entrance them, entertain them, and even inspire them. Your poetics can stir the hearts of those who hear you, awakening grief or joy, laughter or anger. Your music raises their spirits or captures their sorrow. Your dance steps captivate, your humor cuts to the quick. Whatever techniques you use, your art is your life. Feature: By Popular Demand Proficiencies: Acrobatics, Performance",
+            "You thrive in front of an audience. You know how to entrance them, entertain them, and even inspire them. Your poetics can stir the hearts of those who hear you, awakening grief or joy, laughter or anger. Your music raises their spirits or captures their sorrow. Your dance steps captivate, your humor cuts to the quick. Whatever techniques you use, your art is your life. Feature: By Popular Demand Proficiencies: Acrobatics, Performance",
                 //Folk Hero
-             "You come from a humble social rank, but you are destined for so much more. Already the people of your home village regard you as their champion, and your destiny calls you to stand against the tyrants and monsters that threaten the common folk everywhere. Feature: Rustic Hospitality Proficiencies: Animal Handling, Survival",
+            "You come from a humble social rank, but you are destined for so much more. Already the people of your home village regard you as their champion, and your destiny calls you to stand against the tyrants and monsters that threaten the common folk everywhere. Feature: Rustic Hospitality Proficiencies: Animal Handling, Survival",
                 //Gladiator
-             "A gladiator is as much an entertainer as any minstrel or circus performer, trained to make the arts of combat into a spectacle the crowd can enjoy. This kind of flashy combat is your entertainer routine, though you might also have some skills as a tumbler or actor. Feature: By Popular Demand Proficiencies: Acrobatics, Performance",
+            "A gladiator is as much an entertainer as any minstrel or circus performer, trained to make the arts of combat into a spectacle the crowd can enjoy. This kind of flashy combat is your entertainer routine, though you might also have some skills as a tumbler or actor. Feature: By Popular Demand Proficiencies: Acrobatics, Performance",
                 //Guild Artisan
-             "You are a member of an artisan’s guild, skilled in a particular field and closely associated with other artisans. You are a well-established part of the mercantile world, freed by talent and wealth from the constraints of a feudal social order. You learned your skills as an apprentice to a master artisan, under the sponsorship of your guild, until you became a master in your own right. Feature: Guild Membership Proficiencies: Insight, Persuasion",
+            "You are a member of an artisan’s guild, skilled in a particular field and closely associated with other artisans. You are a well-established part of the mercantile world, freed by talent and wealth from the constraints of a feudal social order. You learned your skills as an apprentice to a master artisan, under the sponsorship of your guild, until you became a master in your own right. Feature: Guild Membership Proficiencies: Insight, Persuasion",
                 //Guild Merchant
-             "Instead of an artisans’ guild, you might belong to a guild of traders, caravan masters, or shopkeepers. You don’t craft items yourself but earn a living by buying and selling the works of others (or the raw materials artisans need to practice their craft). Your guild might be a large merchant consortium (or family) with interests across the region. Perhaps you transported goods from one place to another, by ship, wagon, or caravan, or bought them from traveling traders and sold them in your own little shop. In some ways, the traveling merchant’s life lends itself to adventure far more than the life of an artisan. Feature: Guild Membership Proficiencies: Insight, Persuasion",
+            "Instead of an artisans’ guild, you might belong to a guild of traders, caravan masters, or shopkeepers. You don’t craft items yourself but earn a living by buying and selling the works of others (or the raw materials artisans need to practice their craft). Your guild might be a large merchant consortium (or family) with interests across the region. Perhaps you transported goods from one place to another, by ship, wagon, or caravan, or bought them from traveling traders and sold them in your own little shop. In some ways, the traveling merchant’s life lends itself to adventure far more than the life of an artisan. Feature: Guild Membership Proficiencies: Insight, Persuasion",
                 //Hermit
-             "You lived in seclusion — either in a sheltered community such as a monastery, or entirely alone — for a formative part of your life. In your time apart from the clamor of society, you found quiet, solitude, and perhaps some of the answers you were looking for. Feature: Discovery Proficiencies: Medicine, Religion",
+            "You lived in seclusion — either in a sheltered community such as a monastery, or entirely alone — for a formative part of your life. In your time apart from the clamor of society, you found quiet, solitude, and perhaps some of the answers you were looking for. Feature: Discovery Proficiencies: Medicine, Religion",
                 //Knight
-             "A knighthood is among the lowest noble titles in most societies, but it can be a path to higher status. One of your commoner retainers is a noble who serves as your squire, aiding you in exchange for training on his or her own path to knighthood. Your two remaining retainers might include a groom to care for your horse and a servant who polishes your armor (and even helps you put it on).  Feature: Retainers Proficiencies: History, Persuasion",
+            "A knighthood is among the lowest noble titles in most societies, but it can be a path to higher status. One of your commoner retainers is a noble who serves as your squire, aiding you in exchange for training on his or her own path to knighthood. Your two remaining retainers might include a groom to care for your horse and a servant who polishes your armor (and even helps you put it on).  Feature: Retainers Proficiencies: History, Persuasion",
                 //Noble
-             "You understand wealth, power, and privilege. You carry a noble title, and your family owns land, collects taxes, and wields significant political influence. You might be a pampered aristocrat unfamiliar with work or discomfort, a former merchant just elevated to the nobility, or a disinherited scoundrel with a disproportionate sense of entitlement. Or you could be an honest, hard-working landowner who cares deeply about the people who live and work on your land, keenly aware of your responsibility to them. Feature: Position of Privilege Proficiencies: History, Persuasion",
+            "You understand wealth, power, and privilege. You carry a noble title, and your family owns land, collects taxes, and wields significant political influence. You might be a pampered aristocrat unfamiliar with work or discomfort, a former merchant just elevated to the nobility, or a disinherited scoundrel with a disproportionate sense of entitlement. Or you could be an honest, hard-working landowner who cares deeply about the people who live and work on your land, keenly aware of your responsibility to them. Feature: Position of Privilege Proficiencies: History, Persuasion",
                 //Outlander
-             "You grew up in the wilds, far from civilization and the comforts of town and technology. You’ve witnessed the migration of herds larger than forests, survived weather more extreme than any city-dweller could comprehend, and enjoyed the solitude of being the only thinking creature for miles in any direction. The wilds are in your blood, whether you were a nomad, an explorer, a recluse, a hunter-gatherer, or even a marauder. Even in places where you don’t know the specific features of the terrain, you know the ways of the wild. Feature: Wanderer Proficiencies: Athletics, Survival",
+            "You grew up in the wilds, far from civilization and the comforts of town and technology. You’ve witnessed the migration of herds larger than forests, survived weather more extreme than any city-dweller could comprehend, and enjoyed the solitude of being the only thinking creature for miles in any direction. The wilds are in your blood, whether you were a nomad, an explorer, a recluse, a hunter-gatherer, or even a marauder. Even in places where you don’t know the specific features of the terrain, you know the ways of the wild. Feature: Wanderer Proficiencies: Athletics, Survival",
                 //Pirate
-             "You spent your youth under the sway of a dread pirate, a ruthless cutthroat who taught you how to survive in a world of sharks and lawlessness. You’ve indulged in larceny on the high seas and sent more than one deserving soul to a briny grave. Fear and bloodshed are no strangers to you, and you’ve garnered a somewhat unsavory reputation in many a port town. Feature: Bad Reputation Proficiencies: Athletics, Perception",
+            "You spent your youth under the sway of a dread pirate, a ruthless cutthroat who taught you how to survive in a world of sharks and lawlessness. You’ve indulged in larceny on the high seas and sent more than one deserving soul to a briny grave. Fear and bloodshed are no strangers to you, and you’ve garnered a somewhat unsavory reputation in many a port town. Feature: Bad Reputation Proficiencies: Athletics, Perception",
                 //Sage
-             "You spent years learning the lore of the multiverse. You scoured manuscripts, studied scrolls, and listened to the greatest experts on the subjects that interest you. Your efforts have made you a master in your fields of study. Feature: Researcher Proficiencies: Arcana, History",
+            "You spent years learning the lore of the multiverse. You scoured manuscripts, studied scrolls, and listened to the greatest experts on the subjects that interest you. Your efforts have made you a master in your fields of study. Feature: Researcher Proficiencies: Arcana, History",
                 //Sailer
-             "You sailed on a seagoing vessel for years. In that time, you faced down mighty storms, monsters of the deep, and those who wanted to sink your craft to the bottomless depths. Your first love is the distant line of the horizon, but the time has come to try your hand at something new. Feature: Ship's Passage Proficiencies: Athletics, Perception",
+            "You sailed on a seagoing vessel for years. In that time, you faced down mighty storms, monsters of the deep, and those who wanted to sink your craft to the bottomless depths. Your first love is the distant line of the horizon, but the time has come to try your hand at something new. Feature: Ship's Passage Proficiencies: Athletics, Perception",
                 //Soldier
-             "War has been your life for as long as you care to remember. You trained as a youth, studied the use of weapons and armor, learned basic survival techniques, including how to stay alive on the battlefield. You might have been part of a standing national army or a mercenary company, or perhaps a member of a local militia who rose to prominence during a recent war. Feature: Military Rank Proficiencies: Athletics, Intimidation",
+            "War has been your life for as long as you care to remember. You trained as a youth, studied the use of weapons and armor, learned basic survival techniques, including how to stay alive on the battlefield. You might have been part of a standing national army or a mercenary company, or perhaps a member of a local militia who rose to prominence during a recent war. Feature: Military Rank Proficiencies: Athletics, Intimidation",
                 //Spy
-             "Although your capabilities are not much different from those of a burglar or smuggler, you learned and practiced them in a very different context: as an espionage agent. You might have been an officially sanctioned agent of the crown, or perhaps you sold the secrets you uncovered to the highest bidder. Feature: Criminal Contact Proficiencies: Deception, Stealth",
+            "Although your capabilities are not much different from those of a burglar or smuggler, you learned and practiced them in a very different context: as an espionage agent. You might have been an officially sanctioned agent of the crown, or perhaps you sold the secrets you uncovered to the highest bidder. Feature: Criminal Contact Proficiencies: Deception, Stealth",
                 //Urchin
-             "You grew up on the streets alone, orphaned, and poor. You had no one to watch over you or to provide for you, so you learned to provide for yourself. You fought fiercely over food and kept a constant watch out for other desperate souls who might steal from you. You slept on rooftops and in alleyways, exposed to the elements, and endured sickness without the advantage of medicine or a place to recuperate. You’ve survived despite all odds, and did so through cunning, strength, speed, or some combination of each. Feature: City Secrets Proficiencies: Sleight of Hand, Stealth"
+            "You grew up on the streets alone, orphaned, and poor. You had no one to watch over you or to provide for you, so you learned to provide for yourself. You fought fiercely over food and kept a constant watch out for other desperate souls who might steal from you. You slept on rooftops and in alleyways, exposed to the elements, and endured sickness without the advantage of medicine or a place to recuperate. You’ve survived despite all odds, and did so through cunning, strength, speed, or some combination of each. Feature: City Secrets Proficiencies: Sleight of Hand, Stealth"
         };
 
     }
 
     private BasicNavPanel createNavPanel() {
-
         return new BasicNavPanel(createBackButton(), createContinueButton(), 0);
-
     }
 
     private BasicNavPanel createNavPanel(int continueRequirement) {
-
         return new BasicNavPanel(createBackButton(), createContinueButton(), continueRequirement);
-
     }
 
     private BasicNavPanel createBackPanel() {
-
         return new BasicNavPanel(createBackButton(0), null, 0);
-
     }
 
     private DefaultButton createBackButton() {
-
         DefaultButton button = new DefaultButton("Back");
-
             button.addActionListener(
-
                     e -> {
-
                         lastPanel--;
                         currentPanel--;
                         nextPanel--;
-
                         clearAndReset();
-
                     }
-
             );
-
         return button;
-
     }
 
     private DefaultButton createBackButton(int manualBackPoint) {
-
         DefaultButton button = new DefaultButton("Back");
-
             button.addActionListener(
-
                     e -> {
-
                         lastPanel = 0;
                         currentPanel = manualBackPoint;
                         nextPanel = 0;
-
                         clearAndReset();
-
                     }
-
             );
-
         return button;
     }
 
     private DefaultButton createContinueButton() {
-
         DefaultButton button = new DefaultButton("Continue");
-
             button.addActionListener(
-
                     e -> {
-
                         lastPanel++;
                         currentPanel++;
                         nextPanel++;
-
                         clearAndReset();
-
                     }
-
             );
-
         return button;
-
     }
 
     private DefaultButton createNewCharacterButton() {
-
         DefaultButton button = createContinueButton();
             button.setText("Create New Character");
-
             button.addActionListener(
-
                 e -> {
-
                     lastPanel = 0;
                     currentPanel = 1;
                     nextPanel = 2; 
-
                     clearAndReset();
-                    
                 }
-
             );
-
         return button;
-
     }
 
     // TODO: Need to implement.
     private DefaultButton createRandomCharacterButton() {
-
         DefaultButton button = new DefaultButton("Create Random Character");
-
             button.addActionListener(
-
                     e -> {
-
                         createRandomCharacter();
-
                         lastPanel = currentPanel;
                         currentPanel = 3;
                         nextPanel = currentPanel + 1;
                         clearAndReset();
-
                     }
-
             );
-
         return button;
-
     }
 
     // TODO: Need to implement with exact indices and file manager logic.
     private DefaultButton createSaveButton() {
-
         DefaultButton button = new DefaultButton("Save");
-
             button.addActionListener(
-
                     e -> {
-
                         lastPanel = currentPanel;
                         currentPanel = 6;
                         nextPanel = currentPanel + 1;
                         clearAndReset();
-
                     }
-
             );
-
         return button;
-
     }
 
     private DefaultButton createLoadButton() {
-
         DefaultButton button = new DefaultButton("Load");
-
             button.addActionListener(
-
                     e -> {
-
                         lastPanel = currentPanel;
                         currentPanel = 5;
                         clearAndReset();
-
                     }
-
             );
-
             return button;
-
     }
 
     private ArrayList<DefaultButton> loadableCharacters() {
-
         saves = fileManager.getSaves();
-
         savesButtons = new ArrayList<>();
 
         for(int i = 0; i < saves.size(); i++) {
-
             savesButtons.add(createLoadNCharacterButton(i));
-
         }
 
         for(int i = 0; i < saves.size(); i++) {
-
             System.out.println(saves.get(i).toString());
-
         }
-
         return savesButtons;
-
     }
 
     private DefaultButton createLoadNCharacterButton(int index) {
-
       if(index < 0) return new DefaultButton("INDEX OUT OF BOUNDS");
 
       DefaultButton button = new DefaultButton(saves.get(index).getName());
-
           button.addActionListener(
-
                   e -> {
-
                       lastPanel = currentPanel;
                       panels[6] = new ViewCharacterPanel(createBackPanel(), saves.get(index));
                       currentPanel = 6;
                       clearAndReset();
-
                   }
-
           );
-
       return button;
-
     }
 
     // TODO: Need to implement random character creation.
     private void createRandomCharacter() {
-
         System.out.println("Request to create random character. Need to implement.");
-
     }
 
     private void clearAndReset() {
-
         getContentPane().removeAll();
-
         add(panels[currentPanel]);
-
         repaint();
         revalidate();
         pack();
-
     }
-
-
 }

@@ -1,16 +1,16 @@
-package dnd.species;
+package dnd.character;
 
-public class Dwarf implements Race {
-    private final int speed = 25;
-    private final int maxAge = 350;
+public class Tiefling implements Race {
+    private final int speed = 30;
+    private final int maxAge = 85;
     private String[] traits;
     private String[] skills;
     private String[] languages;
     private String[] proficiencies;
 
-    public Dwarf() {
+    public Tiefling() {
 
-        this.languages = new String[]{"Common", "Dwarvish"};
+        this.languages = new String[]{"Common", "Infernal"};
         this.skills = new String[]{};
     }
 
@@ -60,7 +60,7 @@ public class Dwarf implements Race {
     @Override
     public int[] getASI() {
         // TODO Auto-generated method stub
-        return new int[]{2, 2};
+        return new int[]{3, 5, 5};
     }
 
     @Override

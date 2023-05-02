@@ -1,12 +1,14 @@
-package dnd;
+package dnd.gui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+
 import javax.swing.border.*;
 
-public class LoadCharacter extends JPanel {
+public class LoadCharacterPanel extends JPanel {
 
-	public LoadCharacter() {
+	public LoadCharacterPanel(BasicNavPanel basicNavPanel, ArrayList<DefaultButton> arrayList) {
 
 		setBackground(new Color(205, 133, 63));
 		setLayout(new BorderLayout(0, 0));

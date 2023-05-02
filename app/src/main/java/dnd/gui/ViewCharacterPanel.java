@@ -1,9 +1,9 @@
-package dnd;
+package dnd.gui;
 
 import java.awt.*;
 import javax.swing.*;
 
-import static dnd.AppConstants.*;
+import static dnd.gui.AppConstants.*;
 
 public class ViewCharacterPanel extends JPanel {
 

@@ -1,4 +1,4 @@
-package dnd.species;
+package dnd.character;
 
 public interface Race {
 

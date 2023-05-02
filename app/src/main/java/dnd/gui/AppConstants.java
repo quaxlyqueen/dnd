@@ -1,4 +1,4 @@
-package dnd;
+package dnd.gui;
 
 import java.awt.*;
 

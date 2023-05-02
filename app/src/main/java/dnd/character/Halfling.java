@@ -1,4 +1,4 @@
-package dnd.species;
+package dnd.character;
 
 public class Halfling implements Race {
     private final int speed = 30;

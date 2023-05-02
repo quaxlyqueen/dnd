@@ -1,7 +1,7 @@
-package dnd;
+package dnd.gui;
 
 import java.io.Serializable;
-import dnd.species.*;
+import dnd.character.*;
 
 public class CharacterSheet implements Serializable {
     private String name;

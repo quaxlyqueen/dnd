@@ -1,4 +1,4 @@
-package dnd;
+package dnd.character;
 
 public class Background {
 

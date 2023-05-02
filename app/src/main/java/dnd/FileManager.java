@@ -4,7 +4,8 @@ import java.awt.*;
 import java.io.*;
 import java.util.*;
 
-import static dnd.AppConstants.*;
+import static dnd.gui.AppConstants.*;
+import dnd.gui.CharacterSheet;
 
 public class FileManager {
     private String filepath;

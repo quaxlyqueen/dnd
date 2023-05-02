@@ -1,4 +1,4 @@
-package dnd;
+package dnd.character;
 
 /**
  * Object stores information about a character's skills arrays. Firstly, the name of each skill, and secondly the value of each skill. When constructed, a private method is called

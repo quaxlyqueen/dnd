@@ -1,17 +1,21 @@
-package dnd.species;
+package dnd.character;
 
-public class Gnome implements Race {
-    private final int speed = 25;
-    private final int maxAge = 500;
+public class HalfElf implements Race {
+    private final int speed = 30;
+    private final int maxAge = 180;
     private String[] traits;
     private String[] skills;
     private String[] languages;
     private String[] proficiencies;
+    private int chosenASI;
 
-    public Gnome() {
+    //TODO HalfElf get's to increase 1 ASI of their choice to increase. 
+    public HalfElf(String chosenLanguage, int chosenASI) {
 
-        this.languages = new String[]{"Common", "Gnomish"};
+        this.languages = new String[]{"Common", "Elvish", chosenLanguage};
         this.skills = new String[]{};
+        this.chosenASI = chosenASI;
+
     }
 
     @Override
@@ -60,7 +64,7 @@ public class Gnome implements Race {
     @Override
     public int[] getASI() {
         // TODO Auto-generated method stub
-        return new int[]{3, 3};
+        return new int[]{5, 5, chosenASI};
     }
 
     @Override
@@ -70,3 +74,4 @@ public class Gnome implements Race {
     }
 
 }
+

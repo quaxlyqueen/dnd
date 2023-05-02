@@ -1,10 +1,11 @@
-package dnd;
+package dnd.gui;
 
 import javax.swing.*;
 import java.awt.*;
 
-import static dnd.AppConstants.*;
-import static dnd.ImageManager.*;
+import static dnd.gui.AppConstants.*;
+import dnd.gui.InfoPanel;
+import dnd.ImageManager;
 
 public class BasicPanel extends JPanel {
 

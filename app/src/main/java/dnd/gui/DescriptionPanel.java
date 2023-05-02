@@ -1,10 +1,10 @@
-package dnd;
+package dnd.gui;
 
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
 
-import static dnd.AppConstants.*;
+import static dnd.gui.AppConstants.*;
 
 public class DescriptionPanel extends JPanel {
 
