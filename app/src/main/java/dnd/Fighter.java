@@ -3,97 +3,41 @@ package dnd;
 import java.io.Serializable;
 
 public class Fighter implements ClassTemplate, Serializable {
-
     private int HP;
-
     private int level;
+    private int hitDie; // TODO: This should be the type of die.
 
-    // TODO: This should be the type of die.
-    private int hitDie;
+    // TODO: Need to figure out how to contain class progression information. Potentially a double String array, each row equals a level, each column a different thing. Should class features be a separate class, ie. BarbFeatures, BardFeatures, etc?
 
-    public Fighter() {
+    public String getDescription() { return null; }
 
+    public String[] getProgression() { return null; }
 
-    }
+    public String[] getClassFeatures() { return null; }
 
-// TODO: Need to figure out how to contain class progression information. Potentially a double String array, each row equals a level, each column a different thing. Should class features be a separate class, ie. BarbFeatures, BardFeatures, etc?
+    public String getHitDie() { return null; }
 
-    public String getDescription() {
-        // TODO Auto-generated method stub
-        return null;
-    }
+    public int getHPatLv1() { return 0; }
 
-    public String[] getProgression() {
-        // TODO Auto-generated method stub
-        return null;
-    }
+    public int getHPpastLv1() { return 0; }
 
-    public String[] getClassFeatures() {
-        // TODO Auto-generated method stub
-        return null;
-    }
+    public String[] getArmorProf() { return null; }
 
-    public String getHitDie() {
-        // TODO Auto-generated method stub
-        return null;
-    }
+    public String[] getWeaponProf() { return null; }
 
-    public int getHPatLv1() {
-        // TODO Auto-generated method stub
-        return 0;
-    }
+    public String[] getToolProf() { return null; }
 
-    public int getHPpastLv1() {
-        // TODO Auto-generated method stub
-        return 0;
-    }
+    public String[] availableSkills() { return null; }
 
-    public String[] getArmorProf() {
-        // TODO Auto-generated method stub
-        return null;
-    }
+    public String[] startingEquipChoices() { return null; }
 
-    public String[] getWeaponProf() {
-        // TODO Auto-generated method stub
-        return null;
-    }
+    public boolean advantageCheck(Stats abilityScore) { return false; }
 
-    public String[] getToolProf() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public String[] availableSkills() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public String[] startingEquipChoices() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public boolean advantageCheck(Stats abilityScore) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    public boolean disadvantageCheck(Stats abilityScore) {
-        // TODO Auto-generated method stub
-        return false;
-    }
+    public boolean disadvantageCheck(Stats abilityScore) { return false; }
 
     @Override
-    public String[] getSavingThrows() {
-        // TODO Auto-generated method stub
-        return null;
-    }
+    public String[] getSavingThrows() { return null; }
 
     @Override
-    public String toString() {
-
-        return this.getClass().getSimpleName();
-
-    }
-
+    public String toString() { return this.getClass().getSimpleName(); }
 }

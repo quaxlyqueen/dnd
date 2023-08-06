@@ -18,56 +18,38 @@ public class FileManager {
         loadFont();
     } 
 
-    public int getNumSaves() {
-        return saveFiles.size();
+    public int getNumSaves() { return saveFiles.size(); }
+
+    public boolean isReturningUser() { return returningUser; }
+
+    public CharacterSheet readSavedCharacter(int index) { return readCharacter(saveFiles.get(index)); }
+
+    public void saveCharacter(CharacterSheet completedCharacter) { writeCharacter(completedCharacter); }
+
+    public ArrayList<CharacterSheet> getSaves() { return saves; }
+
+    // TODO: Need to implement.
+    public void deleteCharacter() {}
+
+    private void loadFont() {
+        try {
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File(fontFilepath)));
+        } catch(IOException | FontFormatException e) {
+            System.out.println("Filepath of font not found: " + fontFilepath + " does not exist.");
+        }
     }
 
-   public boolean isReturningUser() {
-       return returningUser;
-   }
+    private void setSaveFiles() {
+        File[] tmp = new File(savesFilepath).listFiles();
+        if(tmp != null) {
+            for(int i = 0; i < tmp.length; i++) saveFiles.add(tmp[i]);
+            returningUser = true;
+        } else returningUser = false;
 
-   public CharacterSheet readSavedCharacter(int index) {
-       return readCharacter(saveFiles.get(index)); 
-   }
-
-   public void saveCharacter(CharacterSheet completedCharacter) {
-       writeCharacter(completedCharacter);
-   }
-
-   public ArrayList<CharacterSheet> getSaves() {
-       return saves;
-   }
-
-   // TODO: Need to implement.
-   public void deleteCharacter() {
-
-   }
-
-   private void loadFont() {
-       try {
-           GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-           ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File(fontFilepath)));
-       } catch(IOException | FontFormatException e) {
-           System.out.println("Filepath of font not found: " + fontFilepath + " does not exist.");
-       }
-   }
-
-   private void setSaveFiles() {
-       File[] tmp = new File(savesFilepath).listFiles();
-       if(tmp != null) {
-           for(int i = 0; i < tmp.length; i++) {
-               saveFiles.add(tmp[i]);
-           }
-           returningUser = true;
-       } else {
-           returningUser = false;
-       } 
-
-       saves = new ArrayList<>();
-       for(File file : saveFiles) {
-           saves.add(readCharacter(file));
-       }
-   }
+        saves = new ArrayList<>();
+        for(File file : saveFiles) saves.add(readCharacter(file));
+    }
 
    private CharacterSheet readCharacter(File file) {
        CharacterSheet sheet = null;
@@ -88,12 +70,9 @@ public class FileManager {
            FileOutputStream fileOut = new FileOutputStream(savesFilepath + sheet.getName() + ".dnd");
            ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
           ) {
-
            objOut.writeObject(sheet);
            setSaveFiles();
        } catch (IOException e) {
-           System.out.println("ERROR: ");
-           e.printStackTrace();
            System.out.println("\nERROR: Unable to write character sheet object to \n" + filepath + "/.savedSheets");
        }
    }

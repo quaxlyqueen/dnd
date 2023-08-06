@@ -11,72 +11,34 @@ public class Elf implements Race, Serializable {
     private String[] proficiencies;
 
     public Elf() {
-
         this.languages = new String[]{"Common", "Elvish"};
         this.skills = new String[]{};
     }
 
     @Override
-    public String getRace() {
-
-        return this.getClass().getSimpleName();
-
-    }
+    public String getRace() { return this.getClass().getSimpleName(); }
 
     @Override
-    public int maxAge() {
-
-        return maxAge;
-
-    }
+    public int maxAge() { return maxAge; }
 
     @Override
-    public int getSpeed() {
-
-        return speed;
-
-    }
+    public int getSpeed() { return speed; }
 
     @Override
-    public String[] getTraits() {
-
-        return traits;
-
-    }
+    public String[] getTraits() { return traits; }
 
     @Override
-    public String[] getSkills() {
-
-        return skills;
-
-    }
+    public String[] getSkills() { return skills; }
 
     @Override
-    public String[] getLanguages() {
-
-        return languages;
-
-    }
+    public String[] getLanguages() { return languages; }
 
     @Override
-    public String[] getProficiencies() {
-
-        return proficiencies;
-
-    }
+    public String[] getProficiencies() { return proficiencies; }
 
     @Override
-    public int[] getASI() {
-
-        return new int[]{1, 1};
-
-    }
+    public int[] getASI() { return new int[]{1, 1}; }
 
     @Override
-    public String toString() {
-
-        return this.getClass().getSimpleName();
-
-    }
-
+    public String toString() { return this.getClass().getSimpleName(); }
 }

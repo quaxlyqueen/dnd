@@ -31,10 +31,7 @@ public class CharacterSheet implements Serializable {
      * 
      */
 
-
-
     public CharacterSheet(
-
             String name,
             int age,
             int heightFeet,
@@ -47,7 +44,6 @@ public class CharacterSheet implements Serializable {
             String alignment,
             String background,
             CharacterStats stats 
-
     ) {
 
         this.name = name;
@@ -57,82 +53,36 @@ public class CharacterSheet implements Serializable {
         this.weight = weight;
         this.eyeColor = eyeColor;
         this.hairColor = hairColor;
-
         this.race = race;
         this.chClass = chClass;
         this.alignment = alignment;
         this.background = background;
         this.stats = stats;
-
     }
 
-    public String getName() {
+    public String getName() { return name; }
 
-        return name;
+    public int getAge() { return age; }
 
-    }
+    public int getHeightFeet() { return heightFeet; }
 
-    public int getAge() {
+    public int getHeightInch() { return heightInch; }
 
-        return age;
+    public int getWeight() { return weight; }
 
-    }
+    public String getEyeColor() { return eyeColor; }
 
-    public int getHeightFeet() {
+    public String getHairColor() { return hairColor; }
 
-        return heightFeet;
+    public Race getRace() { return race; }
 
-    }
+    public ClassTemplate getCharacterClass() { return chClass; }
 
-    public int getHeightInch() {
-
-        return heightInch;
-
-    }
-
-    public int getWeight() {
-
-        return weight;
-
-    }
-
-    public String getEyeColor() {
-
-        return eyeColor;
-
-    }
-
-    public String getHairColor() {
-
-        return hairColor;
-
-    }
-
-    public Race getRace() {
-
-        return race;
-
-    }
-
-    public ClassTemplate getCharacterClass() {
-
-        return chClass;
-
-    }
-
-    public CharacterStats getStats() {
-
-        return stats;
-
-    }
+    public CharacterStats getStats() { return stats; }
 
     @Override
     public String toString() {
-
         String output = "Character name: " + name + "\nAge: " + age + "\nHeight: " + heightFeet + "\'" + heightInch + "\"" + "\nWeight: " + weight + "\nEye Color: " + eyeColor + "\nHair Color: " + hairColor + "\nRace: " + race.toString() + "\nClass: " + chClass.toString() + "\nStats: " + stats.toString();
-
         return output;
-
     }
-
 }

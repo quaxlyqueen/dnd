@@ -14,78 +14,47 @@ public class BasicNavPanel extends JPanel {
     private int continueRequirement;
 
     public BasicNavPanel(DefaultButton backButton, DefaultButton continueButton, int continueRequirement) {
-
         super(new GridLayout(1, 2, 30, 0));
         this.backButton = backButton;
 
-        if(continueButton == null) {
-
-            this.continueButton = null;
-
-        } else {
-
-            this.continueButton = continueButton;
-
-        } 
+        if(continueButton == null) this.continueButton = null;
+        else this.continueButton = continueButton;
 
         this.continueRequirement = continueRequirement;
         createNavPanel();
-
     }
 
-    public int getContinueRequirement() {
-
-        return continueRequirement;
-
-    }
+    public int getContinueRequirement() { return continueRequirement; }
 
     public void decreaseContinueRequirement(int value) {
-
         continueRequirement -= value;
         updateContinueRequirement();
-
     }
 
     public void increaseContinueRequirement(int value) {
-
         continueRequirement += value;
         updateContinueRequirement();
-
     }
 
     private void updateContinueRequirement() {
-
         removeAll();
-
         createNavPanel();
-
     }
 
     private void createNavPanel() {
-
         setBackground(darkestBrown);
         setBorder(new EmptyBorder(15, 150, 15, 150));
         add(backButton);
 
-        if (continueRequirement == 0) {
-
-            if(continueButton != null) {
-
-                add(continueButton);
-
-            }
-
-        } else {
-
+        if (continueRequirement == 0)
+            if(continueButton != null) add(continueButton);
+        else {
             DefaultButton requiredStepsNeeds = new DefaultButton(Integer.toString(continueRequirement) + " Points Left");
             requiredStepsNeeds.select();
             requiredStepsNeeds.setBorder(new LineBorder(lightAccent, 1));
             requiredStepsNeeds.setBorderPainted(true);
             requiredStepsNeeds.setEnabled(false);
             add(requiredStepsNeeds);
-
         }
-
     }
-
 }

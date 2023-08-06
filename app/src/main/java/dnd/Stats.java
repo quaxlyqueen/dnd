@@ -1,12 +1,9 @@
 package dnd;
 
 public abstract class Stats {
-
     public int calcSavingThrow(int abilityScore) {
-
         switch (abilityScore) {
-            case 1:
-                return -5;
+            case 1: return -5;
             case 2:
             case 3:
                 return -4;
@@ -34,13 +31,9 @@ public abstract class Stats {
             case 18:
             case 19:
                 return 4;
-            case 20:
-                return 5;
-            default:
-                return -42;
-
+            case 20: return 5;
+            default: return -42;
         }
-
     }
 
     public abstract void increaseScore();
@@ -52,5 +45,4 @@ public abstract class Stats {
     abstract int getSavingThrow();
 
     abstract String getDescription();
-
 }

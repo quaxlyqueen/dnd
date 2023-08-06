@@ -1,7 +1,6 @@
 package dnd;
 
 public class Background {
-
     int backgroundIndex;
     private String name;
     private boolean[] proficientStatus;
@@ -9,10 +8,6 @@ public class Background {
     private String feature;
     private String skillProficiencies;
 
-    /**
-     * @param name
-     * @param feature
-     */
     public Background(String name, boolean[] proficientStatus, String[] skills, String feature) {
         this.name = name;
         this.proficientStatus = proficientStatus;
@@ -116,39 +111,17 @@ public class Background {
         feature = "Retainers" + "\nYou have the service of three retainers loyal to your family. These retainers can be attendants or messengers, and one might be a majordomo. Your retainers are commoners who can perform mundane tasks for you, but they do not fight for you, will not follow you into obviously dangerous areas (such as dungeons), and will leave if they are frequently endangered or abused.";
     }
 
-    /**
-     * @return the name
-     */
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
 
-    /**
-     * @return the skillProficiencies
-     */
-    public String getskillProficiences() {
-        return skillProficiencies;
-    }
+    public String getskillProficiences() { return skillProficiencies; }
 
-    /**
-     * @return the feature
-     */
-    public String getDescription() {
-        return feature;
-    }
+    public String getDescription() { return feature; }
 
-    /**
-     * @return the proficientStatus
-     */
-    public boolean[] getProficientStatus() {
-        return proficientStatus;
-    }
+    public boolean[] getProficientStatus() { return proficientStatus; }
 
     @Override
     public String toString() {
         return "Background: " + name + "\nSkill Proficiencies: " + skillProficiencies + "\nFeature: "
                 + feature;
     }
-
-
 }

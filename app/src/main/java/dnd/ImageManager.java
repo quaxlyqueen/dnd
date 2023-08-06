@@ -19,22 +19,19 @@ public class ImageManager extends FileManager {
             racePortraits = new JLabel[9][];
             classPortraits = new JLabel[12][];
             savesPortraits = new ArrayList<>();
-
         createPortraitArray(racePortraits, "race");
         createPortraitArray(classPortraits, "class"); 
         createSavesPortraits();
-
     }
 
     public JLabel getRacePortrait(int raceIndex) {
       if(raceIndex < 1) return new JLabel();
-
-      return racePortraits[raceIndex][new Random().nextInt(racePortraits[raceIndex].length)];
+      return racePortraits[raceIndex][0];
+      //return racePortraits[raceIndex][new Random().nextInt(racePortraits[raceIndex].length)];
     }
 
     public JLabel getClassPortrait(int classIndex) {
       if(classIndex < 1) return new JLabel();
-
       return classPortraits[classIndex][new Random().nextInt(classPortraits[classIndex].length)];
     }
 
@@ -74,6 +71,7 @@ public class ImageManager extends FileManager {
         try {
             img = ImageIO.read(file);
             finalImg = img.getScaledInstance(250, 375, Image.SCALE_SMOOTH);
+            System.out.println(file.getPath());
         } catch (IOException e) {
             System.out.println("File " + file.getPath() + " does not exist.");
             img = null;

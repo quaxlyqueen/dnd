@@ -2,21 +2,14 @@ package dnd;
 
 import dnd.species.*;
 public class Tester {
-
     public static void main(String[] args) {
-
         FileManager filer = new FileManager();
-
         filer.saveCharacter(createSheet());
-
         CharacterSheet chFromFile = filer.readSavedCharacter(0);
-
         System.out.println("chFromFile: \n" + chFromFile.toString());
-
     }
 
     public static CharacterSheet createSheet() {
-
         String name = "Josh";
         int age = 21;
         int heightFeet = 5;
@@ -35,7 +28,5 @@ public class Tester {
         CharacterSheet chTest = new CharacterSheet(name, age, heightFeet, heightInch, weight, eyeColor, hairColor, race, chClass, alignment, background, stats);
 
         return chTest;
-
     }
-
 }
