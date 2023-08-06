@@ -71,7 +71,6 @@ public class ImageManager extends FileManager {
         try {
             img = ImageIO.read(file);
             finalImg = img.getScaledInstance(250, 375, Image.SCALE_SMOOTH);
-            System.out.println(file.getPath());
         } catch (IOException e) {
             System.out.println("File " + file.getPath() + " does not exist.");
             img = null;
