@@ -1,6 +1,6 @@
 package dnd.species;
 
-public class HalfElf implements Race {
+public class HalfElf implements Species {
     private final int speed = 30;
     private final int maxAge = 180;
     private String[] traits;
@@ -11,67 +11,35 @@ public class HalfElf implements Race {
 
     //TODO HalfElf get's to increase 1 ASI of their choice to increase. 
     public HalfElf(String chosenLanguage, int chosenASI) {
-
         this.languages = new String[]{"Common", "Elvish", chosenLanguage};
         this.skills = new String[]{};
         this.chosenASI = chosenASI;
-
     }
 
     @Override
-    public String getRace() {
-        // TODO Auto-generated method stub
-        return this.getClass().getSimpleName();
-    }
+    public String getSpecies() { return this.getClass().getSimpleName(); }
 
     @Override
-    public int maxAge() {
-        // TODO Auto-generated method stub
-        return maxAge;
-    }
+    public int maxAge() { return maxAge; }
 
     @Override
-    public int getSpeed() {
-        // TODO Auto-generated method stub
-        return speed;
-    }
+    public int getSpeed() { return speed; }
 
     @Override
-    public String[] getTraits() {
-        // TODO Auto-generated method stub
-        return traits;
-
-    }
+    public String[] getTraits() { return traits; }
 
     @Override
-    public String[] getSkills() {
-        // TODO Auto-generated method stub
-        return skills;
-    }
+    public String[] getSkills() { return skills; }
 
     @Override
-    public String[] getLanguages() {
-        // TODO Auto-generated method stub
-        return languages;
-    }
+    public String[] getLanguages() { return languages; }
 
     @Override
-    public String[] getProficiencies() {
-        // TODO Auto-generated method stub
-        return proficiencies;
-    }
+    public String[] getProficiencies() { return proficiencies; }
 
     @Override
-    public int[] getASI() {
-        // TODO Auto-generated method stub
-        return new int[]{5, 5, chosenASI};
-    }
+    public int[] getASI() { return new int[]{5, 5, chosenASI}; }
 
     @Override
-    public String toString() {
-        // TODO Auto-generated method stub
-        return this.getClass().getSimpleName();
-    }
-
+    public String toString() { return this.getClass().getSimpleName(); }
 }
-

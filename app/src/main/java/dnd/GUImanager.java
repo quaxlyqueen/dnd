@@ -18,11 +18,11 @@ public class GUImanager extends JFrame {
     private int currentPanel;
     private int nextPanel;
 
-    private String[] raceOptions = PanelInfo.getSpeciesOptions();
-    private String[] raceDescriptions = PanelInfo.getSpeciesDescriptions();
+    private String[] speciesOptions = PanelInfo.getSpeciesOptions();
+    private String[] speciesDescriptions = PanelInfo.getSpeciesDescriptions();
     private String[] classOptions = PanelInfo.getClassOptions();
     private String[] classDescriptions = PanelInfo.getClassDescriptions();
-    private int raceChoice;
+    private int speciesChoice;
     private int classChoice;
 
     private String[] statOptions = PanelInfo.getStatOptions();
@@ -39,11 +39,20 @@ public class GUImanager extends JFrame {
         fileManager = new FileManager();
         frameSetup();
 
-        ImageManager images = new ImageManager();
+        Rectangle[] bounds = new Rectangle[]{
+
+                new Rectangle(5, 5, 600, 400), // ImageInfo panel
+                new Rectangle(275, 10, 300, 35), // ImageInfo subheader
+                new Rectangle(275, 45, 300, 355), // ImageInfo text
+                new Rectangle(10, 45, 250, 355) // Image bounds
+
+        };
+
+        ImageManager images = new ImageManager(bounds[3]);
         this.panels = new JPanel[]{
                 new MainMenuPanel(createNewCharacterButton(), createRandomCharacterButton(), createLoadButton()),
-                new BasicPanel(createNavPanel(), raceOptions, raceDescriptions, "Step 1: Choose Your Race", images), // To choose Race.
-                new BasicPanel(createNavPanel(), classOptions, classDescriptions, "Step 2: Choose Your Class", images), // To choose Class.
+                new BasicPanel(createNavPanel(), speciesOptions, speciesDescriptions, "Step 1: Choose Your Species", images, bounds),
+                new BasicPanel(createNavPanel(), classOptions, classDescriptions, "Step 2: Choose Your Class", images, bounds),
                 new ChooseAbilityScoresPanel(createNavPanel(1), statOptions, statDescriptions, selectedStats, "Step 3: Choose Your Ability Scores"),
                 new DescriptionPanel(createNavPanel(), characteristics, alignmentOptions, alignmentDescriptions, backgroundOptions, backgroundDescriptions, "Step 4: Describe your character"),
                 new LoadCharacterPanel(createBackPanel(), loadableCharacters()),

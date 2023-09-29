@@ -1,6 +1,6 @@
 package dnd.species;
 
-public class Dragonborn implements Race {
+public class Dragonborn implements Species {
     private final int speed = 30;
     private final int maxAge = 80;
     private String[] traits;
@@ -14,7 +14,7 @@ public class Dragonborn implements Race {
     }
 
     @Override
-    public String getRace() { return this.getClass().getSimpleName(); }
+    public String getSpecies() { return this.getClass().getSimpleName(); }
 
     @Override
     public int maxAge() { return maxAge; }

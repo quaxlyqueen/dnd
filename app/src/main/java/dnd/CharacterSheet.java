@@ -11,7 +11,7 @@ public class CharacterSheet implements Serializable {
     private int weight;
     private String eyeColor;
     private String hairColor;
-    private Race race;
+    private Species species;
     private ClassTemplate chClass;
     private String[] spells;
     private String[] equipment;
@@ -39,7 +39,7 @@ public class CharacterSheet implements Serializable {
             int weight,
             String eyeColor,
             String hairColor,
-            Race race,
+            Species species,
             ClassTemplate chClass,
             String alignment,
             String background,
@@ -53,7 +53,7 @@ public class CharacterSheet implements Serializable {
         this.weight = weight;
         this.eyeColor = eyeColor;
         this.hairColor = hairColor;
-        this.race = race;
+        this.species = species;
         this.chClass = chClass;
         this.alignment = alignment;
         this.background = background;
@@ -74,7 +74,7 @@ public class CharacterSheet implements Serializable {
 
     public String getHairColor() { return hairColor; }
 
-    public Race getRace() { return race; }
+    public Species getSpecies() { return species; }
 
     public ClassTemplate getCharacterClass() { return chClass; }
 
@@ -82,7 +82,7 @@ public class CharacterSheet implements Serializable {
 
     @Override
     public String toString() {
-        String output = "Character name: " + name + "\nAge: " + age + "\nHeight: " + heightFeet + "\'" + heightInch + "\"" + "\nWeight: " + weight + "\nEye Color: " + eyeColor + "\nHair Color: " + hairColor + "\nRace: " + race.toString() + "\nClass: " + chClass.toString() + "\nStats: " + stats.toString();
+        String output = "Character name: " + name + "\nAge: " + age + "\nHeight: " + heightFeet + "\'" + heightInch + "\"" + "\nWeight: " + weight + "\nEye Color: " + eyeColor + "\nHair Color: " + hairColor + "\nSpecies: " + species.toString() + "\nClass: " + chClass.toString() + "\nStats: " + stats.toString();
         return output;
     }
 }

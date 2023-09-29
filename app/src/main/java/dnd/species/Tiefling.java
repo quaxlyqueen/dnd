@@ -1,6 +1,6 @@
 package dnd.species;
 
-public class Tiefling implements Race {
+public class Tiefling implements Species {
     private final int speed = 30;
     private final int maxAge = 85;
     private String[] traits;
@@ -9,64 +9,34 @@ public class Tiefling implements Race {
     private String[] proficiencies;
 
     public Tiefling() {
-
         this.languages = new String[]{"Common", "Infernal"};
         this.skills = new String[]{};
     }
 
     @Override
-    public String getRace() {
-        // TODO Auto-generated method stub
-        return this.getClass().getSimpleName();
-    }
+    public String getSpecies() { return this.getClass().getSimpleName(); }
 
     @Override
-    public int maxAge() {
-        // TODO Auto-generated method stub
-        return maxAge;
-    }
+    public int maxAge() { return maxAge; }
 
     @Override
-    public int getSpeed() {
-        // TODO Auto-generated method stub
-        return speed;
-    }
+    public int getSpeed() { return speed; }
 
     @Override
-    public String[] getTraits() {
-        // TODO Auto-generated method stub
-        return traits;
-
-    }
+    public String[] getTraits() { return traits; }
 
     @Override
-    public String[] getSkills() {
-        // TODO Auto-generated method stub
-        return skills;
-    }
+    public String[] getSkills() { return skills; }
 
     @Override
-    public String[] getLanguages() {
-        // TODO Auto-generated method stub
-        return languages;
-    }
+    public String[] getLanguages() { return languages; }
 
     @Override
-    public String[] getProficiencies() {
-        // TODO Auto-generated method stub
-        return proficiencies;
-    }
+    public String[] getProficiencies() { return proficiencies; }
 
     @Override
-    public int[] getASI() {
-        // TODO Auto-generated method stub
-        return new int[]{3, 5, 5};
-    }
+    public int[] getASI() { return new int[]{3, 5, 5}; }
 
     @Override
-    public String toString() {
-        // TODO Auto-generated method stub
-        return this.getClass().getSimpleName();
-    }
-
+    public String toString() { return this.getClass().getSimpleName(); }
 }

@@ -1,8 +1,8 @@
 package dnd.species;
 
-public interface Race {
+public interface Species {
 
-    String getRace();
+    String getSpecies();
 
     int maxAge();
 

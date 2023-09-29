@@ -2,7 +2,7 @@ package dnd.species;
 
 import java.io.Serializable;
 
-public class Elf implements Race, Serializable {
+public class Elf implements Species, Serializable {
     private final int speed = 30;
     private final int maxAge = 750;
     private String[] traits;
@@ -16,7 +16,7 @@ public class Elf implements Race, Serializable {
     }
 
     @Override
-    public String getRace() { return this.getClass().getSimpleName(); }
+    public String getSpecies() { return this.getClass().getSimpleName(); }
 
     @Override
     public int maxAge() { return maxAge; }

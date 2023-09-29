@@ -1,6 +1,6 @@
 package dnd.species;
 
-public class Dwarf implements Race {
+public class Dwarf implements Species {
     private final int speed = 25;
     private final int maxAge = 350;
     private String[] traits;
@@ -14,7 +14,7 @@ public class Dwarf implements Race {
     }
 
     @Override
-    public String getRace() { return this.getClass().getSimpleName(); }
+    public String getSpecies() { return this.getClass().getSimpleName(); }
 
     @Override
     public int maxAge() { return maxAge; }

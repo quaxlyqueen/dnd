@@ -10,29 +10,31 @@ import java.util.*;
 import static dnd.AppConstants.*;
 
 public class ImageManager extends FileManager {
-    private static JLabel[][] racePortraits;
+    private static JLabel[][] speciesPortraits;
     private static JLabel[][] classPortraits; 
     private static ArrayList<JLabel> savesPortraits;
 
-    public ImageManager() {
+    public ImageManager(Rectangle bounds) {
         super();
-            racePortraits = new JLabel[9][];
+            speciesPortraits = new JLabel[9][];
             classPortraits = new JLabel[12][];
             savesPortraits = new ArrayList<>();
-        createPortraitArray(racePortraits, "race");
-        createPortraitArray(classPortraits, "class"); 
+        createPortraitArray(speciesPortraits, "species", bounds);
+        createPortraitArray(classPortraits, "class", bounds); 
         createSavesPortraits();
     }
 
-    public JLabel getRacePortrait(int raceIndex) {
-      if(raceIndex < 1) return new JLabel();
-      return racePortraits[raceIndex][0];
-      //return racePortraits[raceIndex][new Random().nextInt(racePortraits[raceIndex].length)];
+    public JLabel getSpeciesPortrait(int speciesIndex) {
+        System.out.println("index: " + speciesIndex);
+      if(speciesIndex < 0) return new JLabel();
+      return speciesPortraits[speciesIndex][0];
+      //return speciesPortraits[speciesIndex][new Random().nextInt(speciesPortraits[speciesIndex].length)];
     }
 
     public JLabel getClassPortrait(int classIndex) {
-      if(classIndex < 1) return new JLabel();
-      return classPortraits[classIndex][new Random().nextInt(classPortraits[classIndex].length)];
+      if(classIndex < 0) return new JLabel();
+      return classPortraits[classIndex][0];
+      //return classPortraits[classIndex][new Random().nextInt(classPortraits[classIndex].length)];
     }
 
     private void createSavesPortraits() {
@@ -45,7 +47,7 @@ public class ImageManager extends FileManager {
         }
     }
 
-    private void createPortraitArray(JLabel[][] portraits, String category) {
+    private void createPortraitArray(JLabel[][] portraits, String category, Rectangle bounds) {
         File imgDir = new File(imgFilepath + category + "/");
         File[] masterDir = imgDir.listFiles();
 
@@ -54,10 +56,11 @@ public class ImageManager extends FileManager {
             portraits[i] = new JLabel[tmpDir.length];
             int index = 0;
             for(File file : tmpDir) {
+                System.out.println("i: " + i + ", index: " + index);
                 portraits[i][index] = image(file);
                     portraits[i][index].setOpaque(true);
                     portraits[i][index].setBackground(lightBrown);
-                    //portraits[i][index].setBounds(bounds[3]);
+                    portraits[i][index].setBounds(bounds);
                 index++;
             }
         } 

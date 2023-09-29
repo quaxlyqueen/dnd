@@ -15,18 +15,11 @@ public class BasicPanel extends JPanel {
     private ImageManager images;
     private int currentPanel;
 
-    public BasicPanel(JPanel navPanel, String[] options, String[] descriptions, String panelTitle, ImageManager images) {
+    public BasicPanel(JPanel navPanel, String[] options, String[] descriptions, String panelTitle, ImageManager images, Rectangle[] bounds) {
         super();
         this.options = options;
         this.panelTitle = panelTitle;
-        Rectangle[] basicBounds = new Rectangle[]{
-
-                new Rectangle(5, 5, 600, 400), // ImageInfo panel
-                new Rectangle(275, 10, 300, 35), // ImageInfo subheader
-                new Rectangle(275, 45, 300, 355), // ImageInfo text
-                new Rectangle(10, 45, 250, 355)
-
-        };
+        Rectangle[] basicBounds = bounds;
 
         this.images = images;
         infoPanel = new InfoPanel(options, descriptions, basicBounds, images); 
@@ -39,10 +32,9 @@ public class BasicPanel extends JPanel {
     }
 
     private JLabel getNextPortrait(int index) {
-        System.out.println("getNextPortrait in BasicPanel");
         JLabel nextPortrait;
 
-        if(currentPanel == 1) nextPortrait = images.getRacePortrait(index);
+        if(currentPanel == 1) nextPortrait = images.getSpeciesPortrait(index);
         else if(currentPanel == 2) nextPortrait = images.getClassPortrait(index);
         else nextPortrait = null;
         return nextPortrait;
@@ -75,7 +67,6 @@ public class BasicPanel extends JPanel {
         buttonPanel.setBounds(585, 45, 135, 355);
 
         optionButtons = new DefaultButton[options.length];
-
 
         for (int i = 0; i < optionButtons.length; i++) {
             optionButtons[i] = createButton(options[i], i);

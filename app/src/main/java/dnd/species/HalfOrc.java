@@ -1,6 +1,6 @@
 package dnd.species;
 
-public class HalfOrc implements Race {
+public class HalfOrc implements Species {
     private final int speed = 30;
     private final int maxAge = 75;
     private String[] traits;
@@ -15,7 +15,7 @@ public class HalfOrc implements Race {
     }
 
     @Override
-    public String getRace() {
+    public String getSpecies() {
         // TODO Auto-generated method stub
         return this.getClass().getSimpleName();
     }

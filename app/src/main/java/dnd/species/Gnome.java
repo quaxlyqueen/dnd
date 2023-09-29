@@ -1,6 +1,6 @@
 package dnd.species;
 
-public class Gnome implements Race {
+public class Gnome implements Species {
     private final int speed = 25;
     private final int maxAge = 500;
     private String[] traits;
@@ -14,7 +14,7 @@ public class Gnome implements Race {
     }
 
     @Override
-    public String getRace() { return this.getClass().getSimpleName(); }
+    public String getSpecies() { return this.getClass().getSimpleName(); }
 
     @Override
     public int maxAge() { return maxAge; }

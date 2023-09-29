@@ -18,14 +18,14 @@ public class Tester {
         String eyeColor = "Brown";
         String hairColor = "Dark Brown";
 
-        Race race = new Elf();
+        Species species = new Elf();
         ClassTemplate chClass = new Fighter();
         CharacterStats stats = new CharacterStats(9, 15, 12, 10, 13, 10);
 
         String alignment = "Neutral";
         String background = "Nomad";
 
-        CharacterSheet chTest = new CharacterSheet(name, age, heightFeet, heightInch, weight, eyeColor, hairColor, race, chClass, alignment, background, stats);
+        CharacterSheet chTest = new CharacterSheet(name, age, heightFeet, heightInch, weight, eyeColor, hairColor, species, chClass, alignment, background, stats);
 
         return chTest;
     }

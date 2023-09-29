@@ -47,7 +47,7 @@ public class ViewCharacterPanel extends JPanel {
             panel.add(new JLabel("Weight: " + sheet.getWeight() + "lbs."));
             panel.add(new JLabel("Eye Color: " + sheet.getEyeColor()));
             panel.add(new JLabel("Hair Color: " + sheet.getHairColor()));
-            panel.add(new JLabel("Race: " + sheet.getRace().toString()));
+            panel.add(new JLabel("Species: " + sheet.getSpecies().toString()));
             panel.add(new JLabel("Class: " + sheet.getCharacterClass().toString()));
             panel.add(new JLabel("Ability Scores: " + sheet.getStats().toString()));
         return panel;
